@@ -1,0 +1,19 @@
+type Post
+    @model
+    @auth(rules: [{ allow: owner, operations: [create, delete] }]) {
+    id: ID!
+    userId: ID!
+    postBody: String!
+    pictureKey: String!
+    createdAt: AWSDateTime!
+    postedBy: User! @connection(fields: ["userId"])
+}
+
+type User
+    @model
+    @auth(rules: [{ allow: owner, operations: [create, delete] }]) {
+    id: ID!
+    username: String!
+    profilePic: String!
+    posts: [Post] @connection(fields: ["id"])
+}
