@@ -1,0 +1,7 @@
+# Add/uncomment as needed (copied from amplify-js-samples-staging)
+#node_modules
+.DS_Store
+#cypress/videos
+#cypress/screenshots
+.vscode
+#yarn-error.log
