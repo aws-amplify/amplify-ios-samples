@@ -34,7 +34,7 @@ The loading of the posts is related to [Amplify.DataStore.query](https://docs.am
 
 ## Requirements
 
-Before moving forward, please make sure you have followed [intruction](https://docs.amplify.aws/lib/project-setup/prereq/q/platform/ios) to finish signing up AWS Account and setting up Amplify CLI
+Before moving forward, please make sure you have followed [instruction](https://docs.amplify.aws/lib/project-setup/prereq/q/platform/ios) to finish signing up AWS Account and setting up Amplify CLI
 
 Once the above step is done, you need to have the following pre-requisites installed on your computer to run this iOS project:
 
@@ -45,14 +45,14 @@ Once the above step is done, you need to have the following pre-requisites insta
 If you have them, then go ahead and clone the repository: 
 
 ```bash
-git clone git@github.com:aws-amplify/amplify-native-samples-staging.git
+git clone git@github.com:aws-amplify/amplify-ios-samples.git
 ```
 
 ## To run it
 
 Change directory to PhotoSharing Project:
 ```bash
-cd amplify-native-samples-staging/PhotoSharing/iOS/PhotoSharing
+cd amplify-ios-samples/PhotoSharing/iOS/PhotoSharing
 ```
 
 ### Install dependency
@@ -93,7 +93,7 @@ amplify add auth
 ? Do you want to add another redirect signin URI `No`
 ? Enter your redirect signout URI: `myapp://`
 ? Do you want to add another redirect signout URI `No`
-? Select the social providers you want to configure for your user pool: `<hit enter>`
+? Select the social providers you want to configure for your user pool: `Don't select anything, <hit enter> `
 ```
 
 3. Set up API configuration
@@ -127,6 +127,14 @@ amplify add storage
 ? Do you want to add a Lambda Trigger for your S3 Bucket? `No`
 ```
 
+4. Now execute the following command to convert the **schema.graphql** into Swift data structures
+
+```
+amplify codegen models
+```
+
+When finished, a new **AmplifyModels** group is added to your Xcode project.
+
 5. To push your changes to the cloud, execute command:
 
 ```
@@ -139,25 +147,8 @@ amplify push
 
 Upon completion, **amplifyconfiguration.json** should be updated to reference provisioned backend auth, api & storage resources.
 
-5. Now execute the following command to convert the **schema.graphql** into Swift data structures
-
-```
-amplify codegen models
-```
-
-When finished, a new **AmplifyModels** group is added to your Xcode project.
-
 ### Run the App
-If you don't have **Xcode Command Line Tools** installed, please follow steps:
-1. start Xcode on the Mac
-2. Choose **Preferences** from the Xcode menu.
-3. In the General panel, click **Downloads**.
-4. On the Downloads window, choose the **Components** tab.
-5. Click the **Install** button next to **Command Line Tools**.
 
-You should now be able to open **PhotoSharing.xcworkspace** by executing command:
-```bash
-xed .
-```
+You should now be able to open **PhotoSharing.xcworkspace**
 
 And run the App (`Cmd+R`) in your chosen iOS simulator, you should be able to perform the actions that we described on the top.
