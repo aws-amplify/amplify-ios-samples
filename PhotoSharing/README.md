@@ -4,17 +4,26 @@ PhotoSharing is a demonstration of building an iOS social networking App with [A
 
 ## App features
 
-This is an App that you can perform sign in/sign out, post photos, update your profile image and scroll to view your created posts
+This is an App that you can perform features below
+* Sign In/Sign Up/Sign Out
+* Post photo
+* Update your profile image 
+* Scroll to view a list of your created posts
 
 ### Sign In/Sign Out
 
 The App allows you to sign up, sign in using [Amplify.Auth.signInWithWebUI](https://docs.amplify.aws/lib/auth/signin_web_ui/q/platform/ios) api.
 
+Sign Up Flow:
 ![Sign Up](./readmeimages/sign-up-flow.png)
 
+Sign In Flow:
 ![Sign In](./readmeimages/sign-in-flow.png)
 
-### Post photos
+Sign Out Flow:
+![Sign Out](./readmeimages/sign-out-flow.png)
+
+### Post Photo
 
 Once you are authenticated, you can create a post with selected image using [Amplify.DataStore.save](https://docs.amplify.aws/lib/datastore/data-access/q/platform/ios#create-and-update) and [Amplify.Storage.UploadData](https://docs.amplify.aws/lib/storage/upload/q/platform/ios) api
 
@@ -152,3 +161,26 @@ Upon completion, **amplifyconfiguration.json** should be updated to reference pr
 You should now be able to open **PhotoSharing.xcworkspace**
 
 And run the App (`Cmd+R`) in your chosen iOS simulator, you should be able to perform the actions that we described on the top.
+
+## Code of Conduct
+
+This project has adopted the [Amazon Open Source Code of Conduct](https://aws.github.io/code-of-conduct).
+For more information see the [Code of Conduct FAQ](https://aws.github.io/code-of-conduct-faq) or contact
+opensource-codeofconduct@amazon.com with any additional questions or comments.
+
+## Security Issue Notifications
+
+If you discover a potential security issue in this project we ask that you notify AWS/Amazon Security via our
+[vulnerability reporting page](http://aws.amazon.com/security/vulnerability-reporting/). Please
+do **not** create a public GitHub issue.
+
+## Licensing
+
+See the
+[LICENSE](https://github.com/awslabs/amplify-android/blob/master/LICENSE)
+for more information. We will ask you to confirm the licensing of your
+contribution.
+
+We may ask you to sign a
+[Contributor License Agreement (CLA)](http://en.wikipedia.org/wiki/Contributor_License_Agreement) for
+larger changes.
