@@ -1,0 +1,13 @@
+#include "AWS.xcconfig"
+#include "Defaults.xcconfig"
+
+SUPPORTED_PLATFORMS = iphonesimulator iphoneos
+
+SDKROOT = iphoneos
+
+IPHONEOS_DEPLOYMENT_TARGET = 14.5
+
+SWIFT_VERSION = 5.0
+
+CODE_SIGN_STYLE = Automatic
+DEVELOPMENT_TEAM = Z8FSDNUWQ7

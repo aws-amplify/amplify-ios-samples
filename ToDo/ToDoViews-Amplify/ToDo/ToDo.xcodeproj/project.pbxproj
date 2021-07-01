@@ -1,0 +1,491 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03DB10D1267824D5008D2621 /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB10D0267824D5008D2621 /* ToDoApp.swift */; };
+		03DB10D5267824D8008D2621 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03DB10D4267824D8008D2621 /* Assets.xcassets */; };
+		03DB10D8267824D8008D2621 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03DB10D7267824D8008D2621 /* Preview Assets.xcassets */; };
+		03DB10E3267824D8008D2621 /* ToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB10E2267824D8008D2621 /* ToDoTests.swift */; };
+		03DB10EE267824D8008D2621 /* ToDoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB10ED267824D8008D2621 /* ToDoUITests.swift */; };
+		03DB10FD267824FC008D2621 /* ToDoViews in Frameworks */ = {isa = PBXBuildFile; productRef = 03DB10FC267824FC008D2621 /* ToDoViews */; };
+		3E182DF1267D45A2005F731E /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 3E182DF0267D45A2005F731E /* Amplify */; };
+		3E182DF3267D45A2005F731E /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 3E182DF2267D45A2005F731E /* AWSAPIPlugin */; };
+		3E182DF5267D45A2005F731E /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 3E182DF4267D45A2005F731E /* AWSDataStorePlugin */; };
+		3E182DF6267D45AF005F731E /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 16C5F9746FF3216AE0B58973 /* awsconfiguration.json */; };
+		3E182DF7267D45B1005F731E /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EC5E5A11B721A99938BD8BE /* amplifyconfiguration.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		03DB10DF267824D8008D2621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03DB10C5267824D5008D2621 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03DB10CC267824D5008D2621;
+			remoteInfo = ToDo;
+		};
+		03DB10EA267824D8008D2621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03DB10C5267824D5008D2621 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03DB10CC267824D5008D2621;
+			remoteInfo = ToDo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		039CD5DF267835D300086BE1 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		039CD5E0267835D300086BE1 /* Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Tests.xcconfig; sourceTree = "<group>"; };
+		039CD5E1267835D300086BE1 /* Defaults.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Defaults.xcconfig; sourceTree = "<group>"; };
+		039CD5E2267835D300086BE1 /* UITests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UITests.xcconfig; sourceTree = "<group>"; };
+		039CD5E3267835D300086BE1 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		039CD5E4267835D300086BE1 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
+		039CD5E5267835D300086BE1 /* App.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = App.xcconfig; sourceTree = "<group>"; };
+		039CD5E6267835D300086BE1 /* AWS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AWS.xcconfig; sourceTree = "<group>"; };
+		03DB10CD267824D5008D2621 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03DB10D0267824D5008D2621 /* ToDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoApp.swift; sourceTree = "<group>"; };
+		03DB10D4267824D8008D2621 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03DB10D7267824D8008D2621 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		03DB10D9267824D8008D2621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03DB10DE267824D8008D2621 /* ToDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03DB10E2267824D8008D2621 /* ToDoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTests.swift; sourceTree = "<group>"; };
+		03DB10E4267824D8008D2621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03DB10E9267824D8008D2621 /* ToDoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03DB10ED267824D8008D2621 /* ToDoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUITests.swift; sourceTree = "<group>"; };
+		03DB10EF267824D8008D2621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EC5E5A11B721A99938BD8BE /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		16C5F9746FF3216AE0B58973 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03DB10CA267824D5008D2621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E182DF3267D45A2005F731E /* AWSAPIPlugin in Frameworks */,
+				03DB10FD267824FC008D2621 /* ToDoViews in Frameworks */,
+				3E182DF1267D45A2005F731E /* Amplify in Frameworks */,
+				3E182DF5267D45A2005F731E /* AWSDataStorePlugin in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03DB10DB267824D8008D2621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03DB10E6267824D8008D2621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		039CD5DE267835A900086BE1 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				039CD5E6267835D300086BE1 /* AWS.xcconfig */,
+				039CD5E1267835D300086BE1 /* Defaults.xcconfig */,
+				039CD5E4267835D300086BE1 /* Common.xcconfig */,
+				039CD5DF267835D300086BE1 /* Debug.xcconfig */,
+				039CD5E3267835D300086BE1 /* Release.xcconfig */,
+				039CD5E5267835D300086BE1 /* App.xcconfig */,
+				039CD5E0267835D300086BE1 /* Tests.xcconfig */,
+				039CD5E2267835D300086BE1 /* UITests.xcconfig */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		03DB10C4267824D5008D2621 = {
+			isa = PBXGroup;
+			children = (
+				039CD5DE267835A900086BE1 /* Configurations */,
+				03DB10CF267824D5008D2621 /* ToDo */,
+				03DB10E1267824D8008D2621 /* ToDoTests */,
+				03DB10EC267824D8008D2621 /* ToDoUITests */,
+				03DB10CE267824D5008D2621 /* Products */,
+				03DB10FB267824FC008D2621 /* Frameworks */,
+				8C26DB40E61F53C057AC270F /* AmplifyConfig */,
+			);
+			sourceTree = "<group>";
+		};
+		03DB10CE267824D5008D2621 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03DB10CD267824D5008D2621 /* ToDo.app */,
+				03DB10DE267824D8008D2621 /* ToDoTests.xctest */,
+				03DB10E9267824D8008D2621 /* ToDoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		03DB10CF267824D5008D2621 /* ToDo */ = {
+			isa = PBXGroup;
+			children = (
+				03DB10D0267824D5008D2621 /* ToDoApp.swift */,
+				03DB10D4267824D8008D2621 /* Assets.xcassets */,
+				03DB10D9267824D8008D2621 /* Info.plist */,
+				03DB10D6267824D8008D2621 /* Preview Content */,
+			);
+			path = ToDo;
+			sourceTree = "<group>";
+		};
+		03DB10D6267824D8008D2621 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				03DB10D7267824D8008D2621 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		03DB10E1267824D8008D2621 /* ToDoTests */ = {
+			isa = PBXGroup;
+			children = (
+				03DB10E2267824D8008D2621 /* ToDoTests.swift */,
+				03DB10E4267824D8008D2621 /* Info.plist */,
+			);
+			path = ToDoTests;
+			sourceTree = "<group>";
+		};
+		03DB10EC267824D8008D2621 /* ToDoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				03DB10ED267824D8008D2621 /* ToDoUITests.swift */,
+				03DB10EF267824D8008D2621 /* Info.plist */,
+			);
+			path = ToDoUITests;
+			sourceTree = "<group>";
+		};
+		03DB10FB267824FC008D2621 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8C26DB40E61F53C057AC270F /* AmplifyConfig */ = {
+			isa = PBXGroup;
+			children = (
+				16C5F9746FF3216AE0B58973 /* awsconfiguration.json */,
+				0EC5E5A11B721A99938BD8BE /* amplifyconfiguration.json */,
+			);
+			name = AmplifyConfig;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		03DB10CC267824D5008D2621 /* ToDo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03DB10F2267824D8008D2621 /* Build configuration list for PBXNativeTarget "ToDo" */;
+			buildPhases = (
+				03DB10C9267824D5008D2621 /* Sources */,
+				03DB10CA267824D5008D2621 /* Frameworks */,
+				03DB10CB267824D5008D2621 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ToDo;
+			packageProductDependencies = (
+				03DB10FC267824FC008D2621 /* ToDoViews */,
+				3E182DF0267D45A2005F731E /* Amplify */,
+				3E182DF2267D45A2005F731E /* AWSAPIPlugin */,
+				3E182DF4267D45A2005F731E /* AWSDataStorePlugin */,
+			);
+			productName = ToDo;
+			productReference = 03DB10CD267824D5008D2621 /* ToDo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		03DB10DD267824D8008D2621 /* ToDoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03DB10F5267824D8008D2621 /* Build configuration list for PBXNativeTarget "ToDoTests" */;
+			buildPhases = (
+				03DB10DA267824D8008D2621 /* Sources */,
+				03DB10DB267824D8008D2621 /* Frameworks */,
+				03DB10DC267824D8008D2621 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03DB10E0267824D8008D2621 /* PBXTargetDependency */,
+			);
+			name = ToDoTests;
+			productName = ToDoTests;
+			productReference = 03DB10DE267824D8008D2621 /* ToDoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		03DB10E8267824D8008D2621 /* ToDoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03DB10F8267824D8008D2621 /* Build configuration list for PBXNativeTarget "ToDoUITests" */;
+			buildPhases = (
+				03DB10E5267824D8008D2621 /* Sources */,
+				03DB10E6267824D8008D2621 /* Frameworks */,
+				03DB10E7267824D8008D2621 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03DB10EB267824D8008D2621 /* PBXTargetDependency */,
+			);
+			name = ToDoUITests;
+			productName = ToDoUITests;
+			productReference = 03DB10E9267824D8008D2621 /* ToDoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		03DB10C5267824D5008D2621 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					03DB10CC267824D5008D2621 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					03DB10DD267824D8008D2621 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 03DB10CC267824D5008D2621;
+					};
+					03DB10E8267824D8008D2621 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 03DB10CC267824D5008D2621;
+					};
+				};
+			};
+			buildConfigurationList = 03DB10C8267824D5008D2621 /* Build configuration list for PBXProject "ToDo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 03DB10C4267824D5008D2621;
+			packageReferences = (
+				3E182DEF267D45A2005F731E /* XCRemoteSwiftPackageReference "amplify-ios" */,
+			);
+			productRefGroup = 03DB10CE267824D5008D2621 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				03DB10CC267824D5008D2621 /* ToDo */,
+				03DB10DD267824D8008D2621 /* ToDoTests */,
+				03DB10E8267824D8008D2621 /* ToDoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		03DB10CB267824D5008D2621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03DB10D8267824D8008D2621 /* Preview Assets.xcassets in Resources */,
+				03DB10D5267824D8008D2621 /* Assets.xcassets in Resources */,
+				3E182DF6267D45AF005F731E /* awsconfiguration.json in Resources */,
+				3E182DF7267D45B1005F731E /* amplifyconfiguration.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03DB10DC267824D8008D2621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03DB10E7267824D8008D2621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		03DB10C9267824D5008D2621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03DB10D1267824D5008D2621 /* ToDoApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03DB10DA267824D8008D2621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03DB10E3267824D8008D2621 /* ToDoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03DB10E5267824D8008D2621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03DB10EE267824D8008D2621 /* ToDoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03DB10E0267824D8008D2621 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03DB10CC267824D5008D2621 /* ToDo */;
+			targetProxy = 03DB10DF267824D8008D2621 /* PBXContainerItemProxy */;
+		};
+		03DB10EB267824D8008D2621 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03DB10CC267824D5008D2621 /* ToDo */;
+			targetProxy = 03DB10EA267824D8008D2621 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		03DB10F0267824D8008D2621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 039CD5DF267835D300086BE1 /* Debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		03DB10F1267824D8008D2621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 039CD5E3267835D300086BE1 /* Release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		03DB10F3267824D8008D2621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 039CD5E5267835D300086BE1 /* App.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		03DB10F4267824D8008D2621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 039CD5E5267835D300086BE1 /* App.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		03DB10F6267824D8008D2621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 039CD5E0267835D300086BE1 /* Tests.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		03DB10F7267824D8008D2621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 039CD5E0267835D300086BE1 /* Tests.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		03DB10F9267824D8008D2621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 039CD5E2267835D300086BE1 /* UITests.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		03DB10FA267824D8008D2621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 039CD5E2267835D300086BE1 /* UITests.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03DB10C8267824D5008D2621 /* Build configuration list for PBXProject "ToDo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03DB10F0267824D8008D2621 /* Debug */,
+				03DB10F1267824D8008D2621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03DB10F2267824D8008D2621 /* Build configuration list for PBXNativeTarget "ToDo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03DB10F3267824D8008D2621 /* Debug */,
+				03DB10F4267824D8008D2621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03DB10F5267824D8008D2621 /* Build configuration list for PBXNativeTarget "ToDoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03DB10F6267824D8008D2621 /* Debug */,
+				03DB10F7267824D8008D2621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03DB10F8267824D8008D2621 /* Build configuration list for PBXNativeTarget "ToDoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03DB10F9267824D8008D2621 /* Debug */,
+				03DB10FA267824D8008D2621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3E182DEF267D45A2005F731E /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		03DB10FC267824FC008D2621 /* ToDoViews */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ToDoViews;
+		};
+		3E182DF0267D45A2005F731E /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E182DEF267D45A2005F731E /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = Amplify;
+		};
+		3E182DF2267D45A2005F731E /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E182DEF267D45A2005F731E /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSAPIPlugin;
+		};
+		3E182DF4267D45A2005F731E /* AWSDataStorePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E182DEF267D45A2005F731E /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSDataStorePlugin;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 03DB10C5267824D5008D2621 /* Project object */;
+}
