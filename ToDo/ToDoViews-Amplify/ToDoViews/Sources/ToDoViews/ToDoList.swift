@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Amplify
 
 /// Display Todo list. Control TodoListRow and ToDoItemDetail. Delete TodoItem.
 public struct ToDoList: View {
@@ -13,14 +14,15 @@ public struct ToDoList: View {
 
     @State var showingDetail: Bool = false
     
-    private var showTime = 300.0
+    private var showTime = -3.0
+    private var count = 0
     
     public var body: some View {
         ///Display Todo list. Loop can be used in List to display whole elements.
         List {
             ForEach(environment.toDoItems.indices, id: \.self) { index in
                 ///Click one Todo item, showingDetail to be true, call .sheet to show TodoItemDetail. selectedToDoItem store current Todo item.
-                if !environment.toDoItems[index].completed! {
+                if (environment.toDoItems[index].completedAt == nil) {
                     HStack {
                         Button(action: {
                             print("Text in List: \(environment.toDoItems[index])")
@@ -33,8 +35,9 @@ public struct ToDoList: View {
                         .buttonStyle(BorderlessButtonStyle())
                         Spacer()
                         Button(action: {
-                            environment.toDoItems[index].completed!.toggle()
+                            environment.toDoItems[index].completedAt = Temporal.DateTime.now()
                             environment.createTodo(toDoItem: environment.toDoItems[index])
+                            environment.disappearCompletedItems(showTime: showTime)
                         }, label: {
                             ToDoCheckbox(item: $environment.toDoItems[index])
                         })
@@ -50,29 +53,21 @@ public struct ToDoList: View {
             ///Dispay completed ToDo items
             Section(header: Text("Completed items")) {
                     ForEach(environment.toDoItems.indices, id: \.self) { index in
-                    if environment.toDoItems[index].completed! {
+                        if (environment.toDoItems[index].completedAt != nil) {
                         HStack{
                             ToDoListRow(toDoItem: $environment.toDoItems[index])
                             Spacer()
                             Button(action: {
-                                environment.toDoItems[index].completed!.toggle()
+                                environment.toDoItems[index].completedAt = nil
                                 environment.createTodo(toDoItem: environment.toDoItems[index])
                             }, label: {
                                 ToDoCheckboxFill(item: $environment.toDoItems[index])
-//                                    Image(systemName: "checkmark.square.fill")
-//                                        .resizable()
-//                                        .foregroundColor(Color.orange)
-//                                        .frame(width: 24, height: 24)
                             })
                             .frame(width: 60, height: 50)
                         }
                         .animation(.spring())
-                        .onAppear {
-                            let _delay = RunLoop.SchedulerTimeType(.init(timeIntervalSinceNow: self.showTime))
-                            let completedItem = environment.toDoItems[index]
-                            RunLoop.main.schedule(after: _delay) {
-                                environment.remove(toDoItem: completedItem)
-                                            }
+                        .onAppear() {
+                            environment.disappearCompletedItems(showTime: showTime)
                         }
                     }
                 }

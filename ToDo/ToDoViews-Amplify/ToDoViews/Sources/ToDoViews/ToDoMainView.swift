@@ -13,7 +13,6 @@ public struct ToDoMainView: View {
     @EnvironmentObject var environment: ToDoEnvironment
 
     public init() {
-        
     }
 
     public var body: some View {

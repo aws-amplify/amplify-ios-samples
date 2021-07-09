@@ -15,12 +15,12 @@ extension ToDoItem: Identifiable, Equatable{
         return false
     }
     
-    public init(id: String? = nil, priority: ToDoPriority? = .medium, text: String? = "") {
+    public init(id: String? = nil, priority: ToDoPriority = .medium, text: String = "") {
         if let id = id {
-            self.init(id: id, priority: priority, text: text, completed: false)
+            self.init(id: id, priority: priority, text: text, completedAt: nil)
         }
         else{
-            self.init(priority: priority, text: text, completed: false)
+            self.init(priority: priority, text: text, completedAt: nil)
         }
     }
 }

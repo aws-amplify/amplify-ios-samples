@@ -11,5 +11,18 @@
       "StackId": "arn:aws:cloudformation:us-west-2:654044557103:stack/amplify-todo-todoapp-152853/9200d280-d084-11eb-a69e-02999ac8a6c5",
       "AmplifyAppId": "d5ske822huvwr"
     }
+  },
+  "todofinal": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-todo-todofinal-163509-authRole",
+      "UnauthRoleArn": "arn:aws:iam::654044557103:role/amplify-todo-todofinal-163509-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::654044557103:role/amplify-todo-todofinal-163509-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-todo-todofinal-163509-deployment",
+      "UnauthRoleName": "amplify-todo-todofinal-163509-unauthRole",
+      "StackName": "amplify-todo-todofinal-163509",
+      "StackId": "arn:aws:cloudformation:us-west-2:654044557103:stack/amplify-todo-todofinal-163509/f96a0b20-df7b-11eb-97a9-02f11e98e26f",
+      "AmplifyAppId": "d5ske822huvwr"
+    }
   }
 }

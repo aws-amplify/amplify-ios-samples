@@ -11,7 +11,7 @@ struct ToDoCheckbox: View {
     @Binding var item: ToDoItem
     
     var body: some View {
-        switch item.priority! {
+        switch item.priority {
         case .low:
             Image(systemName: "square")
                 .resizable()

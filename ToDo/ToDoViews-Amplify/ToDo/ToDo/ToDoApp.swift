@@ -29,6 +29,7 @@ struct ToDoApp: App {
 //        env.save(toDoItem: ToDoItem(priority: .medium, text: "Eat lunch"))
 //        env.save(toDoItem: ToDoItem(priority: .low, text: "Eat dinner"))
         env.initTodo()
+//        env.disappearCompletedItems(showTime: 3.0)
         return env
     }
 }

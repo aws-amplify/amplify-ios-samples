@@ -11,7 +11,7 @@ struct ToDoCheckboxFill: View {
     @Binding var item: ToDoItem
     
     var body: some View {
-        switch item.priority! {
+        switch item.priority {
         case .low:
             Image(systemName: "checkmark.square.fill")
                 .resizable()

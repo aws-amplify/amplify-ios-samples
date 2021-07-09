@@ -75,8 +75,8 @@ public struct ToDoItemDetail: View {
             if let item = environment.selectedToDoItem {
                 print("Loading Item: \(item)")
                 id = item.id
-                priority = item.priority!
-                text = item.text!
+                priority = item.priority
+                text = item.text
                 priorityBefore = priority
                 textBefore = text
             }

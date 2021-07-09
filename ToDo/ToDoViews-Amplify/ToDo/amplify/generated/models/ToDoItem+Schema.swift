@@ -8,7 +8,7 @@ extension ToDoItem {
     case id
     case priority
     case text
-    case completed
+    case completedAt
   }
   
   public static let keys = CodingKeys.self
@@ -21,9 +21,9 @@ extension ToDoItem {
     
     model.fields(
       .id(),
-      .field(toDoItem.priority, is: .optional, ofType: .enum(type: ToDoPriority.self)),
-      .field(toDoItem.text, is: .optional, ofType: .string),
-      .field(toDoItem.completed, is: .optional, ofType: .bool)
+      .field(toDoItem.priority, is: .required, ofType: .enum(type: ToDoPriority.self)),
+      .field(toDoItem.text, is: .required, ofType: .string),
+      .field(toDoItem.completedAt, is: .optional, ofType: .dateTime)
     )
     }
 }

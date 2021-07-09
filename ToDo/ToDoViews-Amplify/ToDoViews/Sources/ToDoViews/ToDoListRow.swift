@@ -14,7 +14,7 @@ public struct ToDoListRow: View {
 
     public var body: some View {
         HStack{
-            switch toDoItem.priority! {
+            switch toDoItem.priority {
             case .low:
                 VStack{
                     Rectangle().frame(width: 8.0).foregroundColor(.blue)
@@ -24,7 +24,7 @@ public struct ToDoListRow: View {
                     Image(systemName: "l.circle").resizable()
                         .foregroundColor(.blue)
                         .frame(width: 24.0, height: 24.0)
-                    Text(toDoItem.text!).strikethrough(toDoItem.completed!).foregroundColor(toDoItem.completed! ? Color(.systemGray2) : .black)
+                    Text(toDoItem.text).strikethrough((toDoItem.completedAt != nil)).foregroundColor((toDoItem.completedAt != nil) ? Color(.systemGray2) : .black)
                 }
             case .medium:
                 VStack{
@@ -35,7 +35,7 @@ public struct ToDoListRow: View {
                     Image(systemName: "m.circle").resizable()
                         .foregroundColor(.orange)
                         .frame(width: 24.0, height: 24.0)
-                    Text(toDoItem.text!).strikethrough(toDoItem.completed!).foregroundColor(toDoItem.completed! ? Color(.systemGray2) : .black)
+                    Text(toDoItem.text).strikethrough((toDoItem.completedAt != nil)).foregroundColor((toDoItem.completedAt != nil) ? Color(.systemGray2) : .black)
                 }
             case .high:
                 VStack{
@@ -46,7 +46,7 @@ public struct ToDoListRow: View {
                     Image(systemName: "h.circle").resizable()
                         .foregroundColor(.red)
                         .frame(width: 24.0, height: 24.0)
-                    Text(toDoItem.text!).strikethrough(toDoItem.completed!).foregroundColor(toDoItem.completed! ? Color(.systemGray2) : .black)
+                    Text(toDoItem.text).strikethrough((toDoItem.completedAt != nil)).foregroundColor((toDoItem.completedAt != nil) ? Color(.systemGray2) : .black)
                 }
             }
         }

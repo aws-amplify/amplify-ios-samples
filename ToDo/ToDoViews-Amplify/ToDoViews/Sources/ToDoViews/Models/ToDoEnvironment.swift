@@ -25,7 +25,8 @@ public class ToDoEnvironment: ObservableObject {
     @Published var toDoItems: ToDoItems = []
     ///Store current Todo item information. Display in ToDoItemDetail.
     @Published var selectedToDoItem: ToDoItem? = nil
-    
+    ///how long will completed items disappear
+    @Published var displayTime: Double = 3.0
     public init() {}
     
     /// Check id to know whether the item is in the todoItems, then determine update or add.
@@ -36,7 +37,6 @@ public class ToDoEnvironment: ObservableObject {
         }
         if let index = index {
             print("Updating Item: \(toDoItem)")
-//            toDoItems[index].update(otherItem: toDoItem)
             toDoItems[index] = toDoItem
             createTodo(toDoItem: toDoItem)
         } else {
@@ -46,7 +46,7 @@ public class ToDoEnvironment: ObservableObject {
         }
         ///Sort as H M L
         toDoItems.sort(by: {
-            switch $0.priority! {
+            switch $0.priority {
             case ToDoPriority.low:
                 return false
             case ToDoPriority.medium:
@@ -139,7 +139,7 @@ public class ToDoEnvironment: ObservableObject {
                }
            }
         toDoItems.sort(by: {
-            switch $0.priority! {
+            switch $0.priority {
             case ToDoPriority.low:
                 return false
             case ToDoPriority.medium:
@@ -153,6 +153,16 @@ public class ToDoEnvironment: ObservableObject {
                 return true
             }
         })
+    }
+    
+    public func disappearCompletedItems(showTime: Double) {
+        for item in toDoItems {
+            if let completedTime = item.completedAt {
+                if (completedTime.foundationDate.timeIntervalSinceNow <= showTime) {
+                remove(toDoItem: item)
+                }
+            }
+        }
     }
     
     ///Update a Todo.

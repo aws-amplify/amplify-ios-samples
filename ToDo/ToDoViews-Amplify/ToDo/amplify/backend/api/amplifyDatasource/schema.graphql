@@ -6,7 +6,7 @@ enum ToDoPriority {
 
 type ToDoItem @model {
    id: ID!
-   priority: ToDoPriority
-   text: String
-   completed: Boolean
+   priority: ToDoPriority!
+   text: String!
+   completedAt: AWSDateTime
 }
