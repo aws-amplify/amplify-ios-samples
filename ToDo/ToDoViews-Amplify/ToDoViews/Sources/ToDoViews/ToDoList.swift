@@ -15,7 +15,6 @@ public struct ToDoList: View {
     @State var showingDetail: Bool = false
     
     private var showTime = -3.0
-    private var count = 0
     
     public var body: some View {
         ///Display Todo list. Loop can be used in List to display whole elements.
