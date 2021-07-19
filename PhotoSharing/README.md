@@ -113,7 +113,7 @@ What domain name prefix do you want to use? `(default)`
 ```
 These commands configure Amplify Auth to authenticate users via a username and password using a pre-built HostedUI endpoint to display sign-up and sign-in interfaces in an embedded web view. After the sign-in process is complete it will redirect back to your app at the URI you specified. This value matches an entry in the app's info.plist that registers your app as a handler for this URI.
 
-For additional information on Amplify Auth: https://docs.amplify.aws/lib/auth/getting-started/q/platform/ios
+See [the Amplify Auth documentation](https://docs.amplify.aws/lib/auth/getting-started/q/platform/ios) for additional information.
 
 3. Set up API configuration
 
