@@ -158,7 +158,7 @@ Provide the responses listed after each of the following prompts to configure St
 ```
 These commandes created and configured an S3 storage bucket named storagebucketname to store photos for the app, specified that only authenticated users can access the bucket, and granted authenticated users the ability to create, update, read, and delete the photos.
 
-For additional information on the Storage category: https://docs.amplify.aws/lib/storage/getting-started/q/platform/ios
+See [the Amplify Storage documentation](https://docs.amplify.aws/lib/storage/getting-started/q/platform/ios) for additional information.
 
 5. Now execute the following command to convert the **schema.graphql** into Swift data structures
 
