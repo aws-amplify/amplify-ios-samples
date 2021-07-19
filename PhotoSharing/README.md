@@ -35,7 +35,7 @@ Once you are authenticated, you can create a post with the selected image using 
 
 Besides posting an image, you can also update your profile image.
 
-(see ConfirmProfileImageViewModel for example code):
+(see [`ConfirmProfileImageViewModel`](./PhotoSharing/ViewModels/ConfirmProfileImageViewModel.swift) for example code):
 
 ![Update Profile](./readmeimages/profile-update-flow.png)
 
