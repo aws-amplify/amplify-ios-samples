@@ -57,7 +57,7 @@ You need to have the following prerequisites to run this project:
 Once you have the prerequisites installed, go ahead and clone the repository: 
 
 ```bash
-git clone git@github.com:aws-amplify/amplify-ios-samples.git
+git clone https://github.com/aws-amplify/amplify-ios-samples.git
 ```
 
 ## To run it
