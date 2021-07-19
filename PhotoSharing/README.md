@@ -12,7 +12,7 @@ This app demponstrates the following features:
 
 ### Sign In/Sign Out
 
-The App allows you to sign up and  sign in using [Amplify.Auth.signInWithWebUI](https://docs.amplify.aws/lib/auth/signin_web_ui/q/platform/ios) api.
+The App allows you to sign up and sign in using the [Amplify.Auth.signInWithWebUI](https://docs.amplify.aws/lib/auth/signin_web_ui/q/platform/ios) API.
 
 Sign Up Flow (see OnBoardingViewModel for example code):
 ![Sign Up](./readmeimages/sign-up-flow.png)
