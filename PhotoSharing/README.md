@@ -20,7 +20,7 @@ Sign Up Flow (see [`OnBoardingViewModel`](./PhotoSharing/ViewModels/OnboardingVi
 Sign In Flow (see [`OnBoardingViewModel`](./PhotoSharing/ViewModels/OnboardingViewModel.swift) for example code):
 ![Sign In](./readmeimages/sign-in-flow.png)
 
-Sign Out Flow (see OnBoardingViewModel for example code):
+Sign Out Flow (see [`OnBoardingViewModel`](./PhotoSharing/ViewModels/OnboardingViewModel.swift) for example code):
 ![Sign Out](./readmeimages/sign-out-flow.png)
 
 ### Post Photo
