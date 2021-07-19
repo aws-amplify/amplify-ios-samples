@@ -117,7 +117,7 @@ See [the Amplify Auth documentation](https://docs.amplify.aws/lib/auth/getting-s
 
 3. Set up API configuration
 
-The Amplify API category provides an interface for retrieving and persisting your model data. The API category comes with default built-in support for AWS AppSync.
+The Amplify API category provides an interface for retrieving and persisting your model data to the cloud. The API category comes with default built-in support for AWS AppSync.
 
 Add the Amplify API category to your project by running the following command:
 ```
