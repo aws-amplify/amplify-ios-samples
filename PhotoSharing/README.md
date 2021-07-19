@@ -14,7 +14,7 @@ This app demponstrates the following features:
 
 The App allows you to sign up and sign in using the [Amplify.Auth.signInWithWebUI](https://docs.amplify.aws/lib/auth/signin_web_ui/q/platform/ios) API.
 
-Sign Up Flow (see OnBoardingViewModel for example code):
+Sign Up Flow (see [`OnBoardingViewModel`](./PhotoSharing/ViewModels/OnboardingViewModel.swift) for example code):
 ![Sign Up](./readmeimages/sign-up-flow.png)
 
 Sign In Flow (see OnBoardingViewModel for example code):
