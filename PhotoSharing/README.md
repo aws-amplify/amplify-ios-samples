@@ -25,7 +25,7 @@ Sign Out Flow (see [`OnBoardingViewModel`](./PhotoSharing/ViewModels/OnboardingV
 
 ### Post Photo
 
-Once you are authenticated, you can create a post with selected image using [Amplify.DataStore.save](https://docs.amplify.aws/lib/datastore/data-access/q/platform/ios#create-and-update) and [Amplify.Storage.UploadData](https://docs.amplify.aws/lib/storage/upload/q/platform/ios) api.
+Once you are authenticated, you can create a post with the selected image using the [Amplify.DataStore.save](https://docs.amplify.aws/lib/datastore/data-access/q/platform/ios#create-and-update) and [Amplify.Storage.UploadData](https://docs.amplify.aws/lib/storage/upload/q/platform/ios) APIs.
 
 (see PostEditorViewModel for example code):
 
