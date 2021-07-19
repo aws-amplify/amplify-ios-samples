@@ -33,7 +33,7 @@ Once you are authenticated, you can create a post with the selected image using 
 
 ### Update profile image
 
-Besides posting image, you can also update your profile image.
+Besides posting an image, you can also update your profile image.
 
 (see ConfirmProfileImageViewModel for example code):
 
