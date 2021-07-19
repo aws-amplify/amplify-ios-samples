@@ -17,7 +17,7 @@ The App allows you to sign up and sign in using the [Amplify.Auth.signInWithWebU
 Sign Up Flow (see [`OnBoardingViewModel`](./PhotoSharing/ViewModels/OnboardingViewModel.swift) for example code):
 ![Sign Up](./readmeimages/sign-up-flow.png)
 
-Sign In Flow (see OnBoardingViewModel for example code):
+Sign In Flow (see [`OnBoardingViewModel`](./PhotoSharing/ViewModels/OnboardingViewModel.swift) for example code):
 ![Sign In](./readmeimages/sign-in-flow.png)
 
 Sign Out Flow (see OnBoardingViewModel for example code):
