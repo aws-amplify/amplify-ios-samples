@@ -93,7 +93,7 @@ Wait until provisioning is finished. At this point you have successfully created
 
 2. Set up Auth configuration
 
-The Amplify Auth category provides an interface for authenticating a user. Behind the scenes, it provides the necessary authorization to the other Amplify categories. It comes with default, built-in support for Amazon Cognito User Pool and Identity Pool.
+The Amplify Auth category provides an interface for authenticating a user. Behind the scenes, it provides the necessary authorization to the other Amplify categories. It comes with default, built-in support for Amazon Cognito User Pools and Identity Pools.
 
 Add the Amplify Auth category to your project by running the following command:
 ```
