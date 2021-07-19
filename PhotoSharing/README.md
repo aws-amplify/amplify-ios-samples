@@ -150,8 +150,8 @@ amplify add storage
 Provide the responses listed after each of the following prompts to configure Storage.
 ```
 ? Please select from one of the below mentioned services: `Content (Images, audio, video, etc.)`
-? Please provide a friendly name for your resource that will be used to label this category in the project: `S3friendlyName`
-? Please provide bucket name: `storagebucketname`
+? Please provide a friendly name for your resource that will be used to label this category in the project: `default`
+? Please provide bucket name: `default`
 ? Who should have access: `Auth users only`
 ? What kind of access do you want for Authenticated users? `create/update, read, delete`
 ? Do you want to add a Lambda Trigger for your S3 Bucket? `No`
