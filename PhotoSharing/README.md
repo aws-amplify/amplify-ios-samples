@@ -156,7 +156,7 @@ Provide the responses listed after each of the following prompts to configure St
 ? What kind of access do you want for Authenticated users? `create/update, read, delete`
 ? Do you want to add a Lambda Trigger for your S3 Bucket? `No`
 ```
-These commandes created and configured an S3 storage bucket named storagebucketname to store photos for the app, specified that only authenticated users can access the bucket, and granted authenticated users the ability to create, update, read, and delete the photos.
+These commands create and configure an S3 storage bucket to store photos for the app, specify that only authenticated users can access the bucket, and grant authenticated users the ability to create, update, read, and delete the photos.
 
 See [the Amplify Storage documentation](https://docs.amplify.aws/lib/storage/getting-started/q/platform/ios) for additional information.
 
