@@ -111,7 +111,7 @@ What domain name prefix do you want to use? `(default)`
 ? Do you want to add another redirect signout URI `No`
 ? Select the social providers you want to configure for your user pool: `Don't select anything, <hit enter> `
 ```
-These commands configured Amplify Auth to authenticate users via a username and password using a pre-built HostedUI endpoint to display sign-up and sign-in interfaces in an embeded web view. After the sign-in process is complete it will redirect back to our app at the URI we specified. This value matches an entry in the app's info.plist that enables it to receive this URI.
+These commands configure Amplify Auth to authenticate users via a username and password using a pre-built HostedUI endpoint to display sign-up and sign-in interfaces in an embedded web view. After the sign-in process is complete it will redirect back to your app at the URI you specified. This value matches an entry in the app's info.plist that registers your app as a handler for this URI.
 
 For additional information on Amplify Auth: https://docs.amplify.aws/lib/auth/getting-started/q/platform/ios
 
