@@ -137,7 +137,7 @@ Provide the responses listed after each of the following prompts to configure AP
 ```
 These commands configure Amplify API to provision a GraphQL service with CRUD operations and real-time subscription functionality, to persist data locally and synchronize local data to the cloud automatically with Amplify DataStore. Authorization is handled via the Cognito User Pool we setup in step 2. The schema for our model is defined in the [`schema.graphql`](./schema.graphql) file.
 
-For additional information on the API category: https://docs.amplify.aws/lib/graphqlapi/getting-started/q/platform/ios
+See [the Amplify API documentation](https://docs.amplify.aws/lib/graphqlapi/getting-started/q/platform/ios) for additional information.
 
 4. Set up Storage configuration
 
