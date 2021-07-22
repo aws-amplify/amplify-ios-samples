@@ -200,4 +200,4 @@ do **not** create a public GitHub issue.
 
 ## License
 
-This sample app is licensed under the Apache 2.0 License.
+This sample app is licensed under the MIT-0 License.
