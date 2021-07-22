@@ -13,4 +13,4 @@ $ cd amplify-ios-samples
 ```
 
 ## License
-These sample apps are licensed under the Apache 2.0 License. 
+These sample apps are licensed under the MIT-0 License. 
