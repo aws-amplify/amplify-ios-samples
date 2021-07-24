@@ -6,7 +6,8 @@
 //
 
 import Amplify
-import AmplifyPlugins
+import AWSDataStorePlugin
+import Foundation
 import Combine
 
 class AmplifyDataStoreService: DataStoreService {

@@ -6,7 +6,8 @@
 //
 
 import Amplify
-import AmplifyPlugins
+import AWSCognitoAuthPlugin
+import SwiftUI
 import Combine
 
 class AmplifyAuthService: AuthService {

@@ -1,6 +1,3 @@
-# file options
---exclude Pods
-
 # rules with format options
 
 --enable braces

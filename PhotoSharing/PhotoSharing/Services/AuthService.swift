@@ -6,6 +6,7 @@
 //
 
 import Amplify
+import Combine
 
 protocol AuthService {
     var sessionState: SessionState { get }

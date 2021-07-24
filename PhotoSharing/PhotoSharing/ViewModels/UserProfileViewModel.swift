@@ -7,6 +7,7 @@
 
 import Amplify
 import Combine
+import Foundation
 
 extension UserProfileView {
 

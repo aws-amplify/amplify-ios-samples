@@ -51,7 +51,6 @@ Before proceeding, please make sure you have followed the [instructions](https:/
 You need to have the following prerequisites to run this project:
 
 * [Xcode 12 or later](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-* [CocoaPods latest version](https://cocoapods.org)
 * [Amplify CLI latest version](https://docs.amplify.aws/cli)
 
 Once you have the prerequisites installed, go ahead and clone the repository: 
@@ -65,12 +64,6 @@ git clone https://github.com/aws-amplify/amplify-ios-samples.git
 Navigate to the PhotoSharing directory:
 ```bash
 cd amplify-ios-samples/PhotoSharing
-```
-
-### Install dependencies
-Download and install required pods into your project:
-```bash
-pod install --repo-update
 ```
 
 ### Create Backend Resources (amplifyconfiguration.json)
@@ -182,7 +175,7 @@ Upon completion, **amplifyconfiguration.json** should be updated to reference pr
 
 ### Run the App
 
-You should now be able to open **PhotoSharing.xcworkspace**
+You should now be able to open **PhotoSharing.xcodeproj**
 
 And run the App (`Cmd+R`) in your chosen iOS simulator, you should be able to perform the actions that we described on the top.
 

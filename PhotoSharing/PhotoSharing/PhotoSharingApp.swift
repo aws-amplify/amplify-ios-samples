@@ -8,7 +8,10 @@
 import SwiftUI
 import Combine
 import Amplify
-import AmplifyPlugins
+import AWSCognitoAuthPlugin
+import AWSDataStorePlugin
+import AWSAPIPlugin
+import AWSS3StoragePlugin
 
 @main
 struct PhotoSharingApp: App {
