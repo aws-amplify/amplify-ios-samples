@@ -66,7 +66,7 @@ struct ConfirmProfileImageView: View {
 struct ConfirmProfileImageView_Previews: PreviewProvider {
     static var previews: some View {
         ConfirmProfileImageView(
-            selectedImage: UIImage(imageLiteralResourceName: "emptyUserPic")
+            selectedImage: UIImage(systemName: "person.crop.circle.fill")!
         )
     }
 }

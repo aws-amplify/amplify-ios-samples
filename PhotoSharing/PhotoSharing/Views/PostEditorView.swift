@@ -91,6 +91,6 @@ struct PostEditorView: View {
 
 struct PostEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        PostEditorView(image: UIImage(imageLiteralResourceName: "emptyUserPic"))
+        PostEditorView(image: UIImage(systemName: "photo.fill")!)
     }
 }

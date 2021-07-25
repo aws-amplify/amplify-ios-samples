@@ -19,14 +19,17 @@ struct UserProfileImageView: View {
     var body: some View {
         VStack {
             if viewModel.profileImageKey == "emptyUserPic" {
-                Image("emptyUserPic")
+                Image(systemName: "person.crop.circle")
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .scaledToFill()
+                    .font(Font.title.weight(.ultraLight))
+                    .foregroundColor(.white)
+                    .background(Color(.lightGray))
             } else {
                 KFImage(source: viewModel.profileImageSource())
                     .loadImmediately()
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(contentMode: .fit)
             }
         }
     }
