@@ -17,10 +17,6 @@ struct OnBoardingView: View {
             Color(.systemOrange).ignoresSafeArea()
             VStack {
                 Spacer()
-                Image("AmplifyLogo_white")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 120)
                 Text("Photo Share")
                     .foregroundColor(.white)
                     .font(.system(size: 36))
