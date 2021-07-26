@@ -13,6 +13,7 @@
 		150CC313E502474DB0FF8FC7 /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C466715D56F48A5B2AE7B33 /* User+Schema.swift */; };
 		2A428068ECD2A5BD920930A1 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E90E1995D6F47FAB47EF530 /* awsconfiguration.json */; };
 		556430EEED42888DE17FC959 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F581FA8D40EC4EC9BEBE4AE5 /* AmplifyModels.swift */; };
+		5C04863826AEFC1700045F5B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5C04863726AEFC1700045F5B /* LICENSE */; };
 		5C66B52126AB6C8E00F7BB97 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52026AB6C8E00F7BB97 /* Kingfisher */; };
 		5C66B52426AB9A6400F7BB97 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52326AB9A6400F7BB97 /* Amplify */; };
 		5C66B52626AB9A6400F7BB97 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52526AB9A6400F7BB97 /* AWSCognitoAuthPlugin */; };
@@ -85,6 +86,7 @@
 		369ACF90C0E04CBEAE6A9118 /* schema.graphql */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text; name = schema.graphql; path = amplify/backend/api/photosharing/schema.graphql; sourceTree = "<group>"; };
 		3E90E1995D6F47FAB47EF530 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = awsconfiguration.json; sourceTree = "<group>"; };
 		40106CDBB0B0456C9B87FA64 /* User.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = User.swift; path = amplify/generated/models/User.swift; sourceTree = "<group>"; };
+		5C04863726AEFC1700045F5B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		7C466715D56F48A5B2AE7B33 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
 		D81CC3232603B8A500C1EAF4 /* PhotoSharingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSharingError.swift; sourceTree = "<group>"; };
 		D81CC3282603CAC000C1EAF4 /* UserProfileBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileBarView.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				9FEF5D6B1B4D438BAC5A621D /* AmplifyConfig */,
 				D8D1082225D1FBBF000A9EAE /* PhotoSharing */,
 				D8D1082125D1FBBF000A9EAE /* Products */,
+				5C04863726AEFC1700045F5B /* LICENSE */,
 			);
 			sourceTree = "<group>";
 		};
@@ -373,6 +376,7 @@
 				A2FF0C8C860D488EAB5D5A82 /* awsconfiguration.json in Resources */,
 				6AE7841BD9B8583E4BA74A9A /* awsconfiguration.json in Resources */,
 				7B7ABADE65E6223F2FDAA7EA /* amplifyconfiguration.json in Resources */,
+				5C04863826AEFC1700045F5B /* LICENSE in Resources */,
 				2A428068ECD2A5BD920930A1 /* awsconfiguration.json in Resources */,
 				6C7A0B6FFC47EE3FA615564D /* amplifyconfiguration.json in Resources */,
 			);
