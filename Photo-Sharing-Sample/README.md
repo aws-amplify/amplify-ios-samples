@@ -1,6 +1,6 @@
-# PhotoSharing
+# Photo Sharing Sample
 
-PhotoSharing is a demonstration of building an iOS social networking App with [Amplify Libraries](https://docs.amplify.aws/lib/q/platform/ios).
+Photo Sharing Sample is a demonstration of building an iOS social networking App with [Amplify Libraries](https://docs.amplify.aws/lib/q/platform/ios).
 
 ## App features
 
@@ -61,9 +61,9 @@ git clone https://github.com/aws-amplify/amplify-ios-samples.git
 
 ## To run it
 
-Navigate to the PhotoSharing directory:
+Navigate to the Photo-Sharing-Sample directory:
 ```bash
-cd amplify-ios-samples/PhotoSharing
+cd amplify-ios-samples/Photo-Sharing-Sample
 ```
 
 ### Create Backend Resources (amplifyconfiguration.json)
@@ -75,7 +75,7 @@ amplify init
 ```
 Press enter at the following prompts to accept the default values.
 ```
-? Enter a name for the project (PhotoSharing)
+? Enter a name for the project (PhotoSharingSample)
 ? Initialize the project with the above configuration? (Y/n)
 ? Select the authentication method you want to use: (Use arrow keys)
 ❯ AWS profile 
@@ -119,7 +119,7 @@ amplify add api
 Provide the responses listed after each of the following prompts to configure API.
 ```
 ? Please select from one of the below mentioned services: `GraphQL`
-? Provide API name: `PhotoSharingAPI`
+? Provide API name: `default`
 ? Choose the default authorization type for the API `Amazon Cognito User Pool`
 ? Do you want to configure advanced settings for the GraphQL API `Yes, I want to make some additional changes.`
 ? Configure additional auth types? `No`
@@ -175,7 +175,7 @@ Upon completion, **amplifyconfiguration.json** should be updated to reference pr
 
 ### Run the App
 
-You should now be able to open **PhotoSharing.xcodeproj**
+You should now be able to open **PhotoSharingSample.xcodeproj**
 
 And run the App (`Cmd+R`) in your chosen iOS simulator, you should be able to perform the actions that we described on the top.
 

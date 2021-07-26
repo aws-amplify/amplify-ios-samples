@@ -17,7 +17,7 @@ struct OnBoardingView: View {
             Color(.systemOrange).ignoresSafeArea()
             VStack {
                 Spacer()
-                Text("Photo Share")
+                Text("Photo Sharing Sample")
                     .foregroundColor(.white)
                     .font(.system(size: 36))
                     .fontWeight(.semibold)

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D8D1081F25D1FBBF000A9EAE"
-               BuildableName = "PhotoSharing.app"
-               BlueprintName = "PhotoSharing"
-               ReferencedContainer = "container:PhotoSharing.xcodeproj">
+               BuildableName = "PhotoSharingSample.app"
+               BlueprintName = "PhotoSharingSample"
+               ReferencedContainer = "container:PhotoSharingSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D8D1081F25D1FBBF000A9EAE"
-            BuildableName = "PhotoSharing.app"
-            BlueprintName = "PhotoSharing"
-            ReferencedContainer = "container:PhotoSharing.xcodeproj">
+            BuildableName = "PhotoSharingSample.app"
+            BlueprintName = "PhotoSharingSample"
+            ReferencedContainer = "container:PhotoSharingSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D8D1081F25D1FBBF000A9EAE"
-            BuildableName = "PhotoSharing.app"
-            BlueprintName = "PhotoSharing"
-            ReferencedContainer = "container:PhotoSharing.xcodeproj">
+            BuildableName = "PhotoSharingSample.app"
+            BlueprintName = "PhotoSharingSample"
+            ReferencedContainer = "container:PhotoSharingSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
