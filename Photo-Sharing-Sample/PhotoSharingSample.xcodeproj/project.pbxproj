@@ -14,6 +14,8 @@
 		2A428068ECD2A5BD920930A1 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E90E1995D6F47FAB47EF530 /* awsconfiguration.json */; };
 		556430EEED42888DE17FC959 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F581FA8D40EC4EC9BEBE4AE5 /* AmplifyModels.swift */; };
 		5C04863826AEFC1700045F5B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5C04863726AEFC1700045F5B /* LICENSE */; };
+		5C04863A26AF112F00045F5B /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04863926AF112F00045F5B /* LicenseView.swift */; };
+		5C04863C26AF1D6400045F5B /* LicenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04863B26AF1D6400045F5B /* LicenseViewModel.swift */; };
 		5C66B52126AB6C8E00F7BB97 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52026AB6C8E00F7BB97 /* Kingfisher */; };
 		5C66B52426AB9A6400F7BB97 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52326AB9A6400F7BB97 /* Amplify */; };
 		5C66B52626AB9A6400F7BB97 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52526AB9A6400F7BB97 /* AWSCognitoAuthPlugin */; };
@@ -87,6 +89,8 @@
 		3E90E1995D6F47FAB47EF530 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = awsconfiguration.json; sourceTree = "<group>"; };
 		40106CDBB0B0456C9B87FA64 /* User.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = User.swift; path = amplify/generated/models/User.swift; sourceTree = "<group>"; };
 		5C04863726AEFC1700045F5B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		5C04863926AF112F00045F5B /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
+		5C04863B26AF1D6400045F5B /* LicenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewModel.swift; sourceTree = "<group>"; };
 		7C466715D56F48A5B2AE7B33 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
 		D81CC3232603B8A500C1EAF4 /* PhotoSharingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSharingError.swift; sourceTree = "<group>"; };
 		D81CC3282603CAC000C1EAF4 /* UserProfileBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileBarView.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				D881283B261E06EE00972220 /* PostViewModel.swift */,
 				D87866A426275EB100E4C273 /* UserProfileBarViewModel.swift */,
 				D86159DB263878B20076EA33 /* UserProfileImageViewModel.swift */,
+				5C04863B26AF1D6400045F5B /* LicenseViewModel.swift */,
 			);
 			path = SubViewModels;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 				D89607EA25FA910100CE8281 /* PostView.swift */,
 				D81CC3282603CAC000C1EAF4 /* UserProfileBarView.swift */,
 				D86159D82638789C0076EA33 /* UserProfileImageView.swift */,
+				5C04863926AF112F00045F5B /* LicenseView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -392,6 +398,7 @@
 				D8B05F0925F8010A0004CE83 /* UserProfileViewModel.swift in Sources */,
 				D81CC3292603CAC000C1EAF4 /* UserProfileBarView.swift in Sources */,
 				D81F23C825F4A25E00BE7119 /* AmplifyAuthService.swift in Sources */,
+				5C04863A26AF112F00045F5B /* LicenseView.swift in Sources */,
 				D886379825D5AF2C00D8581D /* UserProfileView.swift in Sources */,
 				D899F8C7260295CC0055F7C6 /* Loader.swift in Sources */,
 				D89607F125FA91A400CE8281 /* AmplifyDataStoreService.swift in Sources */,
@@ -412,6 +419,7 @@
 				D8F5A25F263B7C6700A2509B /* PostEditorView.swift in Sources */,
 				D8C50C6025F1914600862156 /* ServiceManager.swift in Sources */,
 				D881283F261E176100972220 /* PostEditorViewModel.swift in Sources */,
+				5C04863C26AF1D6400045F5B /* LicenseViewModel.swift in Sources */,
 				D89607EB25FA910100CE8281 /* PostView.swift in Sources */,
 				D881283C261E06EE00972220 /* PostViewModel.swift in Sources */,
 				D8C50C6525F1917100862156 /* AuthService.swift in Sources */,

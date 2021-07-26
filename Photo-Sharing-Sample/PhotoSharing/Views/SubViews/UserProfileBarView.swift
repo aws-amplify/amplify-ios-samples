@@ -13,7 +13,7 @@ struct UserProfileBarView: View {
 
     @StateObject var viewModel = ViewModel()
     @Binding var nameOnTopLeftCorner: Bool
-    @State private var showSheet = false
+    @State private var showingSheet = false
 
     var body: some View {
         HStack {
@@ -27,9 +27,16 @@ struct UserProfileBarView: View {
             CreatePostButton()
             Menu {
                 Button {
+                    showingSheet = true
+                } label: {
+                    Text("About")
+                        .fontWeight(.bold)
+                        .padding()
+                }
+                Button {
                     viewModel.signOut()
                 } label: {
-                    Text("SIGN OUT")
+                    Text("Sign Out")
                         .fontWeight(.bold)
                         .padding()
                 }
@@ -41,7 +48,11 @@ struct UserProfileBarView: View {
                     .foregroundColor(.black)
             }
             .padding(.horizontal)
-        }.frame(height: 40)
+        }
+        .frame(height: 40)
+        .sheet(isPresented: $showingSheet, content: {
+            LicenseView()
+        })
     }
 }
 
