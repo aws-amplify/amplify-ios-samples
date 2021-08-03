@@ -10,7 +10,11 @@ public class ToDoEnvironment: ObservableObject {
     ///Store current Todo item information. Display in ToDoItemDetail.
     @Published var selectedToDoItem: ToDoItem? = nil
 
-    public init() {}
+    let logger: Logger
+
+    public init(logger: Logger = DefaultLogger()) {
+        self.logger = logger
+    }
     
     /// Check id to know whether the item is in the todoItems, then determine update or add.
     /// - Parameter toDoItem: New one from ToDoItemDetail through Save button.
@@ -20,11 +24,11 @@ public class ToDoEnvironment: ObservableObject {
         }
         
         if let index = index {
-            print("Updating Item: \(toDoItem)")
+            logger.info("Updating Item: \(toDoItem)")
             toDoItems[index] = toDoItem
             create(item: toDoItem)
         } else {
-            print("Adding Item: \(toDoItem)")
+            logger.info("Adding Item: \(toDoItem)")
             toDoItems.append(toDoItem)
             create(item: toDoItem)
         }
@@ -35,23 +39,17 @@ public class ToDoEnvironment: ObservableObject {
             case ToDoPriority.low:
                 return false
             case ToDoPriority.medium:
-                if $1.priority == ToDoPriority.low {
-                    return true
-                }
-                else {
-                    return false
-                }
+                return $1.priority == ToDoPriority.low
             case ToDoPriority.high:
                 return true
             }
         })
         
-        print("Saved item!")
+        logger.info("Saved item!")
         logItems()
         showingDetail = false
     }
-    
-    
+
     ///Query all todo items in DataStore and put them into todoItems
     public func initTodo() {
         let todos = queryAll(type: ToDoItem())
@@ -63,12 +61,7 @@ public class ToDoEnvironment: ObservableObject {
             case ToDoPriority.low:
                 return false
             case ToDoPriority.medium:
-                if $1.priority == ToDoPriority.low {
-                    return true
-                }
-                else {
-                    return false
-                }
+                return $1.priority == ToDoPriority.low
             case ToDoPriority.high:
                 return true
             }
@@ -78,7 +71,7 @@ public class ToDoEnvironment: ObservableObject {
     public func remove(toDoItem: ToDoItem) {
         if let index = toDoItems.firstIndex(of: toDoItem) {
             toDoItems.remove(at: index)
-            print("Removed item!")
+            logger.info("Removed item!")
             logItems()
             showingDetail = false
             delete(item: toDoItem)
@@ -99,7 +92,7 @@ public class ToDoEnvironment: ObservableObject {
         for item in toDoItems {
             if let completedTime = item.completedAt {
                 if (completedTime.foundationDate.timeIntervalSinceNow <= showTime) {
-                remove(toDoItem: item)
+                    remove(toDoItem: item)
                 }
             }
         }
@@ -108,14 +101,14 @@ public class ToDoEnvironment: ObservableObject {
     /// Create a new item or update an existing item. DataStore uses id to decide.
     /// - Parameter Item: An item to be created which must follows the schema.graphql.
     public func create<T: Model>(item: T) {
-        Amplify.DataStore.save(item) { result in
-                   switch(result) {
-                   case .success(let savedItem):
-                    print("Saved item: \(savedItem.self)")
-                   case .failure(let error):
-                       print("Could not save item to DataStore: \(error)")
-                   }
-                }
+        Amplify.DataStore.save(item) { [weak logger] result in
+            switch(result) {
+            case .success(let savedItem):
+                logger?.debug("Saved item: \(savedItem.self)")
+            case .failure(let error):
+                logger?.debug("Could not save item to DataStore: \(error)")
+            }
+        }
     }
 
     /// Query one item according to the query parameter in DataStore and return it
@@ -130,12 +123,12 @@ public class ToDoEnvironment: ObservableObject {
             switch(result) {
             case .success(let outputs):
                 guard outputs.count == 1, let output = outputs.first else {
-                    print("Did not find exactly one todo, bailing")
+                    logger.error("Did not find exactly one todo, bailing")
                     return
                 }
                 item = output
             case .failure(let error):
-                print("Could not query DataStore: \(error)")
+                logger.error("Could not query DataStore: \(error)")
             }
         }
         return item
@@ -147,25 +140,25 @@ public class ToDoEnvironment: ObservableObject {
     public func queryAll<T: Model>(type: T) -> [T] {
         var items: [T] = []
         Amplify.DataStore.query(T.self) { result in
-               switch(result) {
-               case .success(let todos):
-                   items = todos
-               case .failure(let error):
-                   print("Could not query DataStore: \(error)")
-               }
-           }
+            switch(result) {
+            case .success(let todos):
+                items = todos
+            case .failure(let error):
+                logger.error("Could not query DataStore: \(error)")
+            }
+        }
         return items
     }
-
+    
     /// Delete an item
     /// - Parameter Item: An item to be created which must follows the schema.graphql.
     public func delete<T: Model>(item: T) {
-        Amplify.DataStore.delete(item) { result in
+        Amplify.DataStore.delete(item) { [weak logger] result in
             switch(result) {
             case .success:
-                print("Deleted item: \(item.self)")
+                logger?.debug("Deleted item: \(item.self)")
             case .failure(let error):
-                print("Could not delete data in DataStore: \(error)")
+                logger?.debug("Could not delete data in DataStore: \(error)")
             }
         }
     }
@@ -174,6 +167,6 @@ public class ToDoEnvironment: ObservableObject {
         let items = toDoItems.map {
             String(describing: $0)
         }.joined(separator: "\n")
-        print("Items: \(toDoItems.count)\n\(items)")
+        logger.debug("Items: \(toDoItems.count)\n\(items)")
     }
 }

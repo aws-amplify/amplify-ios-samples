@@ -8,6 +8,12 @@ public struct ToDoList: View {
     @State var showingDetail: Bool = false
     
     private var showTime = -3.0
+
+    let logger: Logger
+
+    public init(logger: Logger = DefaultLogger()) {
+        self.logger = logger
+    }
     
     public var body: some View {
         ///Display Todo list. Loop can be used in List to display whole elements.
@@ -17,13 +23,13 @@ public struct ToDoList: View {
                 if (environment.toDoItems[index].completedAt == nil) {
                     HStack {
                         Button(action: {
-                            print("Text in List: \(environment.toDoItems[index])")
+                            logger.info("Text in List: \(environment.toDoItems[index])")
                             environment.selectedToDoItem = environment.toDoItems[index]
                             environment.showingDetail = true
                         }, label: {
                             ///Transfer toDoItem to ToDoListRow to display. toDoItem should add $ to keep binding to TodoListRow.
                             ToDoListRow(toDoItem: $environment.toDoItems[index])
-                    })
+                        })
                         .buttonStyle(BorderlessButtonStyle())
                         Spacer()
                         Button(action: {
@@ -44,8 +50,8 @@ public struct ToDoList: View {
             })
             ///Dispay completed ToDo items
             Section(header: Text("Completed items")) {
-                    ForEach(environment.toDoItems.indices, id: \.self) { index in
-                        if (environment.toDoItems[index].completedAt != nil) {
+                ForEach(environment.toDoItems.indices, id: \.self) { index in
+                    if (environment.toDoItems[index].completedAt != nil) {
                         HStack{
                             ToDoListRow(toDoItem: $environment.toDoItems[index])
                             Spacer()

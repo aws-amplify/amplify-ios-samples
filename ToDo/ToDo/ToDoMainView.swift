@@ -6,7 +6,10 @@ import SwiftUI
 public struct ToDoMainView: View {
     @EnvironmentObject var environment: ToDoEnvironment
 
-    public init() {
+    let logger: Logger
+    
+    public init(logger: Logger = DefaultLogger()) {
+        self.logger = logger
     }
 
     public var body: some View {
@@ -18,7 +21,7 @@ public struct ToDoMainView: View {
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button("Add") {
-                                print("Add new ToDo item")
+                                logger.info("Add new ToDo item")
                                 environment.selectedToDoItem = nil
                                 environment.showingDetail = true
                             }
@@ -36,7 +39,7 @@ public struct ToDoMainView: View {
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button("Add") {
-                                print("Add new ToDo item")
+                                logger.info("Add new ToDo item")
                                 environment.selectedToDoItem = nil
                                 environment.showingDetail = true
                             }
@@ -53,31 +56,31 @@ public struct ToDoMainView: View {
     @State var todoSubscription: AnyCancellable?
     
     func subscribeTodos() {
-       self.todoSubscription
-           = Amplify.DataStore.publisher(for: ToDoItem.self)
-               .sink(receiveCompletion: { completion in
-                   print("Subscription has been completed: \(completion)")
-               }, receiveValue: { mutationEvent in
-                   print("Subscription got this value: \(mutationEvent)")
+        self.todoSubscription
+            = Amplify.DataStore.publisher(for: ToDoItem.self)
+            .sink(receiveCompletion: { completion in
+                logger.info("Subscription has been completed: \(completion)")
+            }, receiveValue: { mutationEvent in
+                logger.info("Subscription got this value: \(mutationEvent)")
 
-                   do {
-                     let todo = try mutationEvent.decodeModel(as: ToDoItem.self)
+                do {
+                    let todo = try mutationEvent.decodeModel(as: ToDoItem.self)
 
-                     switch mutationEvent.mutationType {
-                     case "create":
-                       print("Created: \(todo)")
-                     case "update":
-                       print("Updated: \(todo)")
-                     case "delete":
-                       print("Deleted: \(todo)")
-                     default:
-                       break
-                     }
+                    switch mutationEvent.mutationType {
+                    case "create":
+                        logger.info("Created: \(todo)")
+                    case "update":
+                        logger.info("Updated: \(todo)")
+                    case "delete":
+                        logger.info("Deleted: \(todo)")
+                    default:
+                        break
+                    }
 
-                   } catch {
-                     print("Model could not be decoded: \(error)")
-                   }
-               })
+                } catch {
+                    logger.error("Model could not be decoded: \(error)")
+                }
+            })
     }
 }
 

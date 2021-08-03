@@ -11,7 +11,13 @@ public struct ToDoItemDetail: View {
     @State var priorityBefore: ToDoPriority = .medium
     @State var textBefore: String = ""
     @State var isCancel: Bool = false
-    
+
+    let logger: Logger
+
+    public init(logger: Logger = DefaultLogger()) {
+        self.logger = logger
+    }
+
     ///Control Save button
     var saveDisabled: Bool {
         text.isEmpty
@@ -28,8 +34,8 @@ public struct ToDoItemDetail: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(height: 50.0)
                 Spacer()
-                .navigationTitle("ToDo Item")
-                .navigationBarTitleDisplayMode(.inline)
+                    .navigationTitle("ToDo Item")
+                    .navigationBarTitleDisplayMode(.inline)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -47,8 +53,10 @@ public struct ToDoItemDetail: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     ///Use ToDoEnvironment to update/add to the list.
                     Button(action: {
-                        let item = ToDoItem(id: id, priority: priority, text: text)
-                        print("Saving Item: \(item)")
+                        let item = ToDoItem(id: id,
+                                            priority: priority,
+                                            text: text)
+                        logger.info("Saving Item: \(item)")
                         environment.saveToDoItem(toDoItem: item)
                     }, label: {
                         Text("Done")
@@ -58,15 +66,15 @@ public struct ToDoItemDetail: View {
             }
         }
         .alert(isPresented: $isCancel, content: {
-                        return Alert(title: Text("Discard Changes"), message: Text("Are you sure you want to discard the changes made?"), primaryButton: .default(Text("Yes"), action: {
-                            environment.selectedToDoItem = nil
-                            environment.showingDetail = false
-                        }), secondaryButton: .destructive(Text("No")))
-                        })
+            return Alert(title: Text("Discard Changes"), message: Text("Are you sure you want to discard the changes made?"), primaryButton: .default(Text("Yes"), action: {
+                environment.selectedToDoItem = nil
+                environment.showingDetail = false
+            }), secondaryButton: .destructive(Text("No")))
+        })
         ///Get selected Todo item information which is the current Todo item.
         .onAppear {
             if let item = environment.selectedToDoItem {
-                print("Loading Item: \(item)")
+                logger.info("Loading Item: \(item)")
                 id = item.id
                 priority = item.priority
                 text = item.text

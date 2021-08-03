@@ -18,7 +18,7 @@ public struct ToDoItemPriorityPicker: View {
                     .tag(ToDoPriority.high)
             }
             .frame(height: 20.0)
-                .pickerStyle(SegmentedPickerStyle())
+            .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal)
         }
     }

@@ -1,6 +1,5 @@
 import Foundation
 
-
 extension ToDoItem: Identifiable, Equatable{
     public static func == (lhs: ToDoItem, rhs: ToDoItem) -> Bool {
         if lhs.id == rhs.id {
