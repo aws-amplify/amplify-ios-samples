@@ -1,0 +1,61 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Amplify",
+        "repositoryURL": "https://github.com/aws-amplify/amplify-ios",
+        "state": {
+          "branch": null,
+          "revision": "b7b7b9af00db40cc99bfcbde4147253512f3fb92",
+          "version": "1.12.0"
+        }
+      },
+      {
+        "package": "AppSyncRealTimeClient",
+        "repositoryURL": "https://github.com/aws-amplify/aws-appsync-realtime-client-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "55d670f329b9cf9f4830d5f1b37e50b100934d09",
+          "version": "1.5.0"
+        }
+      },
+      {
+        "package": "AWSiOSSDKV2",
+        "repositoryURL": "https://github.com/aws-amplify/aws-sdk-ios-spm.git",
+        "state": {
+          "branch": null,
+          "revision": "b815f9d730814b21de084bd362d2c34fd43c3a00",
+          "version": "2.24.4"
+        }
+      },
+      {
+        "package": "SQLite.swift",
+        "repositoryURL": "https://github.com/stephencelis/SQLite.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "0a9893ec030501a3956bee572d6b4fdd3ae158a1",
+          "version": "0.12.2"
+        }
+      },
+      {
+        "package": "Starscream",
+        "repositoryURL": "https://github.com/daltoniam/Starscream",
+        "state": {
+          "branch": null,
+          "revision": "e6b65c6d9077ea48b4a7bdda8994a1d3c6969c8d",
+          "version": "3.1.1"
+        }
+      },
+      {
+        "package": "swift-nio-zlib-support",
+        "repositoryURL": "https://github.com/apple/swift-nio-zlib-support.git",
+        "state": {
+          "branch": null,
+          "revision": "37760e9a52030bb9011972c5213c3350fa9d41fd",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

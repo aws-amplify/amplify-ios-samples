@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		035F3D5626B9C5320062EC57 /* ToDoItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F3D5526B9C5320062EC57 /* ToDoItemExtension.swift */; };
+		035F3D5826B9EA940062EC57 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F3D5726B9EA940062EC57 /* Logger.swift */; };
+		11B5E797C7ACEA31A250402F /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864E02F649B76DB7AF33271B /* ToDoItem.swift */; };
+		203F0630A8E04A38F2B5B2D0 /* ToDoPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F9078D8323E0391D116FB7 /* ToDoPriority.swift */; };
+		3E7BEA4326B0C0DF00A738C4 /* ToDoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7BEA4226B0C0DF00A738C4 /* ToDoMainView.swift */; };
+		3E7BEA4526B0C0E300A738C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E7BEA4426B0C0E300A738C4 /* Assets.xcassets */; };
+		3E7BEA4826B0C0E300A738C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E7BEA4726B0C0E300A738C4 /* Preview Assets.xcassets */; };
+		3E7BEA5126B0C1AA00A738C4 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 3E7BEA5026B0C1AA00A738C4 /* Amplify */; };
+		3E7BEA5326B0C1AA00A738C4 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 3E7BEA5226B0C1AA00A738C4 /* AWSAPIPlugin */; };
+		3E7BEA5526B0C1AA00A738C4 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 3E7BEA5426B0C1AA00A738C4 /* AWSDataStorePlugin */; };
+		3E7BEA5926B0C37400A738C4 /* AmplifyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7BEA5826B0C37400A738C4 /* AmplifyConfig.swift */; };
+		3E7BEA5B26B0C53300A738C4 /* ToDoEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7BEA5A26B0C53300A738C4 /* ToDoEnvironment.swift */; };
+		3E7BEA5F26B0C95400A738C4 /* ToDoBlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7BEA5E26B0C95400A738C4 /* ToDoBlankView.swift */; };
+		3E7BEA6126B0C97500A738C4 /* ToDoItemPriorityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7BEA6026B0C97500A738C4 /* ToDoItemPriorityPicker.swift */; };
+		3E7BEA6326B0C9A500A738C4 /* ToDoCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7BEA6226B0C9A500A738C4 /* ToDoCheckbox.swift */; };
+		3E7BEA6526B0C9C900A738C4 /* ToDoCheckboxFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7BEA6426B0C9C900A738C4 /* ToDoCheckboxFill.swift */; };
+		3E7BEA6726B0C9F800A738C4 /* ToDoListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7BEA6626B0C9F800A738C4 /* ToDoListRow.swift */; };
+		3E7BEA6926B0CAE800A738C4 /* ToDoItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7BEA6826B0CAE800A738C4 /* ToDoItemDetail.swift */; };
+		3E7BEA6B26B0CB5400A738C4 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7BEA6A26B0CB5400A738C4 /* ToDoList.swift */; };
+		3E7BEA6C26B20FF200A738C4 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 16C5F9746FF3216AE0B58973 /* awsconfiguration.json */; };
+		3E7BEA6D26B20FF500A738C4 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EC5E5A11B721A99938BD8BE /* amplifyconfiguration.json */; };
+		91C5593BE6B30A2069E70CD1 /* ToDoItem+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE2B0A2A308D8B274540537 /* ToDoItem+Schema.swift */; };
+		93149A8447F98A776E3606AF /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB799DC5A504F6D4AA31D543 /* AmplifyModels.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		035F3D5526B9C5320062EC57 /* ToDoItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToDoItemExtension.swift; path = ToDo/ToDoItemExtension.swift; sourceTree = "<group>"; };
+		035F3D5726B9EA940062EC57 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		0EC5E5A11B721A99938BD8BE /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		16C5F9746FF3216AE0B58973 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		32F9078D8323E0391D116FB7 /* ToDoPriority.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = ToDoPriority.swift; path = amplify/generated/models/ToDoPriority.swift; sourceTree = "<group>"; };
+		3E7BEA3D26B0C0DF00A738C4 /* ToDoSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E7BEA4226B0C0DF00A738C4 /* ToDoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoMainView.swift; sourceTree = "<group>"; };
+		3E7BEA4426B0C0E300A738C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3E7BEA4726B0C0E300A738C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3E7BEA4926B0C0E300A738C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E7BEA5826B0C37400A738C4 /* AmplifyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyConfig.swift; sourceTree = "<group>"; };
+		3E7BEA5A26B0C53300A738C4 /* ToDoEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoEnvironment.swift; sourceTree = "<group>"; };
+		3E7BEA5E26B0C95400A738C4 /* ToDoBlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoBlankView.swift; sourceTree = "<group>"; };
+		3E7BEA6026B0C97500A738C4 /* ToDoItemPriorityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemPriorityPicker.swift; sourceTree = "<group>"; };
+		3E7BEA6226B0C9A500A738C4 /* ToDoCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCheckbox.swift; sourceTree = "<group>"; };
+		3E7BEA6426B0C9C900A738C4 /* ToDoCheckboxFill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCheckboxFill.swift; sourceTree = "<group>"; };
+		3E7BEA6626B0C9F800A738C4 /* ToDoListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListRow.swift; sourceTree = "<group>"; };
+		3E7BEA6826B0CAE800A738C4 /* ToDoItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemDetail.swift; sourceTree = "<group>"; };
+		3E7BEA6A26B0CB5400A738C4 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
+		5AE2B0A2A308D8B274540537 /* ToDoItem+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "ToDoItem+Schema.swift"; path = "amplify/generated/models/ToDoItem+Schema.swift"; sourceTree = "<group>"; };
+		864E02F649B76DB7AF33271B /* ToDoItem.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = ToDoItem.swift; path = amplify/generated/models/ToDoItem.swift; sourceTree = "<group>"; };
+		CB799DC5A504F6D4AA31D543 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3E7BEA3A26B0C0DF00A738C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E7BEA5526B0C1AA00A738C4 /* AWSDataStorePlugin in Frameworks */,
+				3E7BEA5326B0C1AA00A738C4 /* AWSAPIPlugin in Frameworks */,
+				3E7BEA5126B0C1AA00A738C4 /* Amplify in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A7B613A0D525D380C86F87C /* AmplifyModels */ = {
+			isa = PBXGroup;
+			children = (
+				CB799DC5A504F6D4AA31D543 /* AmplifyModels.swift */,
+				5AE2B0A2A308D8B274540537 /* ToDoItem+Schema.swift */,
+				864E02F649B76DB7AF33271B /* ToDoItem.swift */,
+				32F9078D8323E0391D116FB7 /* ToDoPriority.swift */,
+				035F3D5526B9C5320062EC57 /* ToDoItemExtension.swift */,
+			);
+			name = AmplifyModels;
+			sourceTree = "<group>";
+		};
+		3E7BEA3426B0C0DF00A738C4 = {
+			isa = PBXGroup;
+			children = (
+				3E7BEA3F26B0C0DF00A738C4 /* ToDo */,
+				3E7BEA3E26B0C0DF00A738C4 /* Products */,
+				8C26DB40E61F53C057AC270F /* AmplifyConfig */,
+				2A7B613A0D525D380C86F87C /* AmplifyModels */,
+			);
+			sourceTree = "<group>";
+		};
+		3E7BEA3E26B0C0DF00A738C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3E7BEA3D26B0C0DF00A738C4 /* ToDoSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3E7BEA3F26B0C0DF00A738C4 /* ToDo */ = {
+			isa = PBXGroup;
+			children = (
+				3E7BEA4426B0C0E300A738C4 /* Assets.xcassets */,
+				3E7BEA4926B0C0E300A738C4 /* Info.plist */,
+				3E7BEA4626B0C0E300A738C4 /* Preview Content */,
+				3E7BEA4226B0C0DF00A738C4 /* ToDoMainView.swift */,
+				3E7BEA5826B0C37400A738C4 /* AmplifyConfig.swift */,
+				3E7BEA5A26B0C53300A738C4 /* ToDoEnvironment.swift */,
+				3E7BEA5E26B0C95400A738C4 /* ToDoBlankView.swift */,
+				3E7BEA6026B0C97500A738C4 /* ToDoItemPriorityPicker.swift */,
+				3E7BEA6226B0C9A500A738C4 /* ToDoCheckbox.swift */,
+				3E7BEA6426B0C9C900A738C4 /* ToDoCheckboxFill.swift */,
+				3E7BEA6626B0C9F800A738C4 /* ToDoListRow.swift */,
+				3E7BEA6826B0CAE800A738C4 /* ToDoItemDetail.swift */,
+				3E7BEA6A26B0CB5400A738C4 /* ToDoList.swift */,
+				035F3D5726B9EA940062EC57 /* Logger.swift */,
+			);
+			path = ToDo;
+			sourceTree = "<group>";
+		};
+		3E7BEA4626B0C0E300A738C4 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3E7BEA4726B0C0E300A738C4 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8C26DB40E61F53C057AC270F /* AmplifyConfig */ = {
+			isa = PBXGroup;
+			children = (
+				16C5F9746FF3216AE0B58973 /* awsconfiguration.json */,
+				0EC5E5A11B721A99938BD8BE /* amplifyconfiguration.json */,
+			);
+			name = AmplifyConfig;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3E7BEA3C26B0C0DF00A738C4 /* ToDoSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E7BEA4C26B0C0E300A738C4 /* Build configuration list for PBXNativeTarget "ToDoSample" */;
+			buildPhases = (
+				3E7BEA3926B0C0DF00A738C4 /* Sources */,
+				3E7BEA3A26B0C0DF00A738C4 /* Frameworks */,
+				3E7BEA3B26B0C0DF00A738C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ToDoSample;
+			packageProductDependencies = (
+				3E7BEA5026B0C1AA00A738C4 /* Amplify */,
+				3E7BEA5226B0C1AA00A738C4 /* AWSAPIPlugin */,
+				3E7BEA5426B0C1AA00A738C4 /* AWSDataStorePlugin */,
+			);
+			productName = ToDo;
+			productReference = 3E7BEA3D26B0C0DF00A738C4 /* ToDoSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3E7BEA3526B0C0DF00A738C4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					3E7BEA3C26B0C0DF00A738C4 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+				};
+			};
+			buildConfigurationList = 3E7BEA3826B0C0DF00A738C4 /* Build configuration list for PBXProject "ToDoSample" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3E7BEA3426B0C0DF00A738C4;
+			packageReferences = (
+				3E7BEA4F26B0C1AA00A738C4 /* XCRemoteSwiftPackageReference "amplify-ios" */,
+			);
+			productRefGroup = 3E7BEA3E26B0C0DF00A738C4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3E7BEA3C26B0C0DF00A738C4 /* ToDoSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3E7BEA3B26B0C0DF00A738C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E7BEA6D26B20FF500A738C4 /* amplifyconfiguration.json in Resources */,
+				3E7BEA6C26B20FF200A738C4 /* awsconfiguration.json in Resources */,
+				3E7BEA4826B0C0E300A738C4 /* Preview Assets.xcassets in Resources */,
+				3E7BEA4526B0C0E300A738C4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3E7BEA3926B0C0DF00A738C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E7BEA6726B0C9F800A738C4 /* ToDoListRow.swift in Sources */,
+				3E7BEA4326B0C0DF00A738C4 /* ToDoMainView.swift in Sources */,
+				93149A8447F98A776E3606AF /* AmplifyModels.swift in Sources */,
+				91C5593BE6B30A2069E70CD1 /* ToDoItem+Schema.swift in Sources */,
+				11B5E797C7ACEA31A250402F /* ToDoItem.swift in Sources */,
+				3E7BEA5F26B0C95400A738C4 /* ToDoBlankView.swift in Sources */,
+				3E7BEA6B26B0CB5400A738C4 /* ToDoList.swift in Sources */,
+				035F3D5826B9EA940062EC57 /* Logger.swift in Sources */,
+				3E7BEA5926B0C37400A738C4 /* AmplifyConfig.swift in Sources */,
+				3E7BEA5B26B0C53300A738C4 /* ToDoEnvironment.swift in Sources */,
+				3E7BEA6926B0CAE800A738C4 /* ToDoItemDetail.swift in Sources */,
+				3E7BEA6326B0C9A500A738C4 /* ToDoCheckbox.swift in Sources */,
+				3E7BEA6526B0C9C900A738C4 /* ToDoCheckboxFill.swift in Sources */,
+				3E7BEA6126B0C97500A738C4 /* ToDoItemPriorityPicker.swift in Sources */,
+				035F3D5626B9C5320062EC57 /* ToDoItemExtension.swift in Sources */,
+				203F0630A8E04A38F2B5B2D0 /* ToDoPriority.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3E7BEA4A26B0C0E300A738C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3E7BEA4B26B0C0E300A738C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3E7BEA4D26B0C0E300A738C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ToDo/Preview Content\"";
+				DEVELOPMENT_TEAM = W3DRXD72QU;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ToDo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Amazon.ToDo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3E7BEA4E26B0C0E300A738C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ToDo/Preview Content\"";
+				DEVELOPMENT_TEAM = W3DRXD72QU;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ToDo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Amazon.ToDo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3E7BEA3826B0C0DF00A738C4 /* Build configuration list for PBXProject "ToDoSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E7BEA4A26B0C0E300A738C4 /* Debug */,
+				3E7BEA4B26B0C0E300A738C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E7BEA4C26B0C0E300A738C4 /* Build configuration list for PBXNativeTarget "ToDoSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E7BEA4D26B0C0E300A738C4 /* Debug */,
+				3E7BEA4E26B0C0E300A738C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3E7BEA4F26B0C1AA00A738C4 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3E7BEA5026B0C1AA00A738C4 /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E7BEA4F26B0C1AA00A738C4 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = Amplify;
+		};
+		3E7BEA5226B0C1AA00A738C4 /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E7BEA4F26B0C1AA00A738C4 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSAPIPlugin;
+		};
+		3E7BEA5426B0C1AA00A738C4 /* AWSDataStorePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E7BEA4F26B0C1AA00A738C4 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSDataStorePlugin;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 3E7BEA3526B0C0DF00A738C4 /* Project object */;
+}
