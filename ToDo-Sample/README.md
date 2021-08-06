@@ -1,4 +1,4 @@
-# ToDo app
+# ToDo Sample
 ToDo Sample is a demonstration of building an iOS to-do list App with Amplify Libraries. ToDo Sample is also an example of getting started tutorial: https://docs.amplify.aws/start/getting-started/setup/q/integration/ios.
 
 ## Overview
