@@ -28,6 +28,9 @@
 		3E7BEA6B26B0CB5400A738C4 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7BEA6A26B0CB5400A738C4 /* ToDoList.swift */; };
 		3E7BEA6C26B20FF200A738C4 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 16C5F9746FF3216AE0B58973 /* awsconfiguration.json */; };
 		3E7BEA6D26B20FF500A738C4 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EC5E5A11B721A99938BD8BE /* amplifyconfiguration.json */; };
+		3EC77A8E26C3289D00927C4A /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC77A8D26C3289D00927C4A /* LicenseView.swift */; };
+		3EC77A9026C328AF00927C4A /* LicenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC77A8F26C328AF00927C4A /* LicenseViewModel.swift */; };
+		3EC77A9226C32CC000927C4A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3EC77A9126C32CC000927C4A /* LICENSE */; };
 		91C5593BE6B30A2069E70CD1 /* ToDoItem+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE2B0A2A308D8B274540537 /* ToDoItem+Schema.swift */; };
 		93149A8447F98A776E3606AF /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB799DC5A504F6D4AA31D543 /* AmplifyModels.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +55,9 @@
 		3E7BEA6626B0C9F800A738C4 /* ToDoListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListRow.swift; sourceTree = "<group>"; };
 		3E7BEA6826B0CAE800A738C4 /* ToDoItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemDetail.swift; sourceTree = "<group>"; };
 		3E7BEA6A26B0CB5400A738C4 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
+		3EC77A8D26C3289D00927C4A /* LicenseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
+		3EC77A8F26C328AF00927C4A /* LicenseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseViewModel.swift; sourceTree = "<group>"; };
+		3EC77A9126C32CC000927C4A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		5AE2B0A2A308D8B274540537 /* ToDoItem+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "ToDoItem+Schema.swift"; path = "amplify/generated/models/ToDoItem+Schema.swift"; sourceTree = "<group>"; };
 		864E02F649B76DB7AF33271B /* ToDoItem.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = ToDoItem.swift; path = amplify/generated/models/ToDoItem.swift; sourceTree = "<group>"; };
 		CB799DC5A504F6D4AA31D543 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
@@ -108,13 +114,16 @@
 				3E7BEA4926B0C0E300A738C4 /* Info.plist */,
 				3E7BEA4626B0C0E300A738C4 /* Preview Content */,
 				3E7BEA4226B0C0DF00A738C4 /* ToDoMainView.swift */,
+				3EC77A9126C32CC000927C4A /* LICENSE */,
 				3E7BEA5826B0C37400A738C4 /* AmplifyConfig.swift */,
 				3E7BEA5A26B0C53300A738C4 /* ToDoEnvironment.swift */,
 				3E7BEA5E26B0C95400A738C4 /* ToDoBlankView.swift */,
 				3E7BEA6026B0C97500A738C4 /* ToDoItemPriorityPicker.swift */,
 				3E7BEA6226B0C9A500A738C4 /* ToDoCheckbox.swift */,
 				3E7BEA6426B0C9C900A738C4 /* ToDoCheckboxFill.swift */,
+				3EC77A8D26C3289D00927C4A /* LicenseView.swift */,
 				3E7BEA6626B0C9F800A738C4 /* ToDoListRow.swift */,
+				3EC77A8F26C328AF00927C4A /* LicenseViewModel.swift */,
 				3E7BEA6826B0CAE800A738C4 /* ToDoItemDetail.swift */,
 				3E7BEA6A26B0CB5400A738C4 /* ToDoList.swift */,
 				035F3D5726B9EA940062EC57 /* Logger.swift */,
@@ -208,6 +217,7 @@
 				3E7BEA6C26B20FF200A738C4 /* awsconfiguration.json in Resources */,
 				3E7BEA4826B0C0E300A738C4 /* Preview Assets.xcassets in Resources */,
 				3E7BEA4526B0C0E300A738C4 /* Assets.xcassets in Resources */,
+				3EC77A9226C32CC000927C4A /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +230,9 @@
 			files = (
 				3E7BEA6726B0C9F800A738C4 /* ToDoListRow.swift in Sources */,
 				3E7BEA4326B0C0DF00A738C4 /* ToDoMainView.swift in Sources */,
+				3EC77A9026C328AF00927C4A /* LicenseViewModel.swift in Sources */,
 				93149A8447F98A776E3606AF /* AmplifyModels.swift in Sources */,
+				3EC77A8E26C3289D00927C4A /* LicenseView.swift in Sources */,
 				91C5593BE6B30A2069E70CD1 /* ToDoItem+Schema.swift in Sources */,
 				11B5E797C7ACEA31A250402F /* ToDoItem.swift in Sources */,
 				3E7BEA5F26B0C95400A738C4 /* ToDoBlankView.swift in Sources */,

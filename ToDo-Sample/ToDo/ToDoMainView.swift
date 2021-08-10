@@ -5,7 +5,7 @@ import SwiftUI
 /// Homepage. Control Add button and TodoList.
 public struct ToDoMainView: View {
     @EnvironmentObject var environment: ToDoEnvironment
-
+    @State private var showingLicense = false
     let logger: Logger
     
     public init(logger: Logger = DefaultLogger()) {
@@ -19,6 +19,11 @@ public struct ToDoMainView: View {
                     .navigationTitle("ToDo")
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button("About") {
+                                showingLicense = true
+                            }
+                        }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button("Add") {
                                 logger.info("Add new ToDo item")
@@ -37,6 +42,11 @@ public struct ToDoMainView: View {
                     .navigationTitle("ToDo")
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button("About") {
+                                showingLicense = true
+                            }
+                        }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button("Add") {
                                 logger.info("Add new ToDo item")
@@ -51,6 +61,9 @@ public struct ToDoMainView: View {
         .onAppear {
             self.subscribeTodos()
         }
+        .sheet(isPresented: $showingLicense, content: {
+            LicenseView()
+        })
     }
     
     @State var todoSubscription: AnyCancellable?
