@@ -23,7 +23,7 @@ struct PostEditorView: View {
         VStack(alignment: .leading) {
             HStack {
                 Text("Cancel")
-                    .foregroundColor(shareButtonDisabled ? .gray : .black)
+                    .foregroundColor(shareButtonDisabled ? .gray : .primary)
                     .disabled(shareButtonDisabled)
                     .onTapGesture {
                         presentationMode.wrappedValue.dismiss()
@@ -32,7 +32,7 @@ struct PostEditorView: View {
                 Text("New Post").bold()
                 Spacer()
                 Text("Share")
-                    .foregroundColor(shareButtonDisabled ? .gray : .black)
+                    .foregroundColor(shareButtonDisabled ? .gray : .primary)
                     .disabled(shareButtonDisabled)
                     .onTapGesture {
                         guard !postBody.isEmpty else {

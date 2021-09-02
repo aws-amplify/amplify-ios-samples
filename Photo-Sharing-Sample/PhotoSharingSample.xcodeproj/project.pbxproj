@@ -183,9 +183,9 @@
 		D87866B92627A96300E4C273 /* SubViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D881283B261E06EE00972220 /* PostViewModel.swift */,
 				D8F5A26B263BC2C700A2509B /* ImageSelectionViewModel.swift */,
 				D8F5A26E263BC49800A2509B /* ImageSourceSelectionButtonViewModel.swift */,
-				D881283B261E06EE00972220 /* PostViewModel.swift */,
 				D87866A426275EB100E4C273 /* UserProfileBarViewModel.swift */,
 				D86159DB263878B20076EA33 /* UserProfileImageViewModel.swift */,
 				5C04863B26AF1D6400045F5B /* LicenseViewModel.swift */,
@@ -581,7 +581,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PhotoSharing/Preview Content\"";
-				DEVELOPMENT_TEAM = 388HH958Q3;
+				DEVELOPMENT_TEAM = W3DRXD72QU;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/PhotoSharing/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -605,7 +605,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PhotoSharing/Preview Content\"";
-				DEVELOPMENT_TEAM = 388HH958Q3;
+				DEVELOPMENT_TEAM = W3DRXD72QU;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/PhotoSharing/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
