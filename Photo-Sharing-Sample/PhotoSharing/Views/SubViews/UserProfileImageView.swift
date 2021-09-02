@@ -29,7 +29,7 @@ struct UserProfileImageView: View {
                 KFImage(source: viewModel.profileImageSource())
                     .loadImmediately()
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .scaledToFill()
             }
         }
     }
