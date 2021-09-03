@@ -16,7 +16,7 @@ struct Loader: View {
         VStack {
             Circle()
                 .trim(from: 0, to: 0.8)
-                .stroke(AngularGradient(gradient: .init(colors: [.black]),
+                .stroke(AngularGradient(gradient: .init(colors: [.primary]),
                                         center: .center),
                         style: StrokeStyle(lineWidth: 3,
                                            lineCap: .round))

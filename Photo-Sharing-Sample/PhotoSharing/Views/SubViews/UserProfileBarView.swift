@@ -23,8 +23,11 @@ struct UserProfileBarView: View {
                     .fontWeight(.bold)
                     .padding()
             }
+            
             Spacer()
+            
             CreatePostButton()
+            
             Menu {
                 Button {
                     showingSheet = true
@@ -33,6 +36,7 @@ struct UserProfileBarView: View {
                         .fontWeight(.bold)
                         .padding()
                 }
+                
                 Button {
                     viewModel.signOut()
                 } label: {
@@ -45,14 +49,14 @@ struct UserProfileBarView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 30, height: 30)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
+            }
+            .sheet(isPresented: $showingSheet) {
+                LicenseView()
             }
             .padding(.horizontal)
         }
         .frame(height: 40)
-        .sheet(isPresented: $showingSheet, content: {
-            LicenseView()
-        })
     }
 }
 

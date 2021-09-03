@@ -22,7 +22,7 @@ struct ConfirmProfileImageView: View {
         VStack {
             HStack {
                 Text("Cancel")
-                    .foregroundColor(updateButtonDisabled ? .gray : .black)
+                    .foregroundColor(updateButtonDisabled ? .gray : .primary)
                     .disabled(updateButtonDisabled)
                     .onTapGesture {
                         withAnimation(Animation.default) {
@@ -32,7 +32,7 @@ struct ConfirmProfileImageView: View {
                     .padding()
                 Spacer()
                 Text("Update")
-                    .foregroundColor(updateButtonDisabled ? .gray : .black)
+                    .foregroundColor(updateButtonDisabled ? .gray : .primary)
                     .disabled(updateButtonDisabled)
                     .onTapGesture {
                         updateButtonDisabled = true
