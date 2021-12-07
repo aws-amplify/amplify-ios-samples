@@ -2,11 +2,10 @@ type Post
     @model
     @auth(rules: [{ allow: owner, operations: [create, delete] }]) {
     id: ID!
-    userId: ID!
     postBody: String!
     pictureKey: String!
     createdAt: AWSDateTime!
-    postedBy: User! @connection(fields: ["userId"])
+    postedBy: User! @belongsTo
 }
 
 type User
@@ -15,5 +14,5 @@ type User
     id: ID!
     username: String!
     profilePic: String!
-    posts: [Post] @connection(fields: ["id"])
+    posts: [Post] @hasMany(fields: ["id"])
 }
