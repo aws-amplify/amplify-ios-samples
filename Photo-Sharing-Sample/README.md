@@ -14,13 +14,13 @@ This app demponstrates the following features:
 
 The App allows you to sign up and sign in using the [Amplify.Auth.signInWithWebUI](https://docs.amplify.aws/lib/auth/signin_web_ui/q/platform/ios) API.
 
-Sign Up Flow (see [`OnBoardingViewModel`](./PhotoSharing/ViewModels/OnboardingViewModel.swift) for example code):
+Sign Up Flow (see [`SignUpView`](./PhotoSharing/Views/SignUpView.swift) for example code):
 ![Sign Up](./readmeimages/sign-up-flow.png)
 
-Sign In Flow (see [`OnBoardingViewModel`](./PhotoSharing/ViewModels/OnboardingViewModel.swift) for example code):
+Sign In Flow (see [`SignInView`](./PhotoSharing/Views/SignInView.swift) for example code):
 ![Sign In](./readmeimages/sign-in-flow.png)
 
-Sign Out Flow (see [`OnBoardingViewModel`](./PhotoSharing/ViewModels/OnboardingViewModel.swift) for example code):
+Sign Out Flow (see [`UserProfileBarView`](./PhotoSharing/Views/SubViews/UserProfileBarView.swift) for example code):
 ![Sign Out](./readmeimages/sign-out-flow.png)
 
 ### Post Photo
@@ -94,15 +94,9 @@ amplify add auth
 ```
 Provide the responses listed after each of the following prompts to configure Auth.
 ```
-? Do you want to use the default authentication and security configuration? `Default configuration with Social Provider (Federation)`
+? Do you want to use the default authentication and security configuration? `Default configuration`
 ? How do you want users to be able to sign in? `Username`
 ? Do you want to configure advanced settings? `No, I am done.`
-What domain name prefix do you want to use? `(default)`
-? Enter your redirect signin URI: `myapp://`
-? Do you want to add another redirect signin URI `No`
-? Enter your redirect signout URI: `myapp://`
-? Do you want to add another redirect signout URI `No`
-? Select the social providers you want to configure for your user pool: `Don't select anything, <hit enter> `
 ```
 These commands configure Amplify Auth to authenticate users via a username and password using a pre-built HostedUI endpoint to display sign-up and sign-in interfaces in an embedded web view. After the sign-in process is complete it will redirect back to your app at the URI you specified. This value matches an entry in the app's info.plist that registers your app as a handler for this URI.
 

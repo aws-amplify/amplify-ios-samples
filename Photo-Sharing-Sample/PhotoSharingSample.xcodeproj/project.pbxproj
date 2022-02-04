@@ -22,6 +22,14 @@
 		5C66B52E26AB9A6400F7BB97 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52D26AB9A6400F7BB97 /* AWSDataStorePlugin */; };
 		64AD61BDDD3A4096AD5FC913 /* Post+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D60EC89032C455B84FCFE22 /* Post+Schema.swift */; };
 		672E1EFDBE9143619427C73C /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F581FA8D40EC4EC9BEBE4AE5 /* AmplifyModels.swift */; };
+		6899DE5027B4589300023575 /* AuthenticationViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6899DE4F27B4589300023575 /* AuthenticationViewModels.swift */; };
+		6899DE5227B4682A00023575 /* AuthStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6899DE5127B4682A00023575 /* AuthStep.swift */; };
+		68F5699B27AAF3C20025E499 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F5699A27AAF3C20025E499 /* SignInView.swift */; };
+		68F5699D27AB07E40025E499 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F5699C27AB07E40025E499 /* SignUpView.swift */; };
+		68F5699F27AB11A10025E499 /* ConfirmSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F5699E27AB11A10025E499 /* ConfirmSignUpView.swift */; };
+		68F569A327AC83150025E499 /* AuthenticationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F569A227AC83150025E499 /* AuthenticationViews.swift */; };
+		68F569A527AD73500025E499 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F569A427AD73500025E499 /* Color+Extension.swift */; };
+		68F569A927AD7FAD0025E499 /* NavigationLink+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F569A827AD7FAD0025E499 /* NavigationLink+Extension.swift */; };
 		86A310D463434EF9BD02A9A8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40106CDBB0B0456C9B87FA64 /* User.swift */; };
 		A2FF0C8C860D488EAB5D5A82 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E90E1995D6F47FAB47EF530 /* awsconfiguration.json */; };
 		D81CC3242603B8A500C1EAF4 /* PhotoSharingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CC3232603B8A500C1EAF4 /* PhotoSharingError.swift */; };
@@ -48,7 +56,6 @@
 		D899F8C7260295CC0055F7C6 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D899F8C6260295CC0055F7C6 /* Loader.swift */; };
 		D8B05EFD25F7F91F0004CE83 /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B05EFC25F7F91F0004CE83 /* SessionState.swift */; };
 		D8B05F0225F7FF530004CE83 /* PhotoSharingAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B05F0125F7FF530004CE83 /* PhotoSharingAppViewModel.swift */; };
-		D8B05F0625F800C70004CE83 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B05F0525F800C70004CE83 /* OnboardingViewModel.swift */; };
 		D8B05F0925F8010A0004CE83 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B05F0825F8010A0004CE83 /* UserProfileViewModel.swift */; };
 		D8C50C6025F1914600862156 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C50C5F25F1914600862156 /* ServiceManager.swift */; };
 		D8C50C6525F1917100862156 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C50C6425F1917100862156 /* AuthService.swift */; };
@@ -77,6 +84,14 @@
 		5C04863726AEFC1700045F5B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		5C04863926AF112F00045F5B /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		5C04863B26AF1D6400045F5B /* LicenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewModel.swift; sourceTree = "<group>"; };
+		6899DE4F27B4589300023575 /* AuthenticationViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModels.swift; sourceTree = "<group>"; };
+		6899DE5127B4682A00023575 /* AuthStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStep.swift; sourceTree = "<group>"; };
+		68F5699A27AAF3C20025E499 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		68F5699C27AB07E40025E499 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		68F5699E27AB11A10025E499 /* ConfirmSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSignUpView.swift; sourceTree = "<group>"; };
+		68F569A227AC83150025E499 /* AuthenticationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViews.swift; sourceTree = "<group>"; };
+		68F569A427AD73500025E499 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		68F569A827AD7FAD0025E499 /* NavigationLink+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extension.swift"; sourceTree = "<group>"; };
 		7C466715D56F48A5B2AE7B33 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
 		D81CC3232603B8A500C1EAF4 /* PhotoSharingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSharingError.swift; sourceTree = "<group>"; };
 		D81CC3282603CAC000C1EAF4 /* UserProfileBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileBarView.swift; sourceTree = "<group>"; };
@@ -102,7 +117,6 @@
 		D899F8C6260295CC0055F7C6 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		D8B05EFC25F7F91F0004CE83 /* SessionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionState.swift; sourceTree = "<group>"; };
 		D8B05F0125F7FF530004CE83 /* PhotoSharingAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSharingAppViewModel.swift; sourceTree = "<group>"; };
-		D8B05F0525F800C70004CE83 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		D8B05F0825F8010A0004CE83 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		D8C50C5F25F1914600862156 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		D8C50C6425F1917100862156 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -183,10 +197,13 @@
 			isa = PBXGroup;
 			children = (
 				D8F5A25B263B79DD00A2509B /* ConfirmProfileImageView.swift */,
+				68F5699E27AB11A10025E499 /* ConfirmSignUpView.swift */,
 				D886379425D5AEFA00D8581D /* OnboardingView.swift */,
 				D8F5A25E263B7C6700A2509B /* PostEditorView.swift */,
-				D886379725D5AF2C00D8581D /* UserProfileView.swift */,
+				68F5699A27AAF3C20025E499 /* SignInView.swift */,
+				68F5699C27AB07E40025E499 /* SignUpView.swift */,
 				D899F8C9260299F10055F7C6 /* SubViews */,
+				D886379725D5AF2C00D8581D /* UserProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,18 +211,19 @@
 		D899F8C9260299F10055F7C6 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				68F569A227AC83150025E499 /* AuthenticationViews.swift */,
 				D8F1223825FBDC71002A292B /* CircleProfileModifier.swift */,
 				D8F1223C25FBDEF4002A292B /* CreatedAtSinceNowView.swift */,
 				D83B89582627AEDF00792A12 /* CreatePostButton.swift */,
 				D81DAF36260A527A00CA3C29 /* ImagePicker.swift */,
 				D8F5A258263B764100A2509B /* ImageSelectionView.swift */,
 				D8F5A255263B75AE00A2509B /* ImageSourceSelectionButton.swift */,
+				5C04863926AF112F00045F5B /* LicenseView.swift */,
 				D899F8C6260295CC0055F7C6 /* Loader.swift */,
 				D89607E725FA90DD00CE8281 /* PostsListingView.swift */,
 				D89607EA25FA910100CE8281 /* PostView.swift */,
 				D81CC3282603CAC000C1EAF4 /* UserProfileBarView.swift */,
 				D86159D82638789C0076EA33 /* UserProfileImageView.swift */,
-				5C04863926AF112F00045F5B /* LicenseView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -213,8 +231,8 @@
 		D8B05EFF25F7FF2E0004CE83 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				6899DE4F27B4589300023575 /* AuthenticationViewModels.swift */,
 				D86159E126387B4D0076EA33 /* ConfirmProfileImageViewModel.swift */,
-				D8B05F0525F800C70004CE83 /* OnboardingViewModel.swift */,
 				D8B05F0125F7FF530004CE83 /* PhotoSharingAppViewModel.swift */,
 				D881283E261E176100972220 /* PostEditorViewModel.swift */,
 				D8B05F0825F8010A0004CE83 /* UserProfileViewModel.swift */,
@@ -230,6 +248,7 @@
 				D89607F025FA91A400CE8281 /* AmplifyDataStoreService.swift */,
 				D81DAF2A260A4C8400CA3C29 /* AmplifyStorageService.swift */,
 				D8C50C6425F1917100862156 /* AuthService.swift */,
+				6899DE5127B4682A00023575 /* AuthStep.swift */,
 				D89607ED25FA916C00CE8281 /* DataStoreService.swift */,
 				D892C19926026A830003ECC5 /* DataStoreServiceEvent.swift */,
 				D8812827261E024700972220 /* PhotoSharingImageProvider.swift */,
@@ -288,6 +307,8 @@
 			children = (
 				D8E4F4EB265C17300085BDF8 /* UIApplication+Extension.swift */,
 				D8E4F4ED265C17A40085BDF8 /* UIImage+Extension.swift */,
+				68F569A427AD73500025E499 /* Color+Extension.swift */,
+				68F569A827AD7FAD0025E499 /* NavigationLink+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -378,22 +399,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8B05F0925F8010A0004CE83 /* UserProfileViewModel.swift in Sources */,
+				6899DE5227B4682A00023575 /* AuthStep.swift in Sources */,
 				D81CC3292603CAC000C1EAF4 /* UserProfileBarView.swift in Sources */,
 				D81F23C825F4A25E00BE7119 /* AmplifyAuthService.swift in Sources */,
 				5C04863A26AF112F00045F5B /* LicenseView.swift in Sources */,
 				D886379825D5AF2C00D8581D /* UserProfileView.swift in Sources */,
 				D899F8C7260295CC0055F7C6 /* Loader.swift in Sources */,
 				D89607F125FA91A400CE8281 /* AmplifyDataStoreService.swift in Sources */,
-				D8B05F0625F800C70004CE83 /* OnboardingViewModel.swift in Sources */,
 				D8F5A259263B764100A2509B /* ImageSelectionView.swift in Sources */,
 				D81DAF28260A4AF400CA3C29 /* StorageService.swift in Sources */,
 				D8E4F4EE265C17A40085BDF8 /* UIImage+Extension.swift in Sources */,
 				D8B05EFD25F7F91F0004CE83 /* SessionState.swift in Sources */,
 				D86159D92638789C0076EA33 /* UserProfileImageView.swift in Sources */,
 				D886379525D5AEFA00D8581D /* OnboardingView.swift in Sources */,
+				6899DE5027B4589300023575 /* AuthenticationViewModels.swift in Sources */,
 				D8D1082425D1FBBF000A9EAE /* PhotoSharingApp.swift in Sources */,
 				D8E4F4EC265C17300085BDF8 /* UIApplication+Extension.swift in Sources */,
 				D8F1223925FBDC71002A292B /* CircleProfileModifier.swift in Sources */,
+				68F5699F27AB11A10025E499 /* ConfirmSignUpView.swift in Sources */,
 				D8F5A26F263BC49800A2509B /* ImageSourceSelectionButtonViewModel.swift in Sources */,
 				D81CC3242603B8A500C1EAF4 /* PhotoSharingError.swift in Sources */,
 				D8B05F0225F7FF530004CE83 /* PhotoSharingAppViewModel.swift in Sources */,
@@ -401,12 +424,17 @@
 				D8F5A25F263B7C6700A2509B /* PostEditorView.swift in Sources */,
 				D8C50C6025F1914600862156 /* ServiceManager.swift in Sources */,
 				D881283F261E176100972220 /* PostEditorViewModel.swift in Sources */,
+				68F569A327AC83150025E499 /* AuthenticationViews.swift in Sources */,
 				5C04863C26AF1D6400045F5B /* LicenseViewModel.swift in Sources */,
 				D89607EB25FA910100CE8281 /* PostView.swift in Sources */,
 				D881283C261E06EE00972220 /* PostViewModel.swift in Sources */,
+				68F569A927AD7FAD0025E499 /* NavigationLink+Extension.swift in Sources */,
 				D8C50C6525F1917100862156 /* AuthService.swift in Sources */,
 				D86159DC263878B20076EA33 /* UserProfileImageViewModel.swift in Sources */,
+				68F5699D27AB07E40025E499 /* SignUpView.swift in Sources */,
 				D8F5A25C263B79DD00A2509B /* ConfirmProfileImageView.swift in Sources */,
+				68F5699B27AAF3C20025E499 /* SignInView.swift in Sources */,
+				68F569A527AD73500025E499 /* Color+Extension.swift in Sources */,
 				D8F1223D25FBDEF4002A292B /* CreatedAtSinceNowView.swift in Sources */,
 				672E1EFDBE9143619427C73C /* AmplifyModels.swift in Sources */,
 				D8812828261E024700972220 /* PhotoSharingImageProvider.swift in Sources */,

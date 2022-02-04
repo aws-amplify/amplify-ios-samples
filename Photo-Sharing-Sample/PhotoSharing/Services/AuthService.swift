@@ -14,6 +14,9 @@ protocol AuthService {
     var authUser: AuthUser? { get }
 
     func configure()
+    func signIn(username: String, password: String, completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
+    func signUp(username: String, email: String, password: String, completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
+    func confirmSignUpAndSignIn(username: String, password: String, confirmationCode: String, completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
     func signOut(completion: @escaping (Result<Void, AuthError>) -> Void)
     func webSignIn(completion: @escaping (Result<Void, AuthError>) -> Void)
 }
