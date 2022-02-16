@@ -30,10 +30,10 @@ struct CreatedAtSinceNowView: View {
         if now.foundationDate.timeIntervalSince(createdAt.foundationDate) <= 24 * 60 * 60 {
             let formatter = RelativeDateTimeFormatter()
             formatter.unitsStyle = .full
-            self.time = formatter.localizedString(for: createdAt.foundationDate,
+            time = formatter.localizedString(for: createdAt.foundationDate,
                                                   relativeTo: now.foundationDate)
         } else {
-            self.time = ISO8601DateFormatter.string(from: createdAt.foundationDate,
+            time = ISO8601DateFormatter.string(from: createdAt.foundationDate,
                                                     timeZone: .autoupdatingCurrent,
                                                     formatOptions: .withFullDate)
         }

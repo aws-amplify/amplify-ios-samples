@@ -37,7 +37,7 @@ struct PostEditorView: View {
                     .onTapGesture {
                         guard !postBody.isEmpty else {
                             self.errorMessage = true
-                            DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                 self.errorMessage = false
                             }
                             return

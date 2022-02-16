@@ -11,7 +11,7 @@ extension UIImage {
 
     func pngFlattened(isOpaque: Bool = true) -> Data? {
         if imageOrientation == .up {
-            return self.pngData()
+            return pngData()
         }
 
         let format = imageRendererFormat

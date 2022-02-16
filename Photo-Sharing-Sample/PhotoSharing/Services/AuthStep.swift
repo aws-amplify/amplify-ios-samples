@@ -1,8 +1,8 @@
 //
-//  AuthStep.swift
-//  PhotoSharingSample
+// Copyright Amazon.com Inc. or its affiliates.
+// All Rights Reserved.
 //
-//  Created by Villena, Sebastian on 2022-02-09.
+// SPDX-License-Identifier: MIT-0
 //
 
 import Amplify
@@ -20,12 +20,12 @@ extension AuthSignInStep {
         switch self {
         case .done:
             return .done
-        case .confirmSignUp(_),
-             .confirmSignInWithCustomChallenge(_),
-             .confirmSignInWithSMSMFACode(_,_),
-             .confirmSignInWithNewPassword(_):
+        case .confirmSignUp,
+             .confirmSignInWithCustomChallenge,
+             .confirmSignInWithSMSMFACode,
+             .confirmSignInWithNewPassword:
             return .confirmSignUp
-        case .resetPassword(_):
+        case .resetPassword:
             return .resetPassword
         }
     }
@@ -36,7 +36,7 @@ extension AuthSignUpStep {
         switch self {
         case .done:
             return .done
-        case .confirmUser(_, _):
+        case .confirmUser:
             return .confirmSignUp
         }
     }

@@ -14,7 +14,7 @@ extension SignInView {
     class ViewModel: AuthenticationViewModel {
         func signIn() {
             startLoading()
-            self.authService.signIn(username: user.username,
+            authService.signIn(username: user.username,
                                     password: user.password,
                                     completion: authCompletionHandler)
         }
@@ -35,7 +35,7 @@ extension SignUpView {
 }
 
 extension ConfirmSignUpView {
-    
+
     class ViewModel: AuthenticationViewModel {
         func confirmSignUp() {
             startLoading()
@@ -55,7 +55,7 @@ class AuthenticationViewModel: ObservableObject {
     }
 
     let authService: AuthService
-    
+
     @Published var user = User()
     @Published var confirmationCode = ""
     @Published var isLoading = false

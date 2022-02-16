@@ -321,6 +321,8 @@
 			buildConfigurationList = D8D1082F25D1FBC0000A9EAE /* Build configuration list for PBXNativeTarget "PhotoSharingSample" */;
 			buildPhases = (
 				D8D1081C25D1FBBF000A9EAE /* Sources */,
+				682A44D927BD5FDD00FD3650 /* SwiftFormat */,
+				682A44DA27BD5FFF00FD3650 /* SwiftLint */,
 				D8D1081D25D1FBBF000A9EAE /* Frameworks */,
 				D8D1081E25D1FBBF000A9EAE /* Resources */,
 			);
@@ -392,6 +394,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		682A44D927BD5FDD00FD3650 /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${TOOLS_FOLDER}/SwiftFormat/CommandLineTool/swiftformat\" --config \"${SRCROOT}/.swiftformat\" --swiftversion \"$SWIFT_VERSION\" \"${SRC_FOLDER}\"\n";
+		};
+		682A44DA27BD5FFF00FD3650 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${TOOLS_FOLDER}/SwiftLint/swiftlint\" --config \"${SRCROOT}/.swiftlint.yml\" --path \"${SRC_FOLDER}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D8D1081C25D1FBBF000A9EAE /* Sources */ = {
@@ -592,8 +633,10 @@
 				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.PhotoSharingSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SRC_FOLDER = "${SRCROOT}/PhotoSharing";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TOOLS_FOLDER = "${SRCROOT}/Tools";
 			};
 			name = Debug;
 		};
@@ -616,8 +659,10 @@
 				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.PhotoSharingSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SRC_FOLDER = "${SRCROOT}/PhotoSharing";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TOOLS_FOLDER = "${SRCROOT}/Tools";
 			};
 			name = Release;
 		};

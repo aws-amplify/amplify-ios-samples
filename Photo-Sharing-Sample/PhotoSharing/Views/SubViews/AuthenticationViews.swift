@@ -1,8 +1,8 @@
 //
-//  AuthenticationViews.swift
-//  PhotoSharingSample
+// Copyright Amazon.com Inc. or its affiliates.
+// All Rights Reserved.
 //
-//  Created by Villena, Sebastian on 2022-02-03.
+// SPDX-License-Identifier: MIT-0
 //
 
 import Amplify
@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AuthErrorView: View {
     let error: AuthError
-    
+
     var body: some View {
         Text("\(error.errorDescription)\n\n\(error.recoverySuggestion)")
             .font(.system(size: 14, weight: .semibold))
@@ -22,7 +22,7 @@ struct LoadingButton: View {
     let title: String
     let isLoading: Bool
     let action: () -> Void
-    
+
     var body: some View {
         ZStack {
             Button(action: action) {
@@ -48,7 +48,7 @@ struct LoadingButton: View {
     }
 }
 
-struct AuthContainerView <Content: View>: View {
+struct AuthContainerView<Content: View>: View {
     private let title: String
     private let content: Content
 
@@ -56,7 +56,7 @@ struct AuthContainerView <Content: View>: View {
         self.title = title
         self.content = content()
     }
-    
+
     var body: some View {
         ZStack {
             Color.lightGray.ignoresSafeArea()
@@ -82,13 +82,13 @@ struct InputField: View {
     private let title: String
     @Binding private var text: String
     private let isSecure: Bool
-    
+
     init(_ title: String, text: Binding<String>, isSecure: Bool = false) {
         self.title = title
         self._text = text
         self.isSecure = isSecure
     }
-    
+
     var body: some View {
         createInput()
             .disableAutocorrection(true)

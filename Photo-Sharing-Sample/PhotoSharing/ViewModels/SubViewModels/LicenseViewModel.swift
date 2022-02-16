@@ -10,12 +10,12 @@ import Combine
 
 class LicenseViewModel: ObservableObject {
     let license: String
-    
+
     init() {
         if let filepath = Bundle.main.path(forResource: "LICENSE", ofType: "") {
-            license = (try? String(contentsOfFile: filepath)) ?? "Could not load license!"
+            self.license = (try? String(contentsOfFile: filepath)) ?? "Could not load license!"
         } else {
-            license = "License not found!"
+            self.license = "License not found!"
         }
     }
 }

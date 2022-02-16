@@ -20,10 +20,10 @@ class AmplifyAuthService: AuthService {
     init() {}
 
     func configure() {
-        self.fetchAuthSession()
+        fetchAuthSession()
     }
 
-    func fetchAuthSession() {
+    private func fetchAuthSession() {
         Amplify.Auth.fetchAuthSession { result in
             switch result {
             case .success(let session):
@@ -50,34 +50,6 @@ class AmplifyAuthService: AuthService {
         }
     }
 
-    private var window: UIWindow {
-        guard
-            let scene = UIApplication.shared.connectedScenes.first,
-            let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
-            let window = windowSceneDelegate.window as? UIWindow
-        else { return UIWindow() }
-
-        return window
-    }
-
-    func webSignIn(completion: @escaping (Result<Void, AuthError>) -> Void) {
-        _ = Amplify.Auth.signInWithWebUI(presentationAnchor: window,
-                                         options: .preferPrivateSession()) { result in
-            switch result {
-            case .success:
-                self.updateCurrentUser()
-                completion(.successfulVoid)
-            case .failure(let error):
-                if case .service(_, _, let underlyingError) = error,
-                   case .userCancelled = (underlyingError as? AWSCognitoAuthError) {
-                    return
-                } else {
-                    completion(.failure(error))
-                }
-            }
-        }
-    }
-    
     func signIn(username: String, password: String, completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
         _ = Amplify.Auth.signIn(username: username, password: password) { result in
             switch result {
@@ -89,8 +61,11 @@ class AmplifyAuthService: AuthService {
             }
         }
     }
-    
-    func signUp(username: String, email: String, password: String, completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
+
+    func signUp(username: String,
+                email: String,
+                password: String,
+                completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
         let emailAttribute = AuthUserAttribute(.email, value: email)
         let options = AuthSignUpRequest.Options(userAttributes: [emailAttribute])
         _ = Amplify.Auth.signUp(username: username, password: password, options: options) { result in
@@ -102,8 +77,11 @@ class AmplifyAuthService: AuthService {
             }
         }
     }
-    
-    func confirmSignUpAndSignIn(username: String, password: String, confirmationCode: String, completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
+
+    func confirmSignUpAndSignIn(username: String,
+                                password: String,
+                                confirmationCode: String,
+                                completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
         _ = Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode) { result in
             switch result {
             case .success(let result):
@@ -145,7 +123,7 @@ class AmplifyAuthService: AuthService {
             }
             .store(in: &subscribers)
     }
-    
+
     private func updateCurrentUser() {
         guard let user = Amplify.Auth.getCurrentUser() else {
             authUser = nil

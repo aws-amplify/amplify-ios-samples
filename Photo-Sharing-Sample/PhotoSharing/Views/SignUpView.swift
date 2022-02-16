@@ -10,7 +10,7 @@ import SwiftUI
 struct SignUpView: View {
     @Environment(\.presentationMode) private var presentation
     @StateObject private var viewModel = ViewModel()
-    
+
     var body: some View {
         AuthContainerView(title: "Create account") {
             InputField("Username", text: $viewModel.user.username)
@@ -19,11 +19,12 @@ struct SignUpView: View {
                 .keyboardType(.emailAddress)
 
             InputField("Password", text: $viewModel.user.password, isSecure: true)
-            
+
             LoadingButton(title: "Sign up", isLoading: viewModel.isLoading, action: viewModel.signUp)
                 .padding(.top, 10)
-           
-            NavigationLink(destination: ConfirmSignUpView(username: viewModel.user.username, password: viewModel.user.password),
+
+            NavigationLink(destination: ConfirmSignUpView(username: viewModel.user.username,
+                                                          password: viewModel.user.password),
                            when: $viewModel.nextState,
                            equals: .confirmSignUp)
 

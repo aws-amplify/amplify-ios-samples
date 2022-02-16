@@ -30,7 +30,7 @@ extension PostView {
         private var subscribers = Set<AnyCancellable>()
 
         func imageSource() -> Source {
-            Source.provider(PhotoSharingImageProvider(key: self.post.pictureKey))
+            Source.provider(PhotoSharingImageProvider(key: post.pictureKey))
         }
 
         /// This function performs `Post` model deletion with `Amplily.DataStore` first and then image removal
@@ -38,7 +38,7 @@ extension PostView {
         /// as a transaction, the failure of removing image is acceptable as long as `Post` model is deleted.
         func deletePost() {
             // firstly, delete the Post instance from DynamoDB and local database
-            dataStoreService.deletePost(self.post) {
+            dataStoreService.deletePost(post) {
                 switch $0 {
                 case .success:
                     // secondly, remove the associated image from S3

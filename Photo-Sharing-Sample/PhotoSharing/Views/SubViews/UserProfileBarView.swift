@@ -23,11 +23,11 @@ struct UserProfileBarView: View {
                     .fontWeight(.bold)
                     .padding()
             }
-            
+
             Spacer()
-            
+
             CreatePostButton()
-            
+
             Menu {
                 Button {
                     showingSheet = true
@@ -36,7 +36,7 @@ struct UserProfileBarView: View {
                         .fontWeight(.bold)
                         .padding()
                 }
-                
+
                 Button {
                     viewModel.signOut()
                 } label: {
