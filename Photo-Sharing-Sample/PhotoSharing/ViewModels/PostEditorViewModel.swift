@@ -50,7 +50,7 @@ extension PostEditorView {
                 return
             }
 
-            let storageOperation = self.storageService.uploadImage(key: "\(newPost.pictureKey)",
+            let storageOperation = storageService.uploadImage(key: "\(newPost.pictureKey)",
                                                                    pngData)
             storageOperation.progressPublisher.sink { progress in
                 DispatchQueue.main.async {
@@ -58,7 +58,7 @@ extension PostEditorView {
                 }
                 print(progress as Progress)
             }
-            .store(in: &self.subscribers)
+            .store(in: &subscribers)
 
             storageOperation.resultPublisher.sink {
                 if case let .failure(storageError) = $0 {
@@ -87,7 +87,7 @@ extension PostEditorView {
                 }
             }
             receiveValue: { _ in }
-            .store(in: &self.subscribers)
+            .store(in: &subscribers)
         }
     }
 

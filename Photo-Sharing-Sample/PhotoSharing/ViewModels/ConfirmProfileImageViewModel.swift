@@ -45,7 +45,7 @@ extension ConfirmProfileImageView {
             }
 
             user.profilePic = "\(user.username)ProfileImage"
-            let storageOperation = self.storageService.uploadImage(key: user.profilePic, pngData)
+            let storageOperation = storageService.uploadImage(key: user.profilePic, pngData)
 
             storageOperation.progressPublisher.sink { progress in
                 DispatchQueue.main.async {
@@ -53,7 +53,7 @@ extension ConfirmProfileImageView {
                 }
                 print(progress as Progress)
             }
-            .store(in: &self.subscribers)
+            .store(in: &subscribers)
 
             storageOperation.resultPublisher.sink {
                 if case let .failure(storageError) = $0 {
@@ -66,8 +66,8 @@ extension ConfirmProfileImageView {
                     )
                     return
                 }
-                /// This is to remove the old image from local cache. The reason is that the new image is
-                /// using the same image key, `KFImage` displays the old image even new image is uploaded to S3
+                // This is to remove the old image from local cache. The reason is that the new image is
+                // using the same image key, `KFImage` displays the old image even new image is uploaded to S3
                 ImageCache.default.removeImage(forKey: user.profilePic)
                 self.dataStoreService.saveUser(user) {
                     switch $0 {
@@ -83,7 +83,7 @@ extension ConfirmProfileImageView {
                 }
             }
             receiveValue: { _ in }
-            .store(in: &self.subscribers)
+            .store(in: &subscribers)
         }
     }
 }

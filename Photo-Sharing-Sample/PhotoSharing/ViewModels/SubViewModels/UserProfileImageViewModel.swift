@@ -34,9 +34,9 @@ extension UserProfileImageView {
         private func onReceive(event: DataStoreServiceEvent) {
             switch event {
             case .userSynced(let user):
-                self.profileImageKey = user.profilePic
+                profileImageKey = user.profilePic
             case .userUpdated(let user):
-                self.profileImageKey = user.profilePic
+                profileImageKey = user.profilePic
             default:
                 break
             }

@@ -22,7 +22,7 @@ class PhotoSharingImageProvider: ImageDataProvider {
     }
 
     public func data(handler: @escaping (Result<Data, Error>) -> Void) {
-        let ops = self.storageService.downloadImage(key: cacheKey)
+        let ops = storageService.downloadImage(key: cacheKey)
         ops.resultPublisher.sink {
             if case let .failure(storageError) = $0 {
                 handler(.failure(storageError))

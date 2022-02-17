@@ -26,8 +26,8 @@ class AmplifyDataStoreService: DataStoreService {
     }
 
     func configure(_ sessionState: Published<SessionState>.Publisher) {
-        self.listenToDataStoreHubEvents()
-        self.listen(to: sessionState)
+        listenToDataStoreHubEvents()
+        listen(to: sessionState)
     }
 
     func savePost(_ post: Post,
@@ -133,9 +133,9 @@ extension AmplifyDataStoreService {
             }
             switch modelSyncedEvent.modelName {
             case User.modelName:
-                self.getUser()
+                getUser()
             case Post.modelName:
-                self.dataStoreServiceEventsTopic.send(.postSynced)
+                dataStoreServiceEventsTopic.send(.postSynced)
             default:
                 return
             }
@@ -145,11 +145,11 @@ extension AmplifyDataStoreService {
     }
 
     private func getUser() {
-        guard let userId = self.authUser?.userId else {
+        guard let userId = authUser?.userId else {
             return
         }
 
-        self.query(User.self, byId: userId) {
+        query(User.self, byId: userId) {
             switch $0 {
             case .success(let user):
                 guard let user = user else {
@@ -172,7 +172,7 @@ extension AmplifyDataStoreService {
         let user = User(id: "\(authUser.userId)",
                         username: authUser.username,
                         profilePic: "emptyUserPic")
-        self.saveUser(user) {
+        saveUser(user) {
             switch $0 {
             case .success:
                 self.user = user

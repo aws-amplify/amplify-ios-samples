@@ -15,8 +15,8 @@ extension ImageSourceSelectionButton {
         var sourceType: ImagePicker.SourceType = .photoLibrary
 
         func selectImagePickerSource(_ source: ImagePicker.SourceType) {
-            self.sourceType = source
-            self.presentImagePicker = true
+            sourceType = source
+            presentImagePicker = true
         }
     }
 }

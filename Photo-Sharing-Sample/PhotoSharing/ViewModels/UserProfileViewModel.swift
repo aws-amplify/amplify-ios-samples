@@ -29,7 +29,7 @@ extension UserProfileView {
         init(manager: ServiceManager = AppServiceManager.shared) {
             self.dataStoreService = manager.dataStoreService
             self.storageService = manager.storageService
-            self.dataStoreService.eventsPublisher
+            dataStoreService.eventsPublisher
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: onReceiveCompletion(completion:),
                       receiveValue: onReceive(event:))
@@ -62,20 +62,20 @@ extension UserProfileView {
                 DispatchQueue.main.async {
                     self.user = self.dataStoreService.user
                 }
-                self.tryLoadPosts()
+                tryLoadPosts()
             case .postSynced:
-                self.dataStorePublisher?.cancel()
-                self.getNumberOfMyPosts()
-                self.fetchMyPosts(page: 0)
-                self.isPostSynced = true
+                dataStorePublisher?.cancel()
+                getNumberOfMyPosts()
+                fetchMyPosts(page: 0)
+                isPostSynced = true
             case .postCreated(let newPost):
                 DispatchQueue.main.async {
                     self.loadedPosts.insert(newPost, at: 0)
                 }
-                self.getNumberOfMyPosts()
+                getNumberOfMyPosts()
             case .postDeleted(let post):
-                self.removePost(post)
-                self.getNumberOfMyPosts()
+                removePost(post)
+                getNumberOfMyPosts()
             default:
                 break
             }
@@ -115,7 +115,7 @@ extension UserProfileView {
 
         private func removePost(_ post: Post) {
             DispatchQueue.main.async {
-                for index in 0..<self.loadedPosts.count {
+                for index in 0 ..< self.loadedPosts.count {
                     guard self.loadedPosts[index].id == post.id else {
                         continue
                     }
@@ -165,8 +165,8 @@ extension UserProfileView {
                 return
             }
 
-            self.fetchMyPosts(page: 0)
-            self.dataStorePublisher = dataStoreService.dataStorePublisher(for: Post.self)
+            fetchMyPosts(page: 0)
+            dataStorePublisher = dataStoreService.dataStorePublisher(for: Post.self)
                 .receive(on: DispatchQueue.main)
                 .collect(.byTimeOrCount(DispatchQueue.main, 3.0, 10))
                 .sink {

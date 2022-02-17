@@ -22,7 +22,7 @@ extension UserProfileBarView {
         }
 
         func signOut() {
-            self.authService?.signOut {
+            authService?.signOut {
                 switch $0 {
                 case .success:
                     return
