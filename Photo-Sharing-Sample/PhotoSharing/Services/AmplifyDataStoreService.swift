@@ -100,7 +100,7 @@ extension AmplifyDataStoreService {
             .receive(on: DispatchQueue.main)
             .sink { state in
                 switch state {
-                case .signedOut:
+                case .signedOut, .unknown:
                     self.clear()
                     self.user = nil
                     self.authUser = nil

@@ -16,12 +16,12 @@
 		5C66B52126AB6C8E00F7BB97 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52026AB6C8E00F7BB97 /* Kingfisher */; };
 		5C66B52426AB9A6400F7BB97 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52326AB9A6400F7BB97 /* Amplify */; };
 		5C66B52626AB9A6400F7BB97 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52526AB9A6400F7BB97 /* AWSCognitoAuthPlugin */; };
-		5C66B52826AB9A6400F7BB97 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52726AB9A6400F7BB97 /* AWSPluginsCore */; };
 		5C66B52A26AB9A6400F7BB97 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52926AB9A6400F7BB97 /* AWSS3StoragePlugin */; };
 		5C66B52C26AB9A6400F7BB97 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52B26AB9A6400F7BB97 /* AWSAPIPlugin */; };
 		5C66B52E26AB9A6400F7BB97 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 5C66B52D26AB9A6400F7BB97 /* AWSDataStorePlugin */; };
 		64AD61BDDD3A4096AD5FC913 /* Post+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D60EC89032C455B84FCFE22 /* Post+Schema.swift */; };
 		672E1EFDBE9143619427C73C /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F581FA8D40EC4EC9BEBE4AE5 /* AmplifyModels.swift */; };
+		6868D74A27BED98900F4403E /* AWSAuthCognitoSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6868D74927BED98900F4403E /* AWSAuthCognitoSession+Extension.swift */; };
 		6899DE5027B4589300023575 /* AuthenticationViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6899DE4F27B4589300023575 /* AuthenticationViewModels.swift */; };
 		6899DE5227B4682A00023575 /* AuthStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6899DE5127B4682A00023575 /* AuthStep.swift */; };
 		68F5699B27AAF3C20025E499 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F5699A27AAF3C20025E499 /* SignInView.swift */; };
@@ -84,6 +84,7 @@
 		5C04863726AEFC1700045F5B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		5C04863926AF112F00045F5B /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		5C04863B26AF1D6400045F5B /* LicenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewModel.swift; sourceTree = "<group>"; };
+		6868D74927BED98900F4403E /* AWSAuthCognitoSession+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AWSAuthCognitoSession+Extension.swift"; sourceTree = "<group>"; };
 		6899DE4F27B4589300023575 /* AuthenticationViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModels.swift; sourceTree = "<group>"; };
 		6899DE5127B4682A00023575 /* AuthStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStep.swift; sourceTree = "<group>"; };
 		68F5699A27AAF3C20025E499 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -145,7 +146,6 @@
 			files = (
 				5C66B52C26AB9A6400F7BB97 /* AWSAPIPlugin in Frameworks */,
 				5C66B52A26AB9A6400F7BB97 /* AWSS3StoragePlugin in Frameworks */,
-				5C66B52826AB9A6400F7BB97 /* AWSPluginsCore in Frameworks */,
 				5C66B52126AB6C8E00F7BB97 /* Kingfisher in Frameworks */,
 				5C66B52426AB9A6400F7BB97 /* Amplify in Frameworks */,
 				5C66B52626AB9A6400F7BB97 /* AWSCognitoAuthPlugin in Frameworks */,
@@ -305,6 +305,7 @@
 		D8E4F4EA265C17040085BDF8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6868D74927BED98900F4403E /* AWSAuthCognitoSession+Extension.swift */,
 				D8E4F4EB265C17300085BDF8 /* UIApplication+Extension.swift */,
 				D8E4F4ED265C17A40085BDF8 /* UIImage+Extension.swift */,
 				68F569A427AD73500025E499 /* Color+Extension.swift */,
@@ -335,7 +336,6 @@
 				5C66B52026AB6C8E00F7BB97 /* Kingfisher */,
 				5C66B52326AB9A6400F7BB97 /* Amplify */,
 				5C66B52526AB9A6400F7BB97 /* AWSCognitoAuthPlugin */,
-				5C66B52726AB9A6400F7BB97 /* AWSPluginsCore */,
 				5C66B52926AB9A6400F7BB97 /* AWSS3StoragePlugin */,
 				5C66B52B26AB9A6400F7BB97 /* AWSAPIPlugin */,
 				5C66B52D26AB9A6400F7BB97 /* AWSDataStorePlugin */,
@@ -369,7 +369,7 @@
 			mainGroup = D8D1081725D1FBBF000A9EAE;
 			packageReferences = (
 				5C66B51F26AB6C8E00F7BB97 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */,
+				5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */,
 			);
 			productRefGroup = D8D1082125D1FBBF000A9EAE /* Products */;
 			projectDirPath = "";
@@ -444,6 +444,7 @@
 				D81CC3292603CAC000C1EAF4 /* UserProfileBarView.swift in Sources */,
 				D81F23C825F4A25E00BE7119 /* AmplifyAuthService.swift in Sources */,
 				5C04863A26AF112F00045F5B /* LicenseView.swift in Sources */,
+				6868D74A27BED98900F4403E /* AWSAuthCognitoSession+Extension.swift in Sources */,
 				D886379825D5AF2C00D8581D /* UserProfileView.swift in Sources */,
 				D899F8C7260295CC0055F7C6 /* Loader.swift in Sources */,
 				D89607F125FA91A400CE8281 /* AmplifyDataStoreService.swift in Sources */,
@@ -698,12 +699,12 @@
 				minimumVersion = 6.3.0;
 			};
 		};
-		5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
+		5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
+			repositoryURL = "https://github.com/aws-amplify/amplify-ios-staging";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.12.0;
+				branch = "dev-preview";
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -716,32 +717,27 @@
 		};
 		5C66B52326AB9A6400F7BB97 /* Amplify */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */;
 			productName = Amplify;
 		};
 		5C66B52526AB9A6400F7BB97 /* AWSCognitoAuthPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */;
 			productName = AWSCognitoAuthPlugin;
-		};
-		5C66B52726AB9A6400F7BB97 /* AWSPluginsCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */;
-			productName = AWSPluginsCore;
 		};
 		5C66B52926AB9A6400F7BB97 /* AWSS3StoragePlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */;
 			productName = AWSS3StoragePlugin;
 		};
 		5C66B52B26AB9A6400F7BB97 /* AWSAPIPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */;
 			productName = AWSAPIPlugin;
 		};
 		5C66B52D26AB9A6400F7BB97 /* AWSDataStorePlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */;
 			productName = AWSDataStorePlugin;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -12,7 +12,7 @@ import Combine
 
 class AmplifyAuthService: AuthService {
 
-    @Published private(set) var sessionState: SessionState = .signedOut
+    @Published private(set) var sessionState: SessionState = .unknown
     var sessionStatePublisher: Published<SessionState>.Publisher { $sessionState }
     var authUser: AuthUser?
     var subscribers = Set<AnyCancellable>()
@@ -23,30 +23,20 @@ class AmplifyAuthService: AuthService {
         fetchAuthSession()
     }
 
-    private func fetchAuthSession() {
+    private func fetchAuthSession(completion: (() -> Void)? = nil) {
         Amplify.Auth.fetchAuthSession { result in
-            switch result {
-            case .success(let session):
-                if let session = session as? AWSAuthCognitoSession {
-                    let cognitoTokensResult = session.getCognitoTokens()
-                    switch cognitoTokensResult {
-                    case .success:
-                        break
-                    case .failure(let error):
-                        self.authUser = nil
-                        self.sessionState = .signedOut
-                        self.observeAuthEvents()
-                        Amplify.log.error("\(error.localizedDescription)")
-                        return
-                    }
-                }
+            guard let session = try? result.get() as? AWSAuthCognitoSession,
+                  let user = session.getUser() else {
+                      self.authUser = nil
+                      self.sessionState = .signedOut
+                      completion?()
+                      return
+                  }
 
-                self.updateCurrentUser()
-                self.observeAuthEvents()
-            case .failure:
-                self.authUser = nil
-                self.sessionState = .signedOut
-            }
+            self.authUser = user
+            self.sessionState = .signedIn(user)
+            self.observeAuthEvents()
+            completion?()
         }
     }
 
@@ -54,8 +44,9 @@ class AmplifyAuthService: AuthService {
         _ = Amplify.Auth.signIn(username: username, password: password) { result in
             switch result {
             case .success(let result):
-                self.updateCurrentUser()
-                completion(.success(result.nextStep.authStep))
+                self.fetchAuthSession {
+                    completion(.success(result.nextStep.authStep))
+                }
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -87,7 +78,7 @@ class AmplifyAuthService: AuthService {
             case .success(let result):
                 if password.isEmpty {
                     completion(.success(.signIn))
-                } else if result.isSignupComplete {
+                } else if result.isSignUpComplete {
                     self.signIn(username: username, password: password, completion: completion)
                 } else {
                     completion(.success(.signIn))
@@ -122,15 +113,5 @@ class AmplifyAuthService: AuthService {
                 }
             }
             .store(in: &subscribers)
-    }
-
-    private func updateCurrentUser() {
-        guard let user = Amplify.Auth.getCurrentUser() else {
-            authUser = nil
-            sessionState = .signedOut
-            return
-        }
-        authUser = user
-        sessionState = .signedIn(user)
     }
 }
