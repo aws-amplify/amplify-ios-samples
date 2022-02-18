@@ -8,6 +8,7 @@
 import Amplify
 
 enum SessionState {
+    case unknown
     case signedOut
     case signedIn(_ user: AuthUser)
 }

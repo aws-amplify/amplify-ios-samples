@@ -30,6 +30,8 @@ struct PhotoSharingApp: App {
                 UserProfileView()
             case .signedOut:
                 OnBoardingView()
+            case .unknown:
+                Loader(description: "Loading...")
             }
         }
     }
