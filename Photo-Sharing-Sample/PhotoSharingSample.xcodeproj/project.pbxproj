@@ -369,7 +369,7 @@
 			mainGroup = D8D1081725D1FBBF000A9EAE;
 			packageReferences = (
 				5C66B51F26AB6C8E00F7BB97 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */,
+				5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */,
 			);
 			productRefGroup = D8D1082125D1FBBF000A9EAE /* Products */;
 			projectDirPath = "";
@@ -699,9 +699,9 @@
 				minimumVersion = 6.3.0;
 			};
 		};
-		5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */ = {
+		5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/aws-amplify/amplify-ios-staging";
+			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
 			requirement = {
 				branch = "dev-preview";
 				kind = branch;
@@ -717,27 +717,27 @@
 		};
 		5C66B52326AB9A6400F7BB97 /* Amplify */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */;
+			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = Amplify;
 		};
 		5C66B52526AB9A6400F7BB97 /* AWSCognitoAuthPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */;
+			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = AWSCognitoAuthPlugin;
 		};
 		5C66B52926AB9A6400F7BB97 /* AWSS3StoragePlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */;
+			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = AWSS3StoragePlugin;
 		};
 		5C66B52B26AB9A6400F7BB97 /* AWSAPIPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */;
+			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = AWSAPIPlugin;
 		};
 		5C66B52D26AB9A6400F7BB97 /* AWSDataStorePlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios-staging" */;
+			package = 5C66B52226AB9A6400F7BB97 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = AWSDataStorePlugin;
 		};
 /* End XCSwiftPackageProductDependency section */
