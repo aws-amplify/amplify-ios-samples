@@ -1,6 +1,8 @@
-# Photo Sharing Sample
+# Photo Sharing Sample (Developer Preview)
 
-Photo Sharing Sample is a demonstration of building an iOS social networking App with [Amplify Libraries](https://docs.amplify.aws/lib/q/platform/ios).
+Photo Sharing Sample is a demonstration of building an iOS social networking App using the [Amplify Libraries](https://docs.amplify.aws/lib/q/platform/ios) (Developer Preview).
+
+**WARNING ⚠️: Amplify's Developer Preview is subject to possible future API changes, and so is the code included in this project. They are not intended for use in production.**
 
 ## App features
 
