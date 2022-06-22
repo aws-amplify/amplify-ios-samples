@@ -12,6 +12,7 @@ import AWSCognitoAuthPlugin
 import AWSDataStorePlugin
 import AWSAPIPlugin
 import AWSS3StoragePlugin
+import AWSPinpointAnalyticsPlugin
 
 @main
 struct PhotoSharingApp: App {
@@ -48,6 +49,7 @@ func configureAmplify() {
         try Amplify.add(plugin: AWSDataStorePlugin(modelRegistration: AmplifyModels()))
         try Amplify.add(plugin: AWSAPIPlugin())
         try Amplify.add(plugin: AWSS3StoragePlugin())
+        try Amplify.add(plugin: AWSPinpointAnalyticsPlugin())
         try Amplify.configure()
         Amplify.log.info("Successfully initialized Amplify")
     } catch {
