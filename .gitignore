@@ -4,7 +4,7 @@
 #cypress/videos
 #cypress/screenshots
 .vscode
-#yarn-error.log#yarn-error.log
+#yarn-error.log
 Photo-Sharing-Sample/PhotoSharingSample.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 Photo-Sharing-Sample/PhotoSharingSample.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 Photo-Sharing-Sample/PhotoSharingSample.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
