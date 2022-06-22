@@ -157,7 +157,19 @@ amplify codegen models
 
 When finished, a new **AmplifyModels** group is added to your Xcode project.
 
-6. To push your changes to the cloud, execute the following command:
+6. Set up Analytics configuration
+
+```
+amplify add analytics
+```
+Provide the responses listed after each of the following prompts to configure Analytics.
+```
+? Select an Analytics provider `Amazon Pinpoint`
+? Provide your pinpoint resource name: `photoSharingSampleApp`
+? Apps need authorization to send analytics events. Do you want to allow guests and unauthenticated users to send analytics events? (we recommend you allow this when getting started) `Yes`
+```
+
+7. To push your changes to the cloud, execute the following command:
 
 ```
 amplify push
