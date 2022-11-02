@@ -13,19 +13,16 @@ protocol DataStoreService {
     var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> { get }
 
     func configure(_ sessionState: Published<SessionState>.Publisher)
-    func savePost(_ post: Post,
-                  completion: @escaping DataStoreCallback<Post>)
-    func deletePost(_ post: Post,
-                    completion: @escaping DataStoreCallback<Void>)
-    func saveUser(_ user: User,
-                  completion: @escaping DataStoreCallback<User>)
+    func savePost(_ post: Post) async throws -> Post
+    func deletePost(_ post: Post) async throws
+    func saveUser(_ user: User) async throws -> User
     func query<M: Model>(_ model: M.Type,
                          where predicate: QueryPredicate?,
                          sort sortInput: QuerySortInput?,
-                         paginate paginationInput: QueryPaginationInput?,
-                         completion: DataStoreCallback<[M]>)
+                         paginate paginationInput: QueryPaginationInput?) async throws -> [M]
     func query<M: Model>(_ model: M.Type,
-                         byId: String,
-                         completion: DataStoreCallback<M?>)
-    func dataStorePublisher<M: Model>(for model: M.Type) -> AnyPublisher<MutationEvent, DataStoreError>
+                         byId: String) async throws -> M?
+
+    func dataStorePublisher<M: Model>(for model: M.Type)
+    -> AnyPublisher<AmplifyAsyncThrowingSequence<MutationEvent>.Element, Error>
 }

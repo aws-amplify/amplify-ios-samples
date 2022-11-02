@@ -9,6 +9,7 @@ import SwiftUI
 
 extension ImageSelectionView {
 
+    @MainActor
     class ViewModel: ObservableObject {
 
         @Published var presentingView: PresentingView = .imagePicker
@@ -24,15 +25,11 @@ extension ImageSelectionView {
         func didSelectImage(_ image: UIImage?) {
             if let image = image {
                 selectedImage = image
-                DispatchQueue.main.async {
-                    withAnimation(Animation.default) {
-                        self.presentingView = .destinationView
-                    }
+                withAnimation(Animation.default) {
+                    self.presentingView = .destinationView
                 }
             } else {
-                DispatchQueue.main.async {
-                    self.isPresented = false
-                }
+                isPresented = false
             }
         }
     }

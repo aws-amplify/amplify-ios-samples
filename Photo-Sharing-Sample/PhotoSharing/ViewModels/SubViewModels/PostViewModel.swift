@@ -36,29 +36,28 @@ extension PostView {
         /// This function performs `Post` model deletion with `Amplily.DataStore` first and then image removal
         /// with `Amplify.Storage`. The reason of such order is lack of being able to perform two operations
         /// as a transaction, the failure of removing image is acceptable as long as `Post` model is deleted.
-        func deletePost() {
-            // firstly, delete the Post instance from DynamoDB and local database
-            dataStoreService.deletePost(post) {
-                switch $0 {
-                case .success:
-                    // secondly, remove the associated image from S3
-                    do {
-                        try await self.storageService.removeImage(key: self.post.pictureKey)
-                    } catch {
-                        Amplify.log.error(
-                        """
-                        \(#function) Error removing image - \(error.localizedDescription)
-                        """)
-                    }
-                case .failure(let error):
-                    let postDeletionError = PhotoSharingError.model(
-                        "Failed to delete the Post",
-                        "Please try again",
-                        error
-                    )
-                    self.errorTopic.send(postDeletionError)
-                    Amplify.log.error("\(#function) Error deleting post - \(error.localizedDescription)")
-                }
+        func deletePost() async {
+
+            do {
+                // firstly, delete the Post instance from DynamoDB and local database
+                try await dataStoreService.deletePost(post)
+                // secondly, remove the associated image from S3
+                _ = try await storageService.removeImage(key: post.pictureKey)
+            } catch let error as StorageError {
+                Amplify.log.error(
+                """
+                \(#function) Error removing image - \(error.localizedDescription)
+                """)
+            } catch let error as DataStoreError {
+                let postDeletionError = PhotoSharingError.model(
+                    "Failed to delete the Post",
+                    "Please try again",
+                    error
+                )
+                self.errorTopic.send(postDeletionError)
+                Amplify.log.error("\(#function) Error deleting post - \(error.localizedDescription)")
+            } catch {
+
             }
         }
     }
