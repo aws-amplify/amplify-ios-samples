@@ -13,15 +13,13 @@ protocol AuthService {
     var sessionStatePublisher: Published<SessionState>.Publisher { get }
     var authUser: AuthUser? { get }
 
-    func configure()
-    func signIn(username: String, password: String, completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
+    func configure() async
+    func signIn(username: String, password: String) async throws -> AuthStep
     func signUp(username: String,
                 email: String,
-                password: String,
-                completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
+                password: String) async throws -> AuthStep
     func confirmSignUpAndSignIn(username: String,
                                 password: String,
-                                confirmationCode: String,
-                                completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
-    func signOut(completion: @escaping (Result<Void, AuthError>) -> Void)
+                                confirmationCode: String) async throws -> AuthStep
+    func signOut() async throws
 }
