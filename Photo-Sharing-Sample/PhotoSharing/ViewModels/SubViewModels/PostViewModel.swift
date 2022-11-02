@@ -42,19 +42,14 @@ extension PostView {
                 switch $0 {
                 case .success:
                     // secondly, remove the associated image from S3
-                    self.storageService
-                        .removeImage(key: self.post.pictureKey)
-                        .resultPublisher
-                        .sink {
-                            if case let .failure(storageError) = $0 {
-                                Amplify.log.error(
-                                """
-                                \(#function) Error removing image - \(storageError.localizedDescription)
-                                """)
-                            }
-                        }
-                        receiveValue: { _ in }
-                        .store(in: &self.subscribers)
+                    do {
+                        try await self.storageService.removeImage(key: self.post.pictureKey)
+                    } catch {
+                        Amplify.log.error(
+                        """
+                        \(#function) Error removing image - \(error.localizedDescription)
+                        """)
+                    }
                 case .failure(let error):
                     let postDeletionError = PhotoSharingError.model(
                         "Failed to delete the Post",

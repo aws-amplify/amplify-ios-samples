@@ -45,50 +45,57 @@ extension PostEditorView {
                                postedBy: user)
             let pictureKey = "\(user.username)Image\(newPost.id)"
             newPost.pictureKey = pictureKey
-
+            let newPostImmutable = newPost
             guard let pngData = selectedImage?.pngFlattened(isOpaque: true) else {
                 return
             }
-
-            let storageOperation = storageService.uploadImage(key: "\(newPost.pictureKey)",
-                                                                   pngData)
-            storageOperation.progressPublisher.sink { progress in
-                DispatchQueue.main.async {
-                    self.progress = progress
-                }
-                print(progress as Progress)
-            }
-            .store(in: &subscribers)
-
-            storageOperation.resultPublisher.sink {
-                if case let .failure(storageError) = $0 {
-                    DispatchQueue.main.async {
-                        self.photoSharingError = storageError
-                        self.hasError = true
+            Task {
+                do {
+                    let storageOperation = try await storageService.uploadImage(
+                        key: "\(newPostImmutable.pictureKey)",
+                        pngData)
+                    storageOperation.inProcessPublisher.sink { progress in
+                        self.progress = progress
+                        print(progress as Progress)
                     }
-                    Amplify.log.error(
-                        "Error uploading selected image - \(storageError.localizedDescription)"
-                    )
-                    return
-                }
-                self.dataStoreService.savePost(newPost) {
-                    switch $0 {
-                    case .success:
-                        DispatchQueue.main.async {
-                            self.progress = nil
-                            self.shouldDismissView = true
+                    .store(in: &subscribers)
+
+                    storageOperation.resultPublisher.sink {
+                        if case let .failure(storageError) = $0 {
+                            DispatchQueue.main.async {
+                                self.photoSharingError = storageError
+                                self.hasError = true
+                            }
+                            Amplify.log.error(
+                                "Error uploading selected image - \(storageError.localizedDescription)"
+                            )
+                            return
                         }
-                    case .failure(let dataStoreError):
-                        DispatchQueue.main.async {
-                            self.photoSharingError = dataStoreError
-                            self.hasError = true
+                        self.dataStoreService.savePost(newPostImmutable) {
+                            switch $0 {
+                            case .success:
+                                DispatchQueue.main.async {
+                                    self.progress = nil
+                                    self.shouldDismissView = true
+                                }
+                            case .failure(let dataStoreError):
+                                DispatchQueue.main.async {
+                                    self.photoSharingError = dataStoreError
+                                    self.hasError = true
+                                }
+                            }
                         }
                     }
+                    receiveValue: { _ in }
+                    .store(in: &subscribers)
+                } catch {
+
                 }
             }
-            receiveValue: { _ in }
-            .store(in: &subscribers)
+
+
         }
+
     }
 
     enum CurrentPage {
