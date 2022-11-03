@@ -22,14 +22,14 @@ extension UserProfileBarView {
         }
 
         func signOut() {
-            authService?.signOut {
-                switch $0 {
-                case .success:
-                    return
-                case .failure(let error):
+            Task {
+                do {
+                    try await authService?.signOut()
+                } catch let error as AmplifyError {
                     self.errorTopic.send(error)
                 }
             }
+
         }
     }
 }

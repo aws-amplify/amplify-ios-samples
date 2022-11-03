@@ -11,126 +11,117 @@ import SwiftUI
 import Combine
 
 class AmplifyAuthService: AuthService {
-
+    
     @Published private(set) var sessionState: SessionState = .signedOut
     var sessionStatePublisher: Published<SessionState>.Publisher { $sessionState }
     var authUser: AuthUser?
     var subscribers = Set<AnyCancellable>()
-
+    
     init() {}
-
-    func configure() {
-        fetchAuthSession()
+    
+    func configure() async {
+        await fetchAuthSession()
     }
-
-    private func fetchAuthSession() {
-        Amplify.Auth.fetchAuthSession { result in
-            switch result {
-            case .success(let session):
-                if let session = session as? AWSAuthCognitoSession {
-                    let cognitoTokensResult = session.getCognitoTokens()
-                    switch cognitoTokensResult {
-                    case .success:
-                        break
-                    case .failure(let error):
-                        self.authUser = nil
-                        self.sessionState = .signedOut
-                        self.observeAuthEvents()
-                        Amplify.log.error("\(error.localizedDescription)")
-                        return
-                    }
+    
+    private func fetchAuthSession() async {
+        do {
+            let result = try await Amplify.Auth.fetchAuthSession()
+            if let session = result as? AWSAuthCognitoSession {
+                let cognitoTokensResult = session.getCognitoTokens()
+                switch cognitoTokensResult {
+                case .success:
+                    break
+                case .failure(let error):
+                    self.authUser = nil
+                    self.sessionState = .signedOut
+                    self.observeAuthEvents()
+                    Amplify.log.error("\(error.localizedDescription)")
+                    return
                 }
-
-                self.updateCurrentUser()
-                self.observeAuthEvents()
-            case .failure:
-                self.authUser = nil
-                self.sessionState = .signedOut
             }
+            await self.updateCurrentUser()
+            self.observeAuthEvents()
+        } catch {
+            self.authUser = nil
+            self.sessionState = .signedOut
         }
     }
-
-    func signIn(username: String, password: String, completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
-        _ = Amplify.Auth.signIn(username: username, password: password) { result in
-            switch result {
-            case .success(let result):
-                self.updateCurrentUser()
-                completion(.success(result.nextStep.authStep))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
+    
+    func signIn(username: String, password: String) async throws -> AuthStep {
+        let result = try await Amplify.Auth.signIn(username: username, password: password)
+        await self.updateCurrentUser()
+        return result.nextStep.authStep
     }
-
+    
     func signUp(username: String,
-                email: String,
                 password: String,
-                completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
+                email: String
+    ) async throws -> AuthStep {
         let emailAttribute = AuthUserAttribute(.email, value: email)
         let options = AuthSignUpRequest.Options(userAttributes: [emailAttribute])
-        _ = Amplify.Auth.signUp(username: username, password: password, options: options) { result in
-            switch result {
-            case .success(let result):
-                completion(.success(result.nextStep.authStep))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
+        let result = try await Amplify.Auth.signUp(username: username,
+                                                   password: password,
+                                                   options: options)
+        return result.nextStep.authStep
     }
-
+    
     func confirmSignUpAndSignIn(username: String,
                                 password: String,
-                                confirmationCode: String,
-                                completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
-        _ = Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode) { result in
-            switch result {
-            case .success(let result):
-                if password.isEmpty {
-                    completion(.success(.signIn))
-                } else if result.isSignupComplete {
-                    self.signIn(username: username, password: password, completion: completion)
-                } else {
-                    completion(.success(.signIn))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
+                                confirmationCode: String) async throws -> AuthStep {
+        let result = try await Amplify.Auth.confirmSignUp(
+            for: username,
+            confirmationCode: confirmationCode)
+        if password.isEmpty {
+            return .signIn
+        } else if result.isSignUpComplete {
+            return try await self.signIn(username: username, password: password)
+        } else {
+            return .signIn
         }
+        
     }
-
-    func signOut(completion: @escaping (Result<Void, AuthError>) -> Void) {
-        _ = Amplify.Auth.signOut { result in
-            switch result {
-            case .success:
-                self.authUser = nil
-                self.sessionState = .signedOut
-                completion(.successfulVoid)
-            case .failure(let error):
-                completion(.failure(error))
-            }
+    
+    func signOut() async throws  {
+        let result = await Amplify.Auth.signOut()
+        guard let signOutResult = result as? AWSCognitoSignOutResult
+        else {
+            print("Signout failed")
+            return
         }
+        
+        switch signOutResult {
+        case .failed(let error):
+            throw error
+        default:
+            self.authUser = nil
+            self.sessionState = .signedOut
+        }
+        
     }
-
+    
     func observeAuthEvents() {
         Amplify.Hub.publisher(for: .auth)
             .sink { payload in
                 switch payload.eventName {
                 case HubPayload.EventName.Auth.sessionExpired:
-                    self.fetchAuthSession()
+                    Task {
+                        await self.fetchAuthSession()
+                    }
                 default:
                     break
                 }
             }
             .store(in: &subscribers)
     }
-
-    private func updateCurrentUser() {
-        guard let user = Amplify.Auth.getCurrentUser() else {
+    
+    private func updateCurrentUser() async {
+        do {
+            let user = try await Amplify.Auth.getCurrentUser()
+            authUser = user
+            sessionState = .signedIn(user)
+        } catch {
             authUser = nil
             sessionState = .signedOut
-            return
         }
-        authUser = user
-        sessionState = .signedIn(user)
     }
 }
