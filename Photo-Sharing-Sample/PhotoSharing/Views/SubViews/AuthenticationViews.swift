@@ -21,11 +21,16 @@ struct AuthErrorView: View {
 struct LoadingButton: View {
     let title: String
     let isLoading: Bool
-    let action: () -> Void
+    let action: () async -> Void
 
     var body: some View {
         ZStack {
-            Button(action: action) {
+            Button(action: {
+                Task {
+                    action
+                }
+            })
+            {
                 HStack {
                     Spacer()
                     Text(title)
