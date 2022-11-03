@@ -54,8 +54,9 @@ class AmplifyAuthService: AuthService {
     }
     
     func signUp(username: String,
-                email: String,
-                password: String) async throws -> AuthStep {
+                password: String,
+                email: String
+    ) async throws -> AuthStep {
         let emailAttribute = AuthUserAttribute(.email, value: email)
         let options = AuthSignUpRequest.Options(userAttributes: [emailAttribute])
         let result = try await Amplify.Auth.signUp(username: username,

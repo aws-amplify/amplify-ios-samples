@@ -16,8 +16,8 @@ protocol AuthService {
     func configure() async
     func signIn(username: String, password: String) async throws -> AuthStep
     func signUp(username: String,
-                email: String,
-                password: String) async throws -> AuthStep
+                password: String,
+                email: String) async throws -> AuthStep
     func confirmSignUpAndSignIn(username: String,
                                 password: String,
                                 confirmationCode: String) async throws -> AuthStep
