@@ -12,24 +12,36 @@ import SwiftUI
 extension SignInView {
 
     class ViewModel: AuthenticationViewModel {
-        func signIn() {
+        func signIn() async {
             startLoading()
-            authService.signIn(username: user.username,
-                                    password: user.password,
-                                    completion: authCompletionHandler)
+            do {
+                let nextStep = try await authService.signIn(
+                    username: user.username,
+                    password: user.password
+                )
+                handleNextStep(nextStepResult: nextStep)
+            } catch {
+                handleError(error: error)
+            }
         }
     }
 }
 
 extension SignUpView {
-
+    
     class ViewModel: AuthenticationViewModel {
-        func signUp() {
+        func signUp() async {
             startLoading()
-            authService.signUp(username: user.username,
-                               email: user.email,
-                               password: user.password,
-                               completion: authCompletionHandler)
+            do {
+                let nextStep = try await authService.signUp(
+                    username: user.username,
+                    password: user.password,
+                    email: user.email
+                )
+                handleNextStep(nextStepResult: nextStep)
+            } catch {
+                handleError(error: error)
+            }
         }
     }
 }
@@ -37,12 +49,18 @@ extension SignUpView {
 extension ConfirmSignUpView {
 
     class ViewModel: AuthenticationViewModel {
-        func confirmSignUp() {
+        func confirmSignUp() async {
             startLoading()
-            authService.confirmSignUpAndSignIn(username: user.username,
-                                               password: user.password,
-                                               confirmationCode: confirmationCode,
-                                               completion: authCompletionHandler)
+            do {
+                let nextStep = try await authService.confirmSignUpAndSignIn(
+                    username: user.username,
+                    password: user.password,
+                    confirmationCode: confirmationCode
+                )
+                handleNextStep(nextStepResult: nextStep)
+            } catch {
+                handleError(error: error)
+            }
         }
     }
 }
@@ -72,16 +90,16 @@ class AuthenticationViewModel: ObservableObject {
         error = nil
     }
 
-    func authCompletionHandler(_ result: Result<AuthStep, AuthError>) {
-        DispatchQueue.main.async {
-            self.isLoading = false
-            switch result {
-            case .success(let nextStep):
-                self.nextState = nextStep
-            case .failure(let error):
-                Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
-                self.error = error
-            }
+    func handleNextStep(nextStepResult: AuthStep) {
+        nextState = nextStepResult
+    }
+
+    func handleError(error: Error) {
+        if let authError = error as? AuthError {
+            Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
+            self.error = authError
+        } else {
+            Amplify.log.error("\(#function) Received unknown error: \(error.localizedDescription)")
         }
     }
 }
