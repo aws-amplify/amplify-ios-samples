@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/aws-amplify/amplify-ios",
       "state" : {
-        "revision" : "41d467dfa96a5025177dc5c9a08e4f89913c5473",
-        "version" : "2.0.1"
+        "branch" : "royjit.storageapichange",
+        "revision" : "b2696aafad0b995fa08b71d9b6c9eb678db9d648"
       }
     },
     {

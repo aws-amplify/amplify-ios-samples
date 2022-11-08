@@ -36,7 +36,7 @@ extension PostEditorView {
             }
         }
 
-        func createNewPost(postBody: String) {
+        func createNewPost(postBody: String) async {
             guard let user = dataStoreService.user else { return }
 
             var newPost = Post(postBody: postBody,
@@ -49,48 +49,44 @@ extension PostEditorView {
             guard let pngData = selectedImage?.pngFlattened(isOpaque: true) else {
                 return
             }
+
+            let storageTask = storageService.uploadImage(
+                key: "\(newPostImmutable.pictureKey)",
+                pngData)
             Task {
-                do {
-                    let storageOperation = try await storageService.uploadImage(
-                        key: "\(newPostImmutable.pictureKey)",
-                        pngData)
-                    storageOperation.inProcessPublisher.sink { progress in
-                        self.progress = progress
-                        print(progress as Progress)
-                    }
-                    .store(in: &subscribers)
-
-                    storageOperation.resultPublisher.sink {
-                        if case let .failure(storageError) = $0 {
-                            DispatchQueue.main.async {
-                                self.photoSharingError = storageError
-                                self.hasError = true
-                            }
-                            Amplify.log.error(
-                                "Error uploading selected image - \(storageError.localizedDescription)"
-                            )
-                            return
-                        }
-                        self.dataStoreService.savePost(newPostImmutable) {
-                            switch $0 {
-                            case .success:
-                                DispatchQueue.main.async {
-                                    self.progress = nil
-                                    self.shouldDismissView = true
-                                }
-                            case .failure(let dataStoreError):
-                                DispatchQueue.main.async {
-                                    self.photoSharingError = dataStoreError
-                                    self.hasError = true
-                                }
-                            }
-                        }
-                    }
-                    receiveValue: { _ in }
-                    .store(in: &subscribers)
-                } catch {
-
+                for await storageProgress in await storageTask.progress {
+                    self.progress = storageProgress
+                    print(storageProgress as Progress)
                 }
+            }
+
+            do {
+                _ = try await storageTask.value
+                self.dataStoreService.savePost(newPostImmutable) {
+                    switch $0 {
+                    case .success:
+                        DispatchQueue.main.async {
+                            self.progress = nil
+                            self.shouldDismissView = true
+                        }
+                    case .failure(let dataStoreError):
+                        DispatchQueue.main.async {
+                            self.photoSharingError = dataStoreError
+                            self.hasError = true
+                        }
+                    }
+                }
+
+            } catch let storageError as AmplifyError {
+                self.photoSharingError = storageError
+                self.hasError = true
+                Amplify.log.error(
+                    "Error uploading selected image - \(storageError.localizedDescription)"
+                )
+            } catch {
+                Amplify.log.error(
+                    "Error uploading selected image - \(error.localizedDescription)"
+                )
             }
 
 

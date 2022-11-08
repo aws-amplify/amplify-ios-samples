@@ -10,8 +10,7 @@ import Foundation
 import Combine
 
 protocol StorageService {
-    func uploadImage(key: String,
-                     _ data: Data) async throws -> StorageUploadDataTask
-    func downloadImage(key: String) async throws -> StorageDownloadDataTask
+    func uploadImage(key: String, _ data: Data) -> StorageUploadDataTask
+    func downloadImage(key: String) -> StorageDownloadDataTask
     func removeImage(key: String) async throws -> String
 }

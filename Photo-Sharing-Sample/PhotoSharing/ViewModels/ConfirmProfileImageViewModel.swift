@@ -46,39 +46,36 @@ extension ConfirmProfileImageView {
 
             user.profilePic = "\(user.username)ProfileImage"
 
-            do {
-                let storageTask = try await storageService.uploadImage(key: user.profilePic, pngData)
-                storageTask.inProcessPublisher.sink { progress in
-                    self.progress = progress
-                    print(progress as Progress)
+            let storageTask = storageService.uploadImage(key: user.profilePic, pngData)
+            Task {
+                for await storageProgress in await storageTask.progress {
+                    self.progress = storageProgress
+                    print(storageProgress as Progress)
                 }
-                .store(in: &subscribers)
+            }
 
-                storageTask.resultPublisher.sink {
-                    if case let .failure(storageError) = $0 {
-                        self.photoSharingError = storageError
+            do {
+                _ = try await storageTask.value
+                // This is to remove the old image from local cache. The reason is that the new image is
+                // using the same image key, `KFImage` displays the old image even new image is uploaded to S3
+                ImageCache.default.removeImage(forKey: user.profilePic)
+                self.dataStoreService.saveUser(user) {
+                    switch $0 {
+                    case .success:
+                        self.progress = nil
+                        self.shouldDismissView = true
+                    case .failure(let error):
+                        self.photoSharingError = error
                         self.hasError = true
-                        Amplify.log.error(
-                            "Error uploading selected image - \(storageError.localizedDescription)"
-                        )
-                        return
-                    }
-                    // This is to remove the old image from local cache. The reason is that the new image is
-                    // using the same image key, `KFImage` displays the old image even new image is uploaded to S3
-                    ImageCache.default.removeImage(forKey: user.profilePic)
-                    self.dataStoreService.saveUser(user) {
-                        switch $0 {
-                        case .success:
-                            self.progress = nil
-                            self.shouldDismissView = true
-                        case .failure(let error):
-                            self.photoSharingError = error
-                            self.hasError = true
-                        }
                     }
                 }
-            receiveValue: { _ in }
-                    .store(in: &subscribers)
+
+            } catch let storageError as AmplifyError {
+                self.photoSharingError = storageError
+                self.hasError = true
+                Amplify.log.error(
+                    "Error uploading selected image - \(storageError.localizedDescription)"
+                )
             } catch {
                 Amplify.log.error(
                     "Error uploading selected image - \(error.localizedDescription)"
@@ -86,4 +83,5 @@ extension ConfirmProfileImageView {
             }
         }
     }
+    
 }
