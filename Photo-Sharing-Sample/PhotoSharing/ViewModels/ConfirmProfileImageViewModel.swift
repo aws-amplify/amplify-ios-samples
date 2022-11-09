@@ -38,52 +38,50 @@ extension ConfirmProfileImageView {
             }
         }
 
-        func updateProfileImage() {
+        func updateProfileImage() async {
             guard var user = dataStoreService.user else { return }
             guard let pngData = selectedImage?.pngFlattened(isOpaque: true) else {
                 return
             }
 
             user.profilePic = "\(user.username)ProfileImage"
-            let storageOperation = storageService.uploadImage(key: user.profilePic, pngData)
 
-            storageOperation.progressPublisher.sink { progress in
-                DispatchQueue.main.async {
-                    self.progress = progress
+            let storageTask = storageService.uploadImage(key: user.profilePic, pngData)
+            Task {
+                for await storageProgress in await storageTask.progress {
+                    self.progress = storageProgress
+                    print(storageProgress as Progress)
                 }
-                print(progress as Progress)
             }
-            .store(in: &subscribers)
 
-            storageOperation.resultPublisher.sink {
-                if case let .failure(storageError) = $0 {
-                    DispatchQueue.main.async {
-                        self.photoSharingError = storageError
-                        self.hasError = true
-                    }
-                    Amplify.log.error(
-                        "Error uploading selected image - \(storageError.localizedDescription)"
-                    )
-                    return
-                }
+            do {
+                _ = try await storageTask.value
                 // This is to remove the old image from local cache. The reason is that the new image is
                 // using the same image key, `KFImage` displays the old image even new image is uploaded to S3
                 ImageCache.default.removeImage(forKey: user.profilePic)
                 self.dataStoreService.saveUser(user) {
                     switch $0 {
                     case .success:
-                        DispatchQueue.main.async {
-                            self.progress = nil
-                            self.shouldDismissView = true
-                        }
+                        self.progress = nil
+                        self.shouldDismissView = true
                     case .failure(let error):
                         self.photoSharingError = error
                         self.hasError = true
                     }
                 }
+
+            } catch let storageError as AmplifyError {
+                self.photoSharingError = storageError
+                self.hasError = true
+                Amplify.log.error(
+                    "Error uploading selected image - \(storageError.localizedDescription)"
+                )
+            } catch {
+                Amplify.log.error(
+                    "Error uploading selected image - \(error.localizedDescription)"
+                )
             }
-            receiveValue: { _ in }
-            .store(in: &subscribers)
         }
     }
+    
 }

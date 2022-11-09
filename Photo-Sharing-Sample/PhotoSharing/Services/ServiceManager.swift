@@ -15,7 +15,7 @@ protocol ServiceManager {
     var dataStoreService: DataStoreService { get }
     var storageService: StorageService { get }
     var errorTopic: PassthroughSubject<AmplifyError, Never> { get }
-    func configure()
+    func configure() async
 }
 
 class AppServiceManager: ServiceManager {
@@ -29,8 +29,8 @@ class AppServiceManager: ServiceManager {
     let storageService: StorageService = AmplifyStorageService()
     let errorTopic = PassthroughSubject<AmplifyError, Never>()
 
-    func configure() {
-        authService.configure()
+    func configure() async {
+        await authService.configure()
         dataStoreService.configure(authService.sessionStatePublisher)
     }
 }
