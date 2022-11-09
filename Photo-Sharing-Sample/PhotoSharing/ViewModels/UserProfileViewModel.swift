@@ -24,11 +24,9 @@ extension UserProfileView {
         private var subscribers = Set<AnyCancellable>()
 
         var dataStoreService: DataStoreService
-        var storageService: StorageService
 
         init(manager: ServiceManager = AppServiceManager.shared) {
             self.dataStoreService = manager.dataStoreService
-            self.storageService = manager.storageService
             dataStoreService.eventsPublisher
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: onReceiveCompletion(completion:),
