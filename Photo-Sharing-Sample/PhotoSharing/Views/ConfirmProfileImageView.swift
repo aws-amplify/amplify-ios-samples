@@ -36,7 +36,10 @@ struct ConfirmProfileImageView: View {
                     .disabled(updateButtonDisabled)
                     .onTapGesture {
                         updateButtonDisabled = true
-                        viewModel.updateProfileImage()
+                        Task {
+                           await viewModel.updateProfileImage()
+                        }
+
                     }
                     .padding()
             }
