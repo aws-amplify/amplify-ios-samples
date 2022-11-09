@@ -59,7 +59,7 @@ extension ConfirmProfileImageView {
                 // This is to remove the old image from local cache. The reason is that the new image is
                 // using the same image key, `KFImage` displays the old image even new image is uploaded to S3
                 ImageCache.default.removeImage(forKey: user.profilePic)
-                let savedUser = try await dataStoreService.saveUser(user)
+                _ = try await dataStoreService.saveUser(user)
                 progress = nil
                 shouldDismissView = true
 
