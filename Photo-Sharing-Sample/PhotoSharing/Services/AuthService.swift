@@ -13,7 +13,7 @@ protocol AuthService {
     var sessionStatePublisher: Published<SessionState>.Publisher { get }
     var authUser: AuthUser? { get }
 
-    func configure() async
+    func configure()
     func signIn(username: String, password: String) async throws -> AuthStep
     func signUp(username: String,
                 password: String,

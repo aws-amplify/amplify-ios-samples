@@ -32,8 +32,10 @@ struct PostsListingView: View {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(lineWidth: 2))
                     .onTapGesture {
-                        viewModel.fetchMyPosts(page: pageNumber)
-                        pageNumber += 1
+                        Task {
+                            await viewModel.fetchMyPosts(page: pageNumber)
+                            pageNumber += 1
+                        }
                     }
             }
         }

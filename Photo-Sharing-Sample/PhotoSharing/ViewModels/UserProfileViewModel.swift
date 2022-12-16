@@ -32,6 +32,7 @@ extension UserProfileView {
                 .sink(receiveCompletion: onReceiveCompletion(completion:),
                       receiveValue: onReceive(event:))
                 .store(in: &subscribers)
+
             manager.errorTopic
                 .receive(on: DispatchQueue.main)
                 .sink { error in
@@ -43,43 +44,48 @@ extension UserProfileView {
 
         private func onReceiveCompletion(completion: Subscribers.Completion<DataStoreError>) {
             if case let .failure(error) = completion {
-                DispatchQueue.main.async {
-                    self.photoSharingError = PhotoSharingError.model(
-                        "Failed to create a User",
-                        "Please sign in again",
-                        error
-                    )
-                    self.hasError = true
-                }
+                self.photoSharingError = PhotoSharingError.model(
+                    "Failed to create a User",
+                    "Please sign in again",
+                    error
+                )
+                self.hasError = true
             }
         }
 
         private func onReceive(event: DataStoreServiceEvent) {
             switch event {
             case .userSynced:
-                DispatchQueue.main.async {
-                    self.user = self.dataStoreService.user
-                }
+                user = dataStoreService.user
                 tryLoadPosts()
+
             case .postSynced:
                 dataStorePublisher?.cancel()
-                getNumberOfMyPosts()
-                fetchMyPosts(page: 0)
+
+                Task {
+                    await getNumberOfMyPosts()
+                    await fetchMyPosts(page: 0)
+                }
+
                 isPostSynced = true
             case .postCreated(let newPost):
-                DispatchQueue.main.async {
-                    self.loadedPosts.insert(newPost, at: 0)
+                loadedPosts.insert(newPost, at: 0)
+                Task {
+                    await getNumberOfMyPosts()
                 }
-                getNumberOfMyPosts()
+
             case .postDeleted(let post):
                 removePost(post)
-                getNumberOfMyPosts()
+                Task {
+                    await getNumberOfMyPosts()
+                }
+
             default:
                 break
             }
         }
 
-        func fetchMyPosts(page: Int) {
+        func fetchMyPosts(page: Int) async {
             guard user != nil else {
                 return
             }
@@ -87,61 +93,57 @@ extension UserProfileView {
             let predicateInput = Post.keys.postedBy == user?.id
             let sortInput = QuerySortInput.descending(Post.keys.createdAt)
             let paginationInput = QueryPaginationInput.page(UInt(page), limit: 10)
-            dataStoreService.query(Post.self,
-                                   where: predicateInput,
-                                   sort: sortInput,
-                                   paginate: paginationInput) {
-                switch $0 {
-                case .success(let posts):
-                    DispatchQueue.main.async {
-                        if page != 0 {
-                            self.loadedPosts.append(contentsOf: posts)
-                        } else {
-                            self.loadedPosts = posts
-                        }
+            do {
+                let posts = try await dataStoreService.query(Post.self,
+                                                             where: predicateInput,
+                                                             sort: sortInput,
+                                                             paginate: paginationInput)
+                await MainActor.run {
+                    if page != 0 {
+                        loadedPosts.append(contentsOf: posts)
+                    } else {
+
+                        loadedPosts = posts
                     }
-                    return
-                case .failure(let error):
-                    Amplify.log.error("\(#function) Error loading posts - \(error.localizedDescription)")
-                    DispatchQueue.main.async {
-                        self.photoSharingError = error
-                        self.hasError = true
-                    }
+
                 }
+            } catch let error as AmplifyError {
+                Amplify.log.error("\(#function) Error loading posts - \(error.localizedDescription)")
+                self.photoSharingError = error
+                self.hasError = true
+            } catch {
+                Amplify.log.error("\(#function) Error loading posts - \(error.localizedDescription)")
             }
         }
 
         private func removePost(_ post: Post) {
-            DispatchQueue.main.async {
-                for index in 0 ..< self.loadedPosts.count {
-                    guard self.loadedPosts[index].id == post.id else {
-                        continue
-                    }
-                    self.loadedPosts.remove(at: index)
-                    break
+            for index in 0 ..< loadedPosts.count {
+                guard loadedPosts[index].id == post.id else {
+                    continue
                 }
+                loadedPosts.remove(at: index)
+                break
             }
         }
 
-        private func getNumberOfMyPosts() {
+        private func getNumberOfMyPosts() async {
             let predicateInput = Post.keys.postedBy == user?.id
-            dataStoreService.query(Post.self,
-                                   where: predicateInput,
-                                   sort: nil,
-                                   paginate: nil) {
-                switch $0 {
-                case .success(let posts):
-                    DispatchQueue.main.async {
-                        self.numberOfMyPosts = posts.count
-                    }
-                case .failure(let error):
-                    Amplify.log.error("\(#function) Error querying number of posts - \(error.localizedDescription)")
-                    DispatchQueue.main.async {
-                        self.photoSharingError = error
-                        self.hasError = true
-                    }
+            do {
+                let posts = try await dataStoreService.query(Post.self,
+                                                             where: predicateInput,
+                                                             sort: nil,
+                                                             paginate: nil)
+                await MainActor.run {
+                    self.numberOfMyPosts = posts.count
                 }
+            } catch let error as AmplifyError {
+                Amplify.log.error("\(#function) Error querying number of posts - \(error.localizedDescription)")
+                self.photoSharingError = error
+                self.hasError = true
+            } catch {
+                Amplify.log.error("\(#function) Error querying number of posts - \(error.localizedDescription)")
             }
+
         }
 
         /// This is called when `dataStoreService` has notified us that the User has been synced.
@@ -163,7 +165,10 @@ extension UserProfileView {
                 return
             }
 
-            fetchMyPosts(page: 0)
+            Task {
+                await fetchMyPosts(page: 0)
+            }
+
             dataStorePublisher = dataStoreService.dataStorePublisher(for: Post.self)
                 .receive(on: DispatchQueue.main)
                 .collect(.byTimeOrCount(DispatchQueue.main, 3.0, 10))
@@ -173,7 +178,10 @@ extension UserProfileView {
                     }
                 }
                 receiveValue: { [weak self] _ in
-                    self?.fetchMyPosts(page: 0)
+                    guard let self = self else {return}
+                    Task {
+                        await self.fetchMyPosts(page: 0)
+                    }
                 }
         }
 

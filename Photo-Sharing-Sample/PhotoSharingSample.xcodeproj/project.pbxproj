@@ -702,7 +702,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
 			requirement = {
-				branch = royjit.storageapichange;
+				branch = main;
 				kind = branch;
 			};
 		};
