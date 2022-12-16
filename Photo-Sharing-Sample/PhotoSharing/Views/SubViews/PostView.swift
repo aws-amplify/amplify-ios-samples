@@ -42,7 +42,9 @@ struct PostView: View {
                                     message: Text("Choose from following"),
                                     buttons: [
                                         .default(Text("Delete")) {
-                                            self.viewModel.deletePost()
+                                            Task {
+                                                await self.viewModel.deletePost()
+                                            }
                                         },
                                         .cancel()
                                     ]
