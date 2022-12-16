@@ -27,7 +27,7 @@ struct LoadingButton: View {
         ZStack {
             Button(action: {
                 Task {
-                    action
+                   await action()
                 }
             })
             {

@@ -11,6 +11,7 @@ import Combine
 
 extension PostEditorView {
 
+    @MainActor
     class ViewModel: ObservableObject {
         @Published var selectedImage: UIImage?
         @Published var progress: Progress?
@@ -62,20 +63,9 @@ extension PostEditorView {
 
             do {
                 _ = try await storageTask.value
-                self.dataStoreService.savePost(newPostImmutable) {
-                    switch $0 {
-                    case .success:
-                        DispatchQueue.main.async {
-                            self.progress = nil
-                            self.shouldDismissView = true
-                        }
-                    case .failure(let dataStoreError):
-                        DispatchQueue.main.async {
-                            self.photoSharingError = dataStoreError
-                            self.hasError = true
-                        }
-                    }
-                }
+                _ = try await dataStoreService.savePost(newPostImmutable)
+                progress = nil
+                shouldDismissView = true
 
             } catch let storageError as AmplifyError {
                 self.photoSharingError = storageError

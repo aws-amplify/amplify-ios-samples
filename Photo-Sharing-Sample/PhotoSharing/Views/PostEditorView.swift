@@ -43,7 +43,9 @@ struct PostEditorView: View {
                             return
                         }
                         shareButtonDisabled = true
-                        viewModel.createNewPost(postBody: postBody)
+                        Task {
+                          await viewModel.createNewPost(postBody: postBody)
+                        }
                     }
             }
             if let progress = viewModel.progress {

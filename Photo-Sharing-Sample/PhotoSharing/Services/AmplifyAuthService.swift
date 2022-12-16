@@ -11,18 +11,20 @@ import SwiftUI
 import Combine
 
 class AmplifyAuthService: AuthService {
-    
+
     @Published private(set) var sessionState: SessionState = .signedOut
     var sessionStatePublisher: Published<SessionState>.Publisher { $sessionState }
     var authUser: AuthUser?
     var subscribers = Set<AnyCancellable>()
-    
+
     init() {}
-    
-    func configure() async {
-        await fetchAuthSession()
+
+    func configure() {
+        Task {
+            await fetchAuthSession()
+        }
     }
-    
+
     private func fetchAuthSession() async {
         do {
             let result = try await Amplify.Auth.fetchAuthSession()
@@ -32,27 +34,27 @@ class AmplifyAuthService: AuthService {
                 case .success:
                     break
                 case .failure(let error):
-                    self.authUser = nil
-                    self.sessionState = .signedOut
-                    self.observeAuthEvents()
+                    authUser = nil
+                    sessionState = .signedOut
+                    observeAuthEvents()
                     Amplify.log.error("\(error.localizedDescription)")
                     return
                 }
             }
-            await self.updateCurrentUser()
-            self.observeAuthEvents()
+            await updateCurrentUser()
+            observeAuthEvents()
         } catch {
-            self.authUser = nil
-            self.sessionState = .signedOut
+            authUser = nil
+            sessionState = .signedOut
         }
     }
-    
+
     func signIn(username: String, password: String) async throws -> AuthStep {
         let result = try await Amplify.Auth.signIn(username: username, password: password)
-        await self.updateCurrentUser()
+        await updateCurrentUser()
         return result.nextStep.authStep
     }
-    
+
     func signUp(username: String,
                 password: String,
                 email: String
@@ -64,7 +66,7 @@ class AmplifyAuthService: AuthService {
                                                    options: options)
         return result.nextStep.authStep
     }
-    
+
     func confirmSignUpAndSignIn(username: String,
                                 password: String,
                                 confirmationCode: String) async throws -> AuthStep {
@@ -74,31 +76,30 @@ class AmplifyAuthService: AuthService {
         if password.isEmpty {
             return .signIn
         } else if result.isSignUpComplete {
-            return try await self.signIn(username: username, password: password)
+            return try await signIn(username: username, password: password)
         } else {
             return .signIn
         }
-        
+
     }
-    
-    func signOut() async throws  {
+
+    func signOut() async throws {
         let result = await Amplify.Auth.signOut()
         guard let signOutResult = result as? AWSCognitoSignOutResult
         else {
             print("Signout failed")
             return
         }
-        
+
         switch signOutResult {
         case .failed(let error):
             throw error
         default:
-            self.authUser = nil
-            self.sessionState = .signedOut
+            authUser = nil
+            sessionState = .signedOut
         }
-        
     }
-    
+
     func observeAuthEvents() {
         Amplify.Hub.publisher(for: .auth)
             .sink { payload in
@@ -113,7 +114,7 @@ class AmplifyAuthService: AuthService {
             }
             .store(in: &subscribers)
     }
-    
+
     private func updateCurrentUser() async {
         do {
             let user = try await Amplify.Auth.getCurrentUser()

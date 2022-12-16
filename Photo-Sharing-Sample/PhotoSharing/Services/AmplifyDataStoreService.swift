@@ -30,67 +30,53 @@ class AmplifyDataStoreService: DataStoreService {
         listen(to: sessionState)
     }
 
-    func savePost(_ post: Post,
-                  completion: @escaping DataStoreCallback<Post>) {
-        Amplify.DataStore.save(post) {
-            if case .success = $0 {
-                self.dataStoreServiceEventsTopic.send(.postCreated(post))
-            }
-            completion($0)
-        }
+    func savePost(_ post: Post) async throws -> Post {
+        let savedPost = try await Amplify.DataStore.save(post)
+        dataStoreServiceEventsTopic.send(.postCreated(savedPost))
+        return savedPost
     }
 
-    func saveUser(_ user: User,
-                  completion: @escaping DataStoreCallback<User>) {
-        Amplify.DataStore.save(user) {
-            if case .success = $0 {
-                self.dataStoreServiceEventsTopic.send(.userUpdated(user))
-            }
-            completion($0)
-        }
+    func saveUser(_ user: User) async throws -> User {
+        let savedUser = try await Amplify.DataStore.save(user)
+        dataStoreServiceEventsTopic.send(.userUpdated(savedUser))
+        return savedUser
     }
 
     func query<M: Model>(_ model: M.Type,
                          where predicate: QueryPredicate? = nil,
                          sort sortInput: QuerySortInput? = nil,
-                         paginate paginationInput: QueryPaginationInput? = nil,
-                         completion: DataStoreCallback<[M]>) {
-        Amplify.DataStore.query(model,
-                                where: predicate,
-                                sort: sortInput,
-                                paginate: paginationInput) {
-            completion($0)
-        }
+                         paginate paginationInput: QueryPaginationInput?) async throws -> [M] {
+        return try await Amplify.DataStore.query(model,
+                                                 where: predicate,
+                                                 sort: sortInput,
+                                                 paginate: paginationInput)
     }
 
     func query<M: Model>(_ model: M.Type,
-                         byId id: String,
-                         completion: DataStoreCallback<M?>) {
-        Amplify.DataStore.query(model, byId: id) {
-            completion($0)
-        }
+                         byId id: String) async throws -> M? {
+        return try await Amplify.DataStore.query(model, byId: id)
     }
 
-    func deletePost(_ post: Post,
-                    completion: @escaping DataStoreCallback<Void>) {
-        Amplify.DataStore.delete(post) {
-            if case .success = $0 {
-                self.dataStoreServiceEventsTopic.send(.postDeleted(post))
-            }
-            completion($0)
-        }
+    func deletePost(_ post: Post) async throws {
+        try await Amplify.DataStore.delete(post)
+        dataStoreServiceEventsTopic.send(.postDeleted(post))
     }
 
-    func dataStorePublisher<M: Model>(for model: M.Type) -> AnyPublisher<MutationEvent, DataStoreError> {
-        Amplify.DataStore.publisher(for: model)
+    func dataStorePublisher<M: Model>(for model: M.Type)
+    -> AnyPublisher<AmplifyAsyncThrowingSequence<MutationEvent>.Element, Error> {
+        Amplify.Publisher.create(Amplify.DataStore.observe(model))
     }
 
     private func start() {
-        Amplify.DataStore.start { _ in }
+        Task {
+            try await Amplify.DataStore.start()
+        }
     }
 
     private func clear() {
-        Amplify.DataStore.clear { _ in }
+        Task {
+            try await Amplify.DataStore.clear()
+        }
     }
 }
 
@@ -133,7 +119,9 @@ extension AmplifyDataStoreService {
             }
             switch modelSyncedEvent.modelName {
             case User.modelName:
-                getUser()
+                Task {
+                    await getUser()
+                }
             case Post.modelName:
                 dataStoreServiceEventsTopic.send(.postSynced)
             default:
@@ -144,27 +132,25 @@ extension AmplifyDataStoreService {
         }
     }
 
-    private func getUser() {
+    private func getUser() async {
         guard let userId = authUser?.userId else {
             return
         }
 
-        query(User.self, byId: userId) {
-            switch $0 {
-            case .success(let user):
-                guard let user = user else {
-                    self.createUser()
-                    return
-                }
-                self.user = user
-                self.dataStoreServiceEventsTopic.send(.userSynced(user))
-            case .failure(let error):
-                Amplify.log.error("Error querying User - \(error.localizedDescription)")
+        do {
+            let user = try await query(User.self, byId: userId)
+            guard let user = user else {
+                await createUser()
+                return
             }
+            self.user = user
+            dataStoreServiceEventsTopic.send(.userSynced(user))
+        } catch {
+            Amplify.log.error("Error querying User - \(error.localizedDescription)")
         }
     }
 
-    private func createUser() {
+    private func createUser() async {
         guard let authUser = self.authUser else {
             return
         }
@@ -172,16 +158,17 @@ extension AmplifyDataStoreService {
         let user = User(id: "\(authUser.userId)",
                         username: authUser.username,
                         profilePic: "emptyUserPic")
-        saveUser(user) {
-            switch $0 {
-            case .success:
-                self.user = user
-                self.dataStoreServiceEventsTopic.send(.userSynced(user))
-                Amplify.log.debug("Successfully creating User for \(authUser.username)")
-            case .failure(let error):
-                self.dataStoreServiceEventsTopic.send(completion: .failure(error))
-                Amplify.log.error("Error creating User for \(authUser.username) - \(error.localizedDescription)")
-            }
+        do {
+            let savedUser = try await saveUser(user)
+            self.user = user
+            dataStoreServiceEventsTopic.send(.userSynced(user))
+            Amplify.log.debug("Successfully creating User for \(authUser.username)")
+        } catch let dataStoreError as DataStoreError {
+            self.dataStoreServiceEventsTopic.send(completion: .failure(dataStoreError))
+            Amplify.log.error("Error creating User for \(authUser.username) - \(dataStoreError.localizedDescription)")
+        } catch {
+            Amplify.log.error("Error creating User for \(authUser.username) - \(error.localizedDescription)")
         }
+
     }
 }

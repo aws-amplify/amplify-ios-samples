@@ -28,7 +28,7 @@ extension SignInView {
 }
 
 extension SignUpView {
-    
+
     class ViewModel: AuthenticationViewModel {
         func signUp() async {
             startLoading()
@@ -65,6 +65,7 @@ extension ConfirmSignUpView {
     }
 }
 
+@MainActor
 class AuthenticationViewModel: ObservableObject {
     class User: ObservableObject {
         @Published var username = ""
@@ -95,6 +96,7 @@ class AuthenticationViewModel: ObservableObject {
     }
 
     func handleError(error: Error) {
+        isLoading = false
         if let authError = error as? AuthError {
             Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
             self.error = authError
