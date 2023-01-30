@@ -20,7 +20,10 @@ struct PhotoSharingApp: App {
 
     init() {
         configureAmplify()
-        AppServiceManager.shared.configure()
+        Task {
+            await AppServiceManager.shared.configure()
+        }
+
     }
 
     var body: some Scene {
@@ -30,6 +33,8 @@ struct PhotoSharingApp: App {
                 UserProfileView()
             case .signedOut:
                 OnBoardingView()
+            case .initializing:
+                OnBoardingView()
             }
         }
     }
@@ -38,7 +43,7 @@ struct PhotoSharingApp: App {
 func configureAmplify() {
 
     #if DEBUG
-    Amplify.Logging.logLevel = .debug
+    Amplify.Logging.logLevel = .verbose
     #endif
 
     do {
