@@ -93,6 +93,8 @@ extension AmplifyDataStoreService {
                 case .signedIn(let authUser):
                     self.authUser = authUser
                     self.start()
+                case .initializing:
+                    break
                 }
             }
             .store(in: &subscribers)
