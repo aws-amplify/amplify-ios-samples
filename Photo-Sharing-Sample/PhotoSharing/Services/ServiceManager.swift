@@ -30,7 +30,7 @@ class AppServiceManager: ServiceManager {
     let errorTopic = PassthroughSubject<AmplifyError, Never>()
 
     func configure() async {
-        await authService.configure()
+        authService.configure()
         dataStoreService.configure(authService.sessionStatePublisher)
     }
 }
