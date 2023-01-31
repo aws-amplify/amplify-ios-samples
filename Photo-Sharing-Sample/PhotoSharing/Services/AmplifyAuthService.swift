@@ -12,7 +12,7 @@ import Combine
 
 class AmplifyAuthService: AuthService {
 
-    @Published private(set) var sessionState: SessionState = .signedOut
+    @Published private(set) var sessionState: SessionState = .initializing
     var sessionStatePublisher: Published<SessionState>.Publisher { $sessionState }
     var authUser: AuthUser?
     var subscribers = Set<AnyCancellable>()
