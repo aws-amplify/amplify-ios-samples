@@ -186,8 +186,8 @@ extension UserProfileView {
         }
 
         deinit {
-            self.loadedPosts.removeAll()
-            self.user = nil
+            loadedPosts.removeAll()
+            user = nil
         }
     }
 }
