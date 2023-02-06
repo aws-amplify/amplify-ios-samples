@@ -51,7 +51,18 @@ Before proceeding, please make sure you have followed the [instructions](https:/
 You need to have the following prerequisites to run this project:
 
 * [Xcode 12 or later](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-* [Amplify CLI latest version](https://docs.amplify.aws/cli)
+* [Amplify CLI](https://docs.amplify.aws/cli)
+
+The current tested version of Amplify CLI that is compatible with this app is 10.7.0. To check your Amplify CLI installed version, run:
+```
+> amplify --v
+10.7.0
+```
+
+To install a specific version of Amplify CLI:
+```
+npm i -g @aws-amplify/cli@10.7.0
+```
 
 Once you have the prerequisites installed, go ahead and clone the repository: 
 

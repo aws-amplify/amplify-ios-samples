@@ -1,18 +1,18 @@
 type Post
     @model
-    @auth(rules: [{ allow: owner, operations: [create, delete] }]) {
+    @auth(rules: [{ allow: owner }]) {
     id: ID!
     postBody: String!
     pictureKey: String!
     createdAt: AWSDateTime!
-    postedBy: User! @belongsTo
+    postedBy: User @belongsTo
 }
 
 type User
     @model
-    @auth(rules: [{ allow: owner, operations: [create, delete] }]) {
+    @auth(rules: [{ allow: owner }]) {
     id: ID!
     username: String!
     profilePic: String!
-    posts: [Post] @hasMany(fields: ["id"])
+    posts: [Post] @hasMany
 }
