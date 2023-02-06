@@ -12,8 +12,11 @@ struct UserProfileImageView: View {
 
     @StateObject private var viewModel: ViewModel
 
-    init(profileImageKey: String) {
-        _viewModel = StateObject(wrappedValue: ViewModel(profileImageKey: profileImageKey))
+    private static let emptyUserPicKey = "emptyUserPic"
+
+    init(profileImageKey: String?) {
+        _viewModel = StateObject(wrappedValue: ViewModel(profileImageKey: profileImageKey ??
+                                                         UserProfileImageView.emptyUserPicKey))
     }
 
     var body: some View {

@@ -24,10 +24,10 @@ struct PostView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                UserProfileImageView(profileImageKey: viewModel.post.postedBy.profilePic)
+                UserProfileImageView(profileImageKey: viewModel.post.postedBy?.profilePic)
                     .asCircle(diameter: 36, lineWidth: 1)
                 VStack(alignment: .leading) {
-                    Text(viewModel.post.postedBy.username)
+                    Text(viewModel.post.postedBy?.username ?? "")
                         .font(.system(size: 20))
                         .bold()
                     CreatedAtSinceNowView(createdAt: viewModel.post.createdAt)

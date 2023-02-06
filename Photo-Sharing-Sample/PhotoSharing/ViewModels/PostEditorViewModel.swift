@@ -78,8 +78,6 @@ extension PostEditorView {
                     "Error uploading selected image - \(error.localizedDescription)"
                 )
             }
-
-
         }
 
     }

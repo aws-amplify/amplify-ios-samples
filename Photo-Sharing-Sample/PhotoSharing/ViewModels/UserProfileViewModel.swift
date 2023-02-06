@@ -10,7 +10,7 @@ import Combine
 import Foundation
 
 extension UserProfileView {
-
+    @MainActor
     class ViewModel: ObservableObject {
 
         @Published private(set) var user: User?
@@ -184,10 +184,10 @@ extension UserProfileView {
                     }
                 }
         }
-
-        deinit {
-            self.loadedPosts.removeAll()
-            self.user = nil
-        }
+//
+//        deinit {
+//            loadedPosts.removeAll()
+//            user = nil
+//        }
     }
 }
