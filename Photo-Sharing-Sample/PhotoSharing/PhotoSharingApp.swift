@@ -28,9 +28,7 @@ struct PhotoSharingApp: App {
             switch viewModel.sessionState {
             case .signedIn:
                 UserProfileView()
-            case .signedOut:
-                OnBoardingView()
-            case .initializing:
+            case .signedOut, .initializing:
                 OnBoardingView()
             }
         }
