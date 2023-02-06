@@ -20,10 +20,7 @@ struct PhotoSharingApp: App {
 
     init() {
         configureAmplify()
-        Task {
-            await AppServiceManager.shared.configure()
-        }
-
+        AppServiceManager.shared.configure()
     }
 
     var body: some Scene {

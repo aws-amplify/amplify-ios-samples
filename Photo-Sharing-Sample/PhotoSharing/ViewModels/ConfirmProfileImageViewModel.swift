@@ -12,6 +12,7 @@ import Kingfisher
 
 extension ConfirmProfileImageView {
 
+    @MainActor
     class ViewModel: ObservableObject {
 
         @Published private(set) var selectedImage: UIImage?

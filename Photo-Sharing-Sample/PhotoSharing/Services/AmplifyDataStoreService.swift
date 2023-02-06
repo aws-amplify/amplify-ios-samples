@@ -161,7 +161,7 @@ extension AmplifyDataStoreService {
                         username: authUser.username,
                         profilePic: "emptyUserPic")
         do {
-            let savedUser = try await saveUser(user)
+            _ = try await saveUser(user)
             self.user = user
             dataStoreServiceEventsTopic.send(.userSynced(user))
             Amplify.log.debug("Successfully creating User for \(authUser.username)")
