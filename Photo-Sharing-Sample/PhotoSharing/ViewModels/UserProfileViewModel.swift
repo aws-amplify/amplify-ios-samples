@@ -11,6 +11,7 @@ import Foundation
 
 extension UserProfileView {
 
+    @MainActor
     class ViewModel: ObservableObject {
 
         @Published private(set) var user: User?
@@ -29,8 +30,11 @@ extension UserProfileView {
             self.dataStoreService = manager.dataStoreService
             dataStoreService.eventsPublisher
                 .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: onReceiveCompletion(completion:),
-                      receiveValue: onReceive(event:))
+                .sink(receiveCompletion: { [weak self] completion in
+                    self?.onReceiveCompletion(completion: completion)
+                }, receiveValue: { [weak self] event in
+                    self?.onReceive(event: event)
+                })
                 .store(in: &subscribers)
 
             manager.errorTopic
@@ -98,14 +102,10 @@ extension UserProfileView {
                                                              where: predicateInput,
                                                              sort: sortInput,
                                                              paginate: paginationInput)
-                await MainActor.run {
-                    if page != 0 {
-                        loadedPosts.append(contentsOf: posts)
-                    } else {
-
-                        loadedPosts = posts
-                    }
-
+                if page != 0 {
+                    loadedPosts.append(contentsOf: posts)
+                } else {
+                    loadedPosts = posts
                 }
             } catch let error as AmplifyError {
                 Amplify.log.error("\(#function) Error loading posts - \(error.localizedDescription)")
@@ -133,9 +133,7 @@ extension UserProfileView {
                                                              where: predicateInput,
                                                              sort: nil,
                                                              paginate: nil)
-                await MainActor.run {
-                    self.numberOfMyPosts = posts.count
-                }
+                self.numberOfMyPosts = posts.count
             } catch let error as AmplifyError {
                 Amplify.log.error("\(#function) Error querying number of posts - \(error.localizedDescription)")
                 self.photoSharingError = error
@@ -183,11 +181,6 @@ extension UserProfileView {
                         await self.fetchMyPosts(page: 0)
                     }
                 }
-        }
-
-        deinit {
-            loadedPosts.removeAll()
-            user = nil
         }
     }
 }
