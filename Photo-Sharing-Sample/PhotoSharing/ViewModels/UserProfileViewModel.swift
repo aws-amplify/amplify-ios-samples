@@ -133,7 +133,7 @@ extension UserProfileView {
                                                              where: predicateInput,
                                                              sort: nil,
                                                              paginate: nil)
-                self.numberOfMyPosts = posts.count
+                numberOfMyPosts = posts.count
             } catch let error as AmplifyError {
                 Amplify.log.error("\(#function) Error querying number of posts - \(error.localizedDescription)")
                 self.photoSharingError = error
